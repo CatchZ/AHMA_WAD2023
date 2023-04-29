@@ -85,11 +85,68 @@
     </div> <!-- End Add Area -->
 
     <div class="update-container"> <!-- Update Area -->
-        Update
+        <div class="update-contant-container"><!-- Overview Area-->
+           <div class="location-overview-container"></div>
+            <table clas>
+                <tr>
+                  <th>Location</th>
+                  <th>Streetnumber</th>
+                  <th>City</th>
+                </tr>
+                <tr>
+                  <td>Fantastic Location</td>
+                  <td>3</td>
+                  <td>Berlin</td>
+                </tr>
+                <tr>
+                  <td>Awseome Locaton</td>
+                  <td>100</td>
+                  <td>Berlin</td>
+                </tr>
+              </table>
+        </div><!-- End Overview Area-->
+        <div class="update-btns-container">
+            <button class="update-btn">Save</button>
+            <button class="delete-btn">Cancel</button>
+            <button class="cancel-btn">Cancel</button>
+        </div>
+        <div class = "update-form-container">
+            <form class="update-form" action="
+            ">
+                <div class="update-form-namefield-container">
+                    <label for="location-name">Location Name :</label>
+                    <input id="location-name" placeholder="location name" required>
+                </div>
+                <div class="update-form-new-namefield-container">
+                    <label for="new location-name">New Location Name :</label>
+                    <input id="new location-name" placeholder="location name" >
+                </div>
+                <div class="update-form-streetnumber-container">
+                    <label for="location-name">Streetnumber :</label>
+                    <input type="number" placeholder="streetnumber">
+                </div>
+                <div class="update-form-city-container">
+                    <label>City :</label>
+                    <input type="text" placeholder="city" >
+                </div>
+
+                    <button type="submit" class="update-submit-btn">submit</button>
+          
+        </form>
+
+        </div>
+             <div class = "delete-form-container">
+                <form class="delete-form" action="/action_page.php">
+                    <label>Location Name</label>
+                    <input type="text" >
+                    <input type="submit" value="Submit">
+              </form>
+
+        </div>
     </div> <!-- End Update Area -->
 
     <footer class="footer-container"> <!-- Footer Area -->
-
+        <div class="coopyright-text"></div>
     </footer> <!-- End Footer Area -->
 
     <script src="" async defer></script>
