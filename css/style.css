@@ -4,6 +4,33 @@
     --heading-3: 2rem;
     --body-text: 1.5rem;
     --nav-text: 1.3rem;
+    --bg-color: #ecedef;
+    --red-color: #d63939;
+    --gray-color: #898989;
+    --green-color: #48ab5d;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    background: var(--bg-color);
+    font-family: sans-serif;
+}
 
+/**
+ Header css
+ */
+.header-main-container {
+    width: 100%;
+}
+
+.header-content-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header-content-container p {
+    text-align: center;
+    font-size: var(--body-text);
+    color: var(--gray-color);
+}
