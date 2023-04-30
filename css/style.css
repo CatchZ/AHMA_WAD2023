@@ -234,19 +234,23 @@ Main Site
     width: 100%;
     padding: 5px 0;
 }
-table{
-    margin: 5%;
-}
+
 table, th, td {
     border: 1px solid var(--green-color);
     border-collapse: collapse;
     font-size: var(--body-text);
+    align-content: center;
+    
   
+}
+.overview-table{
+    width: 100%;
+
 }
 
 .form-button {
     margin-top: 5px;
-    width: 35%;
+    width: 30%;
     padding: 15px 0;
     font-size: var(--body-text);
     text-transform: uppercase;
@@ -259,5 +263,28 @@ table, th, td {
 .form-button:hover {
     background: #96a698;
     cursor: pointer;
+}
+
+.update-screen-contant-conatainer,
+.add-screen-contant-container{
+    padding: 5% 0;
+    align-content: center;
+    width: 100%;
+    text-align: center;
+}
+.update-form{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.update-btns-container{
+    display: block;
+}
+.add-screen-container{
+    padding: 5% 0;
+}
+
+.location-overview-container{
+    padding: 5%;
 }
 
