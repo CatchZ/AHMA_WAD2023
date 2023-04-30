@@ -223,4 +223,11 @@ Main Site
    display: block;
     width: 100%;
 }
+table{
+    margin: 5%;
+}
+table, th, td {
+    border: 1px solid var(--green-color);
+    border-collapse: collapse;
+}
 
