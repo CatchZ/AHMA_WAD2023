@@ -55,7 +55,12 @@
     flex-direction: row;
 }
 .update-form-namefield-container,
-.update-form-streetnumber-container{
+.update-form-streetnumber-container,
+.update-form-city-container{
     display: flex;
     min-width: 30%;
+    row-gap: 10;
+    justify-content: space-between;
+  
+   
 }
