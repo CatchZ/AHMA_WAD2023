@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="AHMA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Berlin Nachhaltig</title>
-    
+
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css">
@@ -29,11 +30,11 @@
     <div class="login-main-container"> <!-- Login Area -->
         <div class="login-content-container">
             <form class="login-form-container" action="#" method="post">
-                <div class="login-form-input-container">
+                <div class="login-form-username-container">
                     <img src="img/username-icon.png" alt="username">
                     <input type="text" placeholder="username" required>
                 </div>
-                <div class="login-form-input-container">
+                <div class="login-form-password-container">
                     <img src="img/password-icon.png" alt="password">
                     <input type="password" placeholder="password" required>
                 </div>
@@ -47,7 +48,10 @@
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
                 <!-- Style Attribute später löschen ! Css Gestaltung -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="mainPage-locations-container">
                 <ul class="locations-list">
@@ -62,43 +66,43 @@
 
     <!-- MAx -->
     <div class="add-screen-container"> <!-- Add Area -->
-       <div class="add-screen-contant-container">
-           <form class="add-form-container">
-               <div class="add-form-namefield-container">
-                   <label for="location-name">Location name :</label>
-                   <input type="text" id="location-name" placeholder="location name" required>
-               </div>
-               <div class="add-form-streetnumber-container">
-                   <label for="location-name">Streetnumber :</label>
-                   <input type="number" placeholder="streetnumber" required>
-               </div>
-               <div class="add-form-city-container">
-                   <label>City :</label>
-                   <input type="text" placeholder="city" required>
-               </div>
-               <div class="add-form-latitude-container">
-                <label>Latitude :</label>
-                <input type="number" placeholder="latitude" >
-            </div>
-            <div class="add-form-latitude-container">
-                <label>Longitude:</label>
-                <input type="number" placeholder="longitude" >
-            </div>
-            <div class="add-form-longitude-container">
-                <label>Photo:</label>
-                <input type="file" placeholder="longitude" >
-            </div>
-               <div class="add-screen-form-btn">
-                   <button class="save-btn">Save</button>
-                   <button class="cancel-btn">Cancel</button>
-               </div>
-           </form>
-       </div>
+        <div class="add-screen-contant-container">
+            <form class="add-form-container">
+                <div class="add-form-namefield-container">
+                    <label for="location-name">Location name :</label>
+                    <input type="text" id="location-name" placeholder="location name" required>
+                </div>
+                <div class="add-form-streetnumber-container">
+                    <label for="location-name">Streetnumber :</label>
+                    <input type="number" placeholder="streetnumber" required>
+                </div>
+                <div class="add-form-city-container">
+                    <label>City :</label>
+                    <input type="text" placeholder="city" required>
+                </div>
+                <div class="add-form-latitude-container">
+                    <label>Latitude :</label>
+                    <input type="number" placeholder="latitude">
+                </div>
+                <div class="add-form-latitude-container">
+                    <label>Longitude:</label>
+                    <input type="number" placeholder="longitude">
+                </div>
+                <div class="add-form-longitude-container">
+                    <label>Photo:</label>
+                    <input type="file" placeholder="longitude">
+                </div>
+                <div class="add-screen-form-btn">
+                    <button class="save-btn">Save</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div> <!-- End Add Area -->
 
     <div class="update-container"> <!-- Update Area -->
         <div class="update-contant-container"><!-- Overview Area-->
-           <div class="location-overview-container"></div>
+            <div class="location-overview-container"></div>
             <table class="">
                 <tr>
                     <th>Location</th>
@@ -132,34 +136,25 @@
             </table>
         </div><!-- End Overview Area-->
 
-        <div class = "update-form-container"> <!--Update Formular-->
+        <div class="update-form-container"> <!--Update Formular-->
             <form class="update-form" action="">
-                <div class="update-form-namefield-container">
-                    <label for="location-name">Location Name :</label>
-                    <input type="text" placeholder="location name" required>
-                </div>
-                <div class="update-form-streetnumber-container">
-                    <label for="location-name">Streetnumber :</label>
-                    <input type="number" placeholder="streetnumber">
-                </div>
-                <div class="update-form-city-container">
-                    <label>City :</label>
-                    <input type="text" placeholder="city" >
-                </div>
+                <div class="update-form-label-container">
+                <label >Location Name :</label>
+                <label >Streetnumber :</label>
+                <label>City :</label>
                 <label>Latitude :</label>
-                <input type="number" placeholder="latitude" >
-                <div class="update-form-latitude-container">
-                    <label>Longitude:</label>
-                    <input type="number" placeholder="longitude" >
-                </div>
-                <div class="update-form-longitude-container">
-                    <label>Photo:</label>
-                    <input type="file" placeholder="longitude" >
-                </div>
-                    <button type="submit" class="update-submit-btn">submit</button>
-               
+                <label>Longitude:</label>
+                <label>Photo:</label>
             </div>
-    </form>
+            <div class="update-form-input-container"></div>
+                <input type="text" placeholder="location name" required>
+                <input type="number" placeholder="streetnumber">  
+                <input type="text" placeholder="city">
+                <input type="number" placeholder="latitude">
+                <input type="number" placeholder="longitude">
+                <input type="file" placeholder="longitude">
+                <button type="submit" class="update-submit-btn">submit</button>
+            </form>
         </div><!---Update Formulart Ende-->
         <!--<div class = "delete-form-container">
             <form class="delete-form" action="/action_page.php">
@@ -170,21 +165,21 @@
         </div>
     </div>--> <!-- End Update Area -->
 
-    <footer class="footer-container"> <!-- Footer Vorschlag -->
-        <div class="footer-content-container">
-            <img src="img/footer-logo.png" alt="footer-logo">
-            <ul class="footer-links-list"> <!-- oder nav -->
-                <li class="footer-link"><a href="#">LINK</a> | </li>
-                <li class="footer-link"><a href="#">LINK</a> | </li>
-                <li class="footer-link"><a href="#">LINK</a> | </li>
-                <li class="footer-link"><a href="#">LINK</a> | </li>
-            </ul>
-            <hr>
-            <p>Copyright Text</p>
-        </div>
-    </footer>
+        <footer class="footer-container"> <!-- Footer Vorschlag -->
+            <div class="footer-content-container">
+                <img src="img/footer-logo.png" alt="footer-logo">
+                <ul class="footer-links-list"> <!-- oder nav -->
+                    <li class="footer-link"><a href="#">LINK</a> | </li>
+                    <li class="footer-link"><a href="#">LINK</a> | </li>
+                    <li class="footer-link"><a href="#">LINK</a> | </li>
+                    <li class="footer-link"><a href="#">LINK</a> | </li>
+                </ul>
+                <hr>
+                <p>Copyright Text</p>
+            </div>
+        </footer>
 
-    <script src="" async defer></script>
+        <script src="" async defer></script>
 </body>
 
 </html>
