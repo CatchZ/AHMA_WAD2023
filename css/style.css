@@ -1,7 +1,5 @@
 :root {
-    --heading-1: 3rem;
-    --heading-2: 3rem;
-    --heading-3: 2rem;
+    --heading: 2.5rem;
     --body-text: 1.5rem;
     --nav-text: 1.3rem;
     --bg-color: #ecedef;
@@ -103,12 +101,13 @@ form input:focus::placeholder , form textarea:focus::placeholder {
     margin-top: 5px;
     width: 100%;
     padding: 15px 0;
-    font-size: var(--heading-3);
+    font-size: var(--heading);
     text-transform: uppercase;
     color: var(--bg-color);
     border: none;
     transition: all .5s ease ;
     background: #40a149;
+    font-weight: 200;
 }
 
 .login-btn:hover {
@@ -127,8 +126,9 @@ Main Site
 }
 
 .mainPage-main-container p {
-    font-size: var(--heading-3);
+    font-size: var(--heading);
     color: var(--gray-color);
+    font-weight: 400;
 }
 
 .mainPage-content-container {
@@ -179,7 +179,7 @@ Main Site
     margin-top: 5px;
     width: 100%;
     padding: 15px 0;
-    font-size: var(--heading-3);
+    font-size: var(--heading);
     text-transform: uppercase;
     color: var(--bg-color);
     border: none;
@@ -228,6 +228,7 @@ Main Site
     
 
 }
+
 .add-form-input-container input,
 .update-form-input-container input{
    display: block;
