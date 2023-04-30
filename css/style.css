@@ -34,3 +34,8 @@
     font-size: var(--body-text);
     color: var(--gray-color);
 }
+
+.footer-links-list {
+    display: flex;
+    flex-direction: row;
+}
