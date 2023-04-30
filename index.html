@@ -63,59 +63,60 @@
     <!-- MAx -->
     <div class="add-screen-container"> <!-- Add Area -->
        <div class="add-screen-contant-container">
-        <form class="add-form-container">
-            <div class="add-form-namefield-container">
-                <label for="location-name">Location name :</label>
-                <input id="location-name" placeholder="location name" required>
-            </div>
-            <div class="add-form-streetnumber-container">
-                <label for="location-name">Streetnumber :</label>
-                <input type="number" placeholder="streetnumber" required>
-            </div>
-            <div class="add-form-city-container">
-                <label>City :</label>
-                <input type="text" placeholder="city" required>
-            </div>
-            <div class="add-screen-form-btn">
-                <button class="save-btn">Save</button>
-                <button class="cancel-btn">Cancel</button>
-            </div>
-        </form>
+           <form class="add-form-container">
+               <div class="add-form-namefield-container">
+                   <label for="location-name">Location name :</label>
+                   <input type="text" id="location-name" placeholder="location name" required>
+               </div>
+               <div class="add-form-streetnumber-container">
+                   <label for="location-name">Streetnumber :</label>
+                   <input type="number" placeholder="streetnumber" required>
+               </div>
+               <div class="add-form-city-container">
+                   <label>City :</label>
+                   <input type="text" placeholder="city" required>
+               </div>
+               <div class="add-screen-form-btn">
+                   <button class="save-btn">Save</button>
+                   <button class="cancel-btn">Cancel</button>
+               </div>
+           </form>
        </div>
     </div> <!-- End Add Area -->
 
     <div class="update-container"> <!-- Update Area -->
         <div class="update-contant-container"><!-- Overview Area-->
            <div class="location-overview-container"></div>
-            <table clas>
+            <table class="">
                 <tr>
-                  <th>Location</th>
-                  <th>Streetnumber</th>
-                  <th>City</th>
+                    <th>Location</th>
+                    <th>Streetnumber</th>
+                    <th>City</th>
                 </tr>
                 <tr>
-                  <td>Fantastic Location</td>
-                  <td>3</td>
-                  <td>Berlin</td>
+                    <td>Fantastic Location</td>
+                    <td>3</td>
+                    <td>Berlin</td>
                 </tr>
                 <tr>
-                  <td>Awseome Locaton</td>
-                  <td>100</td>
-                  <td>Berlin</td>
+                    <td>Awseome Locaton</td>
+                    <td>100</td>
+                    <td>Berlin</td>
                 </tr>
-              </table>
+            </table>
         </div><!-- End Overview Area-->
+
         <div class="update-btns-container">
             <button class="update-btn">Save</button>
             <button class="delete-btn">Cancel</button>
             <button class="cancel-btn">Cancel</button>
         </div>
+
         <div class = "update-form-container">
-            <form class="update-form" action="
-            ">
+            <form class="update-form" action="">
                 <div class="update-form-namefield-container">
                     <label for="location-name">Location Name :</label>
-                    <input id="location-name" placeholder="location name" required>
+                    <input id="location-name2" placeholder="location name" required>
                 </div>
                 <div class="update-form-new-namefield-container">
                     <label for="new location-name">New Location Name :</label>
@@ -129,36 +130,45 @@
                     <label>City :</label>
                     <input type="text" placeholder="city" >
                 </div>
-
-                    <button type="submit" class="update-submit-btn">submit</button>
-          
-        </form>
-
+                <button type="submit" class="update-submit-btn">submit</button>
+            </form>
         </div>
-             <div class = "delete-form-container">
-                <form class="delete-form" action="/action_page.php">
-                    <label>Location Name</label>
-                    <input type="text" >
-                    <input type="submit" value="Submit">
-              </form>
-
+        <div class = "delete-form-container">
+            <form class="delete-form" action="/action_page.php">
+                <label>Location Name</label>
+                <input type="text" >
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div> <!-- End Update Area -->
 
     <footer class="footer-container"> <!-- Footer Area -->
         <div class="coopyright-text">
-         coopyright-text
+        <p>coopyright-text</p>
         </div>
-        <div clas = footer-links-container>
-        <nav class="footer-links">
-            <a href="">Link 1</a> |
-            <a href="">Link 2</a> |
-            <a href="">Link 3</a> |
-            <a href="">Link 4</a>
-          </nav>
+        <div class = footer-links-container>
+            <nav class="footer-links">
+                <a href="">Link 1</a> |
+                <a href="">Link 2</a> |
+                <a href="">Link 3</a> |
+                <a href="">Link 4</a>
+            </nav>
         </div>
-
     </footer> <!-- End Footer Area -->
+
+    <footer class="footer-container"> <!-- Footer Vorschlag -->
+        <div class="footer-content-container">
+            <img src="img/footer-logo.png" alt="footer-logo">
+            <ul class="footer-links-list"> <!-- oder nav -->
+                <li class="footer-link"><a href="#">LINK</a> | </li>
+                <li class="footer-link"><a href="#">LINK</a> | </li>
+                <li class="footer-link"><a href="#">LINK</a> | </li>
+                <li class="footer-link"><a href="#">LINK</a> | </li>
+            </ul>
+            <hr>
+            <p>Copyright Text</p>
+        </div>
+    </footer>
 
     <script src="" async defer></script>
 </body>
