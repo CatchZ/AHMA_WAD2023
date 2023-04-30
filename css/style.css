@@ -289,3 +289,9 @@ table, th, td {
     padding: 5%;
 }
 
+h2 {
+    font-size: var(--heading);
+    color: var(--green-color);
+    text-transform: uppercase;
+    font-weight: 600;
+}
