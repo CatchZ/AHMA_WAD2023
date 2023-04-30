@@ -54,8 +54,8 @@
     display: flex;
     flex-direction: row;
 }
-
-labe{
-    
-    min-width: 50%;
+.update-form-namefield-container,
+.update-form-streetnumber-container{
+    display: flex;
+    min-width: 30%;
 }
