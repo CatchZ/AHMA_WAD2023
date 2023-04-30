@@ -25,6 +25,7 @@
 }
 
 .header-content-container {
+    padding: 1% 1% 0 0;
     text-align: center;
     margin: 0 auto;
 }
@@ -116,21 +117,66 @@ form input:focus::placeholder , form textarea:focus::placeholder {
 }
 
 /**
+Main Site
+ */
+.mainPage-main-container {
+    text-align: center;
+    padding: 5% 0;
+    width: 100%;
+    height: 400px
+}
+
+.mainPage-main-container p {
+    font-size: var(--body-text);
+    color: var(--gray-color);
+}
+
+.mainPage-content-container {
+    padding: 20px 0;
+    width: 100%;
+    height: auto;
+}
+
+.mainPage-map-container {
+    width: 40%;
+    display: inline-block;
+    height: 100%;
+}
+
+.mainPage-map-container iframe {
+    width: 100%;
+    height: 100%;
+}
+.mainPage-locations-container {
+    width: 40%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+
+/**
  Footer
  */
 .footer-links-list {
     display: flex;
     flex-direction: row;
 }
+
 .update-form{
-    display: flex;
-  
+    width: 100%;
 }
-.update-form-label-container{
-    display:inline;   
+
+.update-form-label-container, .update-form-input-container {
+    width: 30%;
+    display: inline-block;
+}
+
+.update-form-label-container label{
+    display: block;
+    width: 100%;
 
 }
-.update-form-input-container{
-   display: inline;
-
+.update-form-input-container input{
+   display: block;
+    width: 100%;
 }
