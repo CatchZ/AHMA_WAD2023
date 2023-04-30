@@ -199,10 +199,7 @@ Main Site
     display: flex;
     flex-direction: row;
 }
-.add-form,
-.update-form{
-    width: 100%;
-}
+
 
 .update-form-label-container,
 .update-form-input-container,
@@ -211,17 +208,31 @@ Main Site
  {
     width: 30%;
     display: inline-block;
+    vertical-align: middle;
+    
 }
+.update-form-label-container,
+.add-form-label-container{
+    text-align: right;
+    padding-right: 5px;
+}
+
+
 .add-form-label-container label,
 .update-form-label-container label{
     display: block;
     width: 100%;
+    font-size: var(--body-text);
+    color: gray;
+    padding: 5px 0;
+    
 
 }
 .add-form-input-container input,
 .update-form-input-container input{
    display: block;
     width: 100%;
+    padding: 5px 0;
 }
 table{
     margin: 5%;
@@ -229,5 +240,24 @@ table{
 table, th, td {
     border: 1px solid var(--green-color);
     border-collapse: collapse;
+    font-size: var(--body-text);
+  
+}
+
+.form-button {
+    margin-top: 5px;
+    width: 35%;
+    padding: 15px 0;
+    font-size: var(--body-text);
+    text-transform: uppercase;
+    color: var(--bg-color);
+    border: none;
+    transition: all .5s ease ;
+    background: #40a149;
+}
+
+.form-button:hover {
+    background: #96a698;
+    cursor: pointer;
 }
 
