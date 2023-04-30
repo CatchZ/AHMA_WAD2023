@@ -161,21 +161,26 @@ Main Site
     display: flex;
     flex-direction: row;
 }
-
+.add-form,
 .update-form{
     width: 100%;
 }
 
-.update-form-label-container, .update-form-input-container {
+.update-form-label-container,
+.update-form-input-container,
+.add-form-label-container,
+.add-form-input-container
+ {
     width: 30%;
     display: inline-block;
 }
-
+.add-form-label-container label,
 .update-form-label-container label{
     display: block;
     width: 100%;
 
 }
+.add-form-input-container input,
 .update-form-input-container input{
    display: block;
     width: 100%;
