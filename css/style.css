@@ -85,7 +85,7 @@ Login Site
     color: var(--green-color);
     width: 85%;
     border-style: none;
-    border-bottom: var(--gray-color) solid 2px;
+    border-bottom: var(--gray-color) solid 1px;
 }
 
 .login-form-input-container img {
@@ -111,7 +111,7 @@ form input:focus::placeholder , form textarea:focus::placeholder {
 .login-btn {
     margin-top: 20px;
     width: 95%;
-    padding: 15px 0;
+    padding: 12px 0;
     font-size: var(--heading);
     text-transform: uppercase;
     color: var(--bg-color);
@@ -167,7 +167,7 @@ Main Site
 
 .mainPage-map-container iframe {
     width: 100%;
-    height: 80%;
+    height: 82%;
 }
 
 .mainPage-locations-container {
@@ -185,9 +185,11 @@ Main Site
     height: 80%;
     overflow: hidden;
     overflow-y: scroll;
+    width: 100%;
 }
 
 .locations-list-element a {
+    display: block;
     text-decoration: none;
     color: var(--gray-color);
     font-size: var(--body-text);
@@ -195,11 +197,11 @@ Main Site
 
 .locations-list-element a:hover {
     cursor: pointer;
-    color: var(--green-color);
+    background-color: #dde5de;
 }
 
 .add-location-btn {
-    height: 20%;
+    height: 18%;
     margin-top: 5px;
     width: 100%;
     padding: 0;
@@ -222,7 +224,7 @@ Footer
  */
 
 .footer-container {
-    padding-top: 5%;
+    padding-top: 10%;
 }
 
 .footer-content-container {
@@ -234,17 +236,18 @@ Footer
 
 .footer-impressum-container {
     text-align: left;
-    padding: 0 0 10px 15px;
+    padding: 0 0 20px 15px;
 }
 
 .footer-impressum-info-container {
-    width: 20%;
+    width: auto;
     display: inline-block;
     vertical-align: top;
     color: var(--gray-color);
     font-size: var(--nav-text);
     line-height: 1.8rem;
     font-weight: 300;
+    padding-right: 30px;
 }
 
 .footer-logo-img {
@@ -318,12 +321,18 @@ Footer
     padding: 5px 0;
 }
 
-table, th, td {
-    border: 1px solid var(--green-color);
+table, td {
+    border-bottom: 1px solid var(--green-color);
     border-collapse: collapse;
-    font-size: var(--body-text);
-    align-content: center;
-    vertical-align: middle;
+    font-size: var(--nav-text);
+    text-align: left;
+    padding: 20px 0;
+}
+
+th {
+    font-size: var(--nav-text);
+    text-align: center;
+    font-weight: 600;
 }
 
 .overview-table{
@@ -404,7 +413,7 @@ table, th, td {
 }
 
 .add-form-label-container {
-    width: 15%;
+    width: 18%;
 }
 
 .add-form-btns-container {
