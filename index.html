@@ -12,18 +12,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/favicon.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- ================================= -->
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
         <div class="header-content-container">
             <ul class="header-icon-list">
-                <li class="header-icon-list-element"><img src="img/email-icon.png" alt="email-icon"></li>
-                <li class="header-icon-list-element"><img src="img/logout-icon.png" alt="logout-icon"></li>
+                <li class="header-icon-list-element"><a href="#"><img src="img/email-icon.png" alt="email-icon"></a></li>
+                <li class="header-icon-list-element"><a href="#"><img src="img/logout-icon.png" alt="logout-icon"></a></li>
             </ul>
             <img src="img/logo.png" alt="logo">
-            <p>any text ..</p>
+            <p>find out which infrastructure in Berlin has a negative</p>
+            <p>impact on sustainability and let's consider improvement measures</p>
         </div>
     </header> <!-- End Header Area -->
 
@@ -44,26 +50,40 @@
     </div> <!-- End Login Area -->
 
     <div class="mainPage-main-container"> <!-- Main-Page Area -->
-        <p>Welcome <span>USERNAME</span></p>
+        <h2>Welcome <span>USERNAME</span></h2>
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
-                <!-- Style Attribute später löschen ! Css Gestaltung -->
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde"
-                    style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="location-info-container">
+                    <h3>Location 1</h3>
+                    <p>- Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
+                    <p>- description of the location</p>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
             <div class="mainPage-locations-container">
                 <ul class="locations-list">
                     <li class="locations-list-element"><a href="#">Location 1</a></li>
                     <li class="locations-list-element"><a href="#">Location 2</a></li>
                     <li class="locations-list-element"><a href="#">Location 3</a></li>
+                    <li class="locations-list-element"><a href="#">Location 4</a></li>
+                    <li class="locations-list-element"><a href="#">Location 5</a></li>
+                    <li class="locations-list-element"><a href="#">Location 6</a></li>
+                    <li class="locations-list-element"><a href="#">Location 7</a></li>
+                    <li class="locations-list-element"><a href="#">Location 8</a></li>
+                    <li class="locations-list-element"><a href="#">Location 9</a></li>
+                    <li class="locations-list-element"><a href="#">Location 10</a></li>
+                    <li class="locations-list-element"><a href="#">Location 11</a></li>
+                    <li class="locations-list-element"><a href="#">Location 12</a></li>
+                    <li class="locations-list-element"><a href="#">Location 13</a></li>
+                    <li class="locations-list-element"><a href="#">Location 14</a></li>
                 </ul>
                 <button class="add-location-btn">Add Location</button>
             </div>
         </div>
     </div> <!-- End Main-Page Area -->
 
+    <!-- ================================= -->
     <!-- MAx -->
     <div class="add-screen-container"> <!-- Add Area -->
         <div class="add-screen-contant-container">
@@ -112,18 +132,23 @@
                     <th>Description</th>
                 </tr>
                 <tr>
-                    <td>HME Brass Germany GmbH</td>
-                    <td>Schwanebecker Chaussee</td>
-                    <td>17</td>
-                    <td>13.125</td>
-                    <td>38.384</td>
-                    <td>HKW Buch</td>
+                    <td>Fantastic Location</td>
+                    <td>3</td>
+                    <td>Berlin</td>
                     <td>
-                        <div class="update-btns-container">
-                            <button class="update-btn form-button">Update</button>
-                            <button class="delete-btn form-button">Delete</button>
-                            <button class="cancel-btn form-button">Cancel</button>
-                        </div>
+                            <button class="update-btn">Update</button>
+                            <button class="update-btn">Delete</button>
+                            <button class="update-btn">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Awesome Locaton</td>
+                    <td>100</td>
+                    <td>Berlin</td>
+                    <td>
+                            <button class="update-btn">Update</button>
+                            <button class="update-btn">Delete</button>
+                            <button class="update-btn">Cancel</button>
                     </td>
                 </tr>
             </table>
@@ -131,7 +156,7 @@
         <!-- End Overview Area-->
 
         <div class="update-screen-contant-conatainer"> <!--Update Formular-->
-            <h2>UPDATE LIST</h2>
+            <h2>Update Location info </h2>
             <form class="update-form" action="">
             <div class="update-form-label-container">
                 <label>Location Name</label>
@@ -167,21 +192,30 @@
     </div>
      <!-- End Update Area -->
 
-        <footer class="footer-container"> <!-- Footer Vorschlag -->
+        <footer class="footer-container"> <!-- start Footer Area -->
             <div class="footer-content-container">
-                <img src="img/footer-logo.png" alt="footer-logo">
-                <ul class="footer-links-list"> <!-- oder nav -->
-                    <li class="footer-link"><a href="#">LINK</a> | </li>
-                    <li class="footer-link"><a href="#">LINK</a> | </li>
-                    <li class="footer-link"><a href="#">LINK</a> | </li>
-                    <li class="footer-link"><a href="#">LINK</a> | </li>
-                </ul>
-                <hr>
-                <p>Copyright Text</p>
+                <div class="footer-impressum-container">
+                    <div class="footer-impressum-info-container">
+                        <img class="footer-logo-img" src="img/footer-logo.png" alt="footer-logo">
+                        <p class="footer-heading">AHMA Webprojekt</p>
+                        <p>It's just a simple Webproject</p>
+                        <p>to improve the city's infrastructure</p>
+                    </div>
+                    <div class="footer-impressum-info-container">
+                        <p class="footer-heading">Contact us:</p>
+                        <p>mail@berlin-nachhaltig.de</p>
+                        <p>+49 111 00000001</p>
+                    </div>
+                    <div class="footer-impressum-info-container">
+                        <p class="footer-heading">Information:</p>
+                        <a href="#"><img src="img/footer-icon-link2.png"> Privacy Policy</a>
+                        <a href="#"><img src="img/footer-icon-link2.png"> About Berlin</a>
+                        <a href="#"><img src="img/footer-icon-link2.png"> Support</a>
+                    </div>
+                </div>
+                <p class="copyright-text">Copyright © 2023, All Rights Reserved</p>
             </div>
-        </footer>
-
-        <script src="" async defer></script>
+        </footer> <!-- End Footer Area -->
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 :root {
     --heading: 2.5rem;
-    --body-text: 1.5rem;
+    --body-text: 1.4rem;
     --nav-text: 1.3rem;
     --bg-color: #ecedef;
     --red-color: #d63939;
@@ -12,7 +12,15 @@
     box-sizing: border-box;
     margin: 0 auto;
     background: var(--bg-color);
-    font-family: sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+h2 {
+    font-size: var(--heading);
+    color: var(--green-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 30px;
 }
 
 /**
@@ -28,17 +36,22 @@
     margin: 0 auto;
 }
 
+.header-content-container img {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
 .header-content-container p {
     text-align: center;
     font-size: var(--body-text);
     color: var(--gray-color);
-    padding-top: 20px;
+    line-height: 1.5rem;
 }
 
 .header-icon-list {
     list-style: none;
     text-align: right;
-
+    height: 25px;
 }
 
 .header-icon-list-element {
@@ -70,7 +83,7 @@ Login Site
     vertical-align: middle;
     font-size: var(--body-text);
     color: var(--green-color);
-    width: 90%;
+    width: 85%;
     border-style: none;
     border-bottom: var(--gray-color) solid 2px;
 }
@@ -81,16 +94,14 @@ Login Site
 }
 
 form input:focus, form textarea:focus {
-    -moz-box-shadow: 0 0 3px var(--green-color) !important;
-    -webkit-box-shadow: 0 0 3px var(--green-color) !important;
-    box-shadow: 0 0 3px var(--green-color) !important;
-    border-style: none;
     border-bottom: var(--green-color) solid 2px;
+    outline: none;
+    font-weight: 600;
 }
 
 form input:focus::placeholder , form textarea:focus::placeholder {
     color: var(--green-color);
-    font-weight: 300;
+    outline: none;
 }
 
 ::placeholder {
@@ -98,8 +109,8 @@ form input:focus::placeholder , form textarea:focus::placeholder {
 }
 
 .login-btn {
-    margin-top: 5px;
-    width: 100%;
+    margin-top: 20px;
+    width: 95%;
     padding: 15px 0;
     font-size: var(--heading);
     text-transform: uppercase;
@@ -111,7 +122,7 @@ form input:focus::placeholder , form textarea:focus::placeholder {
 }
 
 .login-btn:hover {
-    background: #96a698;
+    background: #a9baab;
     cursor: pointer;
 }
 
@@ -122,19 +133,12 @@ Main Site
     text-align: center;
     padding: 5% 0;
     width: 100%;
-    height: 600px
-}
-
-.mainPage-main-container p {
-    font-size: var(--heading);
-    color: var(--gray-color);
-    font-weight: 400;
+    height: 500px
 }
 
 .mainPage-content-container {
-    padding: 20px 0;
     width: 100%;
-    height: 100%;
+    height: inherit;
 }
 
 .mainPage-map-container {
@@ -143,31 +147,50 @@ Main Site
     height: 100%;
 }
 
+.location-info-container {
+    height: 20%;
+    text-align: left;
+    color: var(--gray-color);
+}
+
+.location-info-container h3 {
+    font-size: var(--body-text);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.location-info-container p {
+    font-size: var(--nav-text);
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
 .mainPage-map-container iframe {
     width: 100%;
-    height: 100%;
+    height: 80%;
 }
+
 .mainPage-locations-container {
     width: 40%;
     display: inline-block;
     text-align: left;
     padding: 0 0 0 30px;
     vertical-align: top;
+    height: 100%;
 }
 
 .locations-list {
     list-style: none;
     padding: 0;
-}
-
-.locations-list-element {
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .locations-list-element a {
     text-decoration: none;
     color: var(--gray-color);
     font-size: var(--body-text);
-
 }
 
 .locations-list-element a:hover {
@@ -176,15 +199,17 @@ Main Site
 }
 
 .add-location-btn {
+    height: 20%;
     margin-top: 5px;
     width: 100%;
-    padding: 15px 0;
+    padding: 0;
     font-size: var(--heading);
     text-transform: uppercase;
     color: var(--bg-color);
     border: none;
     transition: all .5s ease ;
     background: #40a149;
+    font-weight: 200;
 }
 
 .add-location-btn:hover {
@@ -192,28 +217,87 @@ Main Site
     cursor: pointer;
 }
 
-    /**
-     Footer
-     */
-.footer-links-list {
-    display: flex;
-    flex-direction: row;
+/**
+Footer
+ */
+
+.footer-container {
+    padding-top: 5%;
+}
+
+.footer-content-container {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.footer-impressum-container {
+    text-align: left;
+    padding: 0 0 10px 15px;
+}
+
+.footer-impressum-info-container {
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+    color: var(--gray-color);
+    font-size: var(--nav-text);
+    line-height: 1.8rem;
+    font-weight: 300;
+}
+
+.footer-logo-img {
+    padding-bottom: 15px;
+}
+
+.footer-impressum-info-container a {
+    display: block;
+    text-decoration: none;
+    color: var(--gray-color);
+    vertical-align: middle;
+}
+
+.footer-impressum-info-container img {
+    display: inline;
+    vertical-align: middle;
+}
+
+.footer-impressum-info-container a:hover {
+    cursor: pointer;
+    color: var(--green-color);
+}
+
+.footer-heading {
+    font-weight: 600;
+    color: var(--green-color);
+    padding-bottom: 12px;
+}
+
+.copyright-text {
+    padding-top: 10px;
+    border-top: var(--green-color) solid 2px;
+    font-size: 1rem;
+    color: var(--gray-color);
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 
+/**
+
+ */
 .update-form-label-container,
 .update-form-input-container,
 .add-form-label-container,
-.add-form-input-container
- {
-    width: 30%;
+.add-form-input-container {
     display: inline-block;
     vertical-align: middle;
     
 }
 .update-form-label-container,
 .add-form-label-container{
-    text-align: right;
+    text-align: left;
     padding-right: 5px;
 }
 
@@ -225,8 +309,6 @@ Main Site
     font-size: var(--body-text);
     color: gray;
     padding: 5px 0;
-    
-
 }
 
 .add-form-input-container input,
@@ -241,17 +323,17 @@ table, th, td {
     border-collapse: collapse;
     font-size: var(--body-text);
     align-content: center;
-    
-  
+    vertical-align: middle;
 }
+
 .overview-table{
     width: 100%;
-
+    color: var(--gray-color);
 }
 
 .form-button {
-    margin-top: 5px;
-    width: 30%;
+    margin-top: 20px;
+    width: 49%;
     padding: 15px 0;
     font-size: var(--body-text);
     text-transform: uppercase;
@@ -268,33 +350,64 @@ table, th, td {
 
 .update-screen-contant-conatainer,
 .add-screen-contant-container{
-    padding: 5% 0;
     align-content: center;
     width: 100%;
     text-align: center;
+    height: inherit;
 }
 .update-form{
     display: block;
     width: 100%;
     text-align: center;
 }
-.update-btns-container{
-    display: block;
+
+.update-btn {
+    padding: 5px 0;
+    width: 32%;
+    font-size: var(--nav-text);
+    text-transform: uppercase;
+    color: var(--bg-color);
+    border: none;
+    transition: all .5s ease ;
+    background: #40a149;
+    vertical-align: middle;
 }
-.add-screen-container{
+
+.update-btn:hover {
+    background: #a9baab;
+    cursor: pointer;
+}
+
+
+.add-screen-container {
+    margin-top: 15%;
     padding: 5% 0;
+    width: 80%;
+}
+
+.update-container {
+    padding: 5% 0;
+    width: 80%;
+    text-align: center;
 }
 
 .location-overview-container{
-    padding: 5%;
+    padding-bottom: 10%;
 }
 
-h2 {
-    font-size: var(--heading);
-    color: var(--green-color);
-    text-transform: uppercase;
-    font-weight: 600;
+.add-form-container {
+    width: 80%;
 }
-.update-container{
+
+.add-form-input-container {
+    width: 80%;
+}
+
+.add-form-label-container {
+    width: 15%;
+}
+
+.add-form-btns-container {
+    width: 100%;
     text-align: center;
 }
