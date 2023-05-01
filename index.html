@@ -70,9 +70,12 @@
             <h2>ADD NEW LOCATION</h2>
             <form class="add-form-container">
                 <div class="add-form-label-container ">
-                    <label for="location-name">Location Name</label>
-                    <label for="location-name">Streetnumber</label>
-                    <label>City</label>
+                    <label>Location Name</label>
+                    <label>Streetname</label>
+                    <label>Streetnumber</label>
+                    <label>Postcode</label>
+                    <label>C02 int T</label>
+                    <label>Description</label>
                     <label>Latitude</label>
                     <label>Longitude</label>
                     <label>Photo</label>
@@ -80,7 +83,9 @@
                 <div class="add-form-input-container login-form-input-container input" >
                     <input type="text" id="location-name" placeholder="location name" required>
                     <input type="number" placeholder="streetnumber" required>
-                    <input type="text" placeholder="city" required>
+                    <input type="number" placeholder="Postcode" required>
+                    <input type="number" placeholder="C02 in T" required>
+                    <input type="text" placeholder="Description" required>
                     <input type="number" placeholder="latitude">
                     <input type="number" placeholder="longitude">
                     <input type="file" placeholder="longitude">
@@ -99,26 +104,20 @@
             <div class="location-overview-container">
             <table class="overview-table">
                 <tr>
-                    <th>Location</th>
+                    <th>Locationname</th>
+                    <th>Streetname</th>
                     <th>Streetnumber</th>
-                    <th>City</th>
+                    <th>Postleitzahl</th>
+                    <th>CO2 in T</th>
+                    <th>Description</th>
                 </tr>
                 <tr>
-                    <td>Fantastic Location</td>
-                    <td>3</td>
-                    <td>Berlin</td>
-                    <td>
-                        <div class="update-btns-container">
-                            <button class="update-btn form-button">Update</button>
-                            <button class="delete-btn form-button">Delete</button>
-                            <button class="cancel-btn form-button">Cancel</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Awesome Locaton</td>
-                    <td>100</td>
-                    <td>Berlin</td>
+                    <td>HME Brass Germany GmbH</td>
+                    <td>Schwanebecker Chaussee</td>
+                    <td>17</td>
+                    <td>13.125</td>
+                    <td>38.384</td>
+                    <td>HKW Buch</td>
                     <td>
                         <div class="update-btns-container">
                             <button class="update-btn form-button">Update</button>
@@ -135,17 +134,22 @@
             <h2>UPDATE LIST</h2>
             <form class="update-form" action="">
             <div class="update-form-label-container">
-                <label >Location Name</label>
-                <label >Streetnumber</label>
-                <label>City</label>
-                <label>Latitude</label>
-                <label>Longitude</label>
-                <label>Photo</label>
+                <label>Location Name</label>
+                    <label>Streetname</label>
+                    <label>Streetnumber</label>
+                    <label>Postcode</label>
+                    <label>C02 int T</label>
+                    <label>Description</label>
+                    <label>Latitude</label>
+                    <label>Longitude</label>
+                    <label>Photo</label>
             </div>
             <div class="update-form-input-container login-form-input-container input">
-                <input type="text" placeholder="location name" required>
-                <input type="number" placeholder="streetnumber">
-                <input type="text" placeholder="city">
+                <input type="text" id="location-name" placeholder="location name" required>
+                <input type="number" placeholder="streetnumber" required>
+                <input type="number" placeholder="Postcode" required>
+                <input type="number" placeholder="C02 in T" required>
+                <input type="text" placeholder="Description" required>
                 <input type="number" placeholder="latitude">
                 <input type="number" placeholder="longitude">
                 <input type="file" placeholder="longitude">
