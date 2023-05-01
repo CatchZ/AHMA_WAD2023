@@ -220,11 +220,73 @@ Main Site
 /**
 Footer
  */
-.footer-links-list {
-    display: flex;
-    flex-direction: row;
+
+.footer-container {
+    padding-top: 5%;
 }
 
+.footer-content-container {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.footer-impressum-container {
+    text-align: left;
+    padding: 0 0 10px 15px;
+}
+
+.footer-impressum-info-container {
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+    color: var(--gray-color);
+    font-size: var(--nav-text);
+    line-height: 1.8rem;
+    font-weight: 300;
+}
+
+.footer-logo-img {
+    padding-bottom: 15px;
+}
+
+.footer-impressum-info-container a {
+    display: block;
+    text-decoration: none;
+    color: var(--gray-color);
+    vertical-align: middle;
+}
+
+.footer-impressum-info-container img {
+    display: inline;
+    vertical-align: middle;
+}
+
+.footer-impressum-info-container a:hover {
+    cursor: pointer;
+    color: var(--green-color);
+}
+
+.footer-heading {
+    font-weight: 600;
+    color: var(--green-color);
+    padding-bottom: 12px;
+}
+
+.copyright-text {
+    padding-top: 10px;
+    border-top: var(--green-color) solid 2px;
+    font-size: 1rem;
+    color: var(--gray-color);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+
+/**
+
+ */
 .update-form-label-container,
 .update-form-input-container,
 .add-form-label-container,
