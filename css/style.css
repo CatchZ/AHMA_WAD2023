@@ -125,19 +125,12 @@ Main Site
     text-align: center;
     padding: 5% 0;
     width: 100%;
-    height: 600px
-}
-
-.mainPage-main-container p {
-    font-size: var(--heading);
-    color: var(--gray-color);
-    font-weight: 400;
+    height: 500px
 }
 
 .mainPage-content-container {
-    padding: 20px 0;
     width: 100%;
-    height: 100%;
+    height: inherit;
 }
 
 .mainPage-map-container {
@@ -146,31 +139,49 @@ Main Site
     height: 100%;
 }
 
+.location-info-container {
+    height: 20%;
+    text-align: left;
+    color: var(--gray-color);
+}
+
+.location-info-container h3 {
+    font-size: var(--body-text);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.location-info-container p {
+    font-size: var(--nav-text);
+    font-weight: 400;
+}
+
 .mainPage-map-container iframe {
     width: 100%;
-    height: 100%;
+    height: 80%;
 }
+
 .mainPage-locations-container {
     width: 40%;
     display: inline-block;
     text-align: left;
     padding: 0 0 0 30px;
     vertical-align: top;
+    height: 100%;
 }
 
 .locations-list {
     list-style: none;
     padding: 0;
-}
-
-.locations-list-element {
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .locations-list-element a {
     text-decoration: none;
     color: var(--gray-color);
     font-size: var(--body-text);
-
 }
 
 .locations-list-element a:hover {
@@ -179,9 +190,10 @@ Main Site
 }
 
 .add-location-btn {
+    height: 20%;
     margin-top: 5px;
     width: 100%;
-    padding: 15px 0;
+    padding: 0;
     font-size: var(--heading);
     text-transform: uppercase;
     color: var(--bg-color);
@@ -297,6 +309,7 @@ h2 {
     color: var(--green-color);
     text-transform: uppercase;
     font-weight: 600;
+    padding-bottom: 40px;
 }
 .update-container{
     text-align: center;
