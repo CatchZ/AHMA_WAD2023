@@ -54,7 +54,8 @@
             <div class="mainPage-map-container">
                 <div class="location-info-container">
                     <h3>Location 1</h3>
-                    <p>Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
+                    <p>- Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
+                    <p>- description of the location</p>
                 </div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -87,8 +88,8 @@
             <h2>ADD NEW LOCATION</h2>
             <form class="add-form-container">
                 <div class="add-form-label-container ">
-                    <label for="location-name">Location Name</label>
-                    <label for="location-name">Streetnumber</label>
+                    <label for="location-name">Location</label>
+                    <label for="location-name">Street Nr.</label>
                     <label>City</label>
                     <label>Latitude</label>
                     <label>Longitude</label>
@@ -125,11 +126,9 @@
                     <td>3</td>
                     <td>Berlin</td>
                     <td>
-                        <div class="update-btns-container">
-                            <button class="update-btn form-button">Update</button>
-                            <button class="delete-btn form-button">Delete</button>
-                            <button class="cancel-btn form-button">Cancel</button>
-                        </div>
+                            <button class="update-btn">Update</button>
+                            <button class="update-btn">Delete</button>
+                            <button class="update-btn">Cancel</button>
                     </td>
                 </tr>
                 <tr>
@@ -137,11 +136,9 @@
                     <td>100</td>
                     <td>Berlin</td>
                     <td>
-                        <div class="update-btns-container">
-                            <button class="update-btn form-button">Update</button>
-                            <button class="delete-btn form-button">Delete</button>
-                            <button class="cancel-btn form-button">Cancel</button>
-                        </div>
+                            <button class="update-btn">Update</button>
+                            <button class="update-btn">Delete</button>
+                            <button class="update-btn">Cancel</button>
                     </td>
                 </tr>
             </table>
@@ -149,7 +146,7 @@
         <!-- End Overview Area-->
 
         <div class="update-screen-contant-conatainer"> <!--Update Formular-->
-            <h2>UPDATE LIST</h2>
+            <h2>Update Location info </h2>
             <form class="update-form" action="">
             <div class="update-form-label-container">
                 <label >Location Name</label>

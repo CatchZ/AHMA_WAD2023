@@ -15,6 +15,14 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
+h2 {
+    font-size: var(--heading);
+    color: var(--green-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 30px;
+}
+
 /**
  Header
  */
@@ -154,6 +162,7 @@ Main Site
 .location-info-container p {
     font-size: var(--nav-text);
     font-weight: 400;
+    line-height: 1.5rem;
 }
 
 .mainPage-map-container iframe {
@@ -200,6 +209,7 @@ Main Site
     border: none;
     transition: all .5s ease ;
     background: #40a149;
+    font-weight: 200;
 }
 
 .add-location-btn:hover {
@@ -207,28 +217,25 @@ Main Site
     cursor: pointer;
 }
 
-    /**
-     Footer
-     */
+/**
+Footer
+ */
 .footer-links-list {
     display: flex;
     flex-direction: row;
 }
 
-
 .update-form-label-container,
 .update-form-input-container,
 .add-form-label-container,
-.add-form-input-container
- {
-    width: 30%;
+.add-form-input-container {
     display: inline-block;
     vertical-align: middle;
     
 }
 .update-form-label-container,
 .add-form-label-container{
-    text-align: right;
+    text-align: left;
     padding-right: 5px;
 }
 
@@ -240,8 +247,6 @@ Main Site
     font-size: var(--body-text);
     color: gray;
     padding: 5px 0;
-    
-
 }
 
 .add-form-input-container input,
@@ -256,17 +261,17 @@ table, th, td {
     border-collapse: collapse;
     font-size: var(--body-text);
     align-content: center;
-    
-  
+    vertical-align: middle;
 }
+
 .overview-table{
     width: 100%;
-
+    color: var(--gray-color);
 }
 
 .form-button {
-    margin-top: 5px;
-    width: 30%;
+    margin-top: 20px;
+    width: 49%;
     padding: 15px 0;
     font-size: var(--body-text);
     text-transform: uppercase;
@@ -283,34 +288,64 @@ table, th, td {
 
 .update-screen-contant-conatainer,
 .add-screen-contant-container{
-    padding: 5% 0;
     align-content: center;
     width: 100%;
     text-align: center;
+    height: inherit;
 }
 .update-form{
     display: block;
     width: 100%;
     text-align: center;
 }
-.update-btns-container{
-    display: block;
+
+.update-btn {
+    padding: 5px 0;
+    width: 32%;
+    font-size: var(--nav-text);
+    text-transform: uppercase;
+    color: var(--bg-color);
+    border: none;
+    transition: all .5s ease ;
+    background: #40a149;
+    vertical-align: middle;
 }
-.add-screen-container{
+
+.update-btn:hover {
+    background: #a9baab;
+    cursor: pointer;
+}
+
+
+.add-screen-container {
+    margin-top: 15%;
     padding: 5% 0;
+    width: 80%;
+}
+
+.update-container {
+    padding: 5% 0;
+    width: 80%;
+    text-align: center;
 }
 
 .location-overview-container{
-    padding: 5%;
+    padding-bottom: 10%;
 }
 
-h2 {
-    font-size: var(--heading);
-    color: var(--green-color);
-    text-transform: uppercase;
-    font-weight: 600;
-    padding-bottom: 40px;
+.add-form-container {
+    width: 80%;
 }
-.update-container{
+
+.add-form-input-container {
+    width: 80%;
+}
+
+.add-form-label-container {
+    width: 15%;
+}
+
+.add-form-btns-container {
+    width: 100%;
     text-align: center;
 }
