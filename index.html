@@ -54,18 +54,18 @@
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
                 <div class="location-info-container">
-                    <h3>Location 1</h3>
-                    <p>- Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
-                    <p>- description of the location</p>
+                    <h3>Vattenfall Wärme Berlin HKW</h3>
+                    <p>- CO2 in T:<span> 122.000</span> , Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
+                    <p>- Wärme- und Kälteversorgung</p>
                 </div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
             <div class="mainPage-locations-container">
                 <ul class="locations-list">
-                    <li class="locations-list-element"><a href="#">Location 1</a></li>
-                    <li class="locations-list-element"><a href="#">Location 2</a></li>
-                    <li class="locations-list-element"><a href="#">Location 3</a></li>
+                    <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
+                    <li class="locations-list-element"><a href="#">Vattenfall Wärme Berlin HKW</a></li>
+                    <li class="locations-list-element"><a href="#">FHW Neukölln AG</a></li>
                     <li class="locations-list-element"><a href="#">Location 4</a></li>
                     <li class="locations-list-element"><a href="#">Location 5</a></li>
                     <li class="locations-list-element"><a href="#">Location 6</a></li>
@@ -84,7 +84,7 @@
     </div> <!-- End Main-Page Area -->
 
     <!-- ================================= -->
-    <!-- MAx -->
+    <!-- Max -->
     <div class="add-screen-container"> <!-- Add Area -->
         <div class="add-screen-contant-container">
             <h2>ADD NEW LOCATION</h2>
@@ -127,8 +127,8 @@
                 <tr>
                     <th>Locationname</th>
                     <th>Streetname</th>
-                    <th>Streetnumber</th>
-                    <th>Postleitzahl</th>
+                    <th>Street Nr.</th>
+                    <th>Postcode</th>
                     <th>CO2 in T</th>
                     <th>Description</th>
                 </tr>
@@ -136,13 +136,26 @@
                     <td>HME Brass Germany GmbH</td>
                     <td>Schwanebecker Chaussee</td>
                     <td>17</td>
-                    <td>13.125</td>
+                    <td>13125</td>
                     <td>38.384</td>
                     <td>HKW Buch</td>
                     <td>
                             <button class="update-btn">Update</button>
                             <button class="update-btn">Delete</button>
                             <button class="update-btn">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vattenfall Wärme</td>
+                    <td>Am Spreebord</td>
+                    <td>5</td>
+                    <td>10589</td>
+                    <td>122.000</td>
+                    <td>Wärmeversorgung</td>
+                    <td>
+                        <button class="update-btn">Update</button>
+                        <button class="update-btn">Delete</button>
+                        <button class="update-btn">Cancel</button>
                     </td>
                 </tr>
             </table>
@@ -165,7 +178,6 @@
             </div>
             <div class="update-form-input-container login-form-input-container input">
                 <input type="text" id="location-name" placeholder="location name" required>
-                <input type="text" placeholder="streetname name" required>
                 <input type="number" placeholder="streetnumber" required>
                 <input type="number" placeholder="Postcode" required>
                 <input type="number" placeholder="C02 in T" required>
@@ -191,7 +203,7 @@
             <div class="footer-content-container">
                 <div class="footer-impressum-container">
                     <div class="footer-impressum-info-container">
-                        <img class="footer-logo-img" src="img/footer-logo.png" alt="footer-logo">
+                        <!-- <img class="footer-logo-img" src="img/footer-logo.png" alt="footer-logo"> -->
                         <p class="footer-heading">AHMA Webprojekt</p>
                         <p>It's just a simple Webproject</p>
                         <p>to improve the city's infrastructure</p>
@@ -208,7 +220,7 @@
                         <a href="#"><img src="img/footer-icon-link2.png"> Support</a>
                     </div>
                 </div>
-                <p class="copyright-text">Copyright © 2023, All Rights Reserved</p>
+                <p class="copyright-text">Copyright© 2023, All Rights Reserved</p>
             </div>
         </footer> <!-- End Footer Area -->
 </body>
