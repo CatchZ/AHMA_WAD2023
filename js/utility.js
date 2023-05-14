@@ -8,5 +8,40 @@ function disableEnableElement(element) {
     } else {
         document.getElementById(element).style.display!="block"
     }
+}
 
+function login() {
+    // TODO
+}
+
+function logout() {
+    // TODO
+}
+
+function addLocation() {
+    // TODO
+}
+
+function updateLocation() {
+    // TODO
+}
+
+function deleteLocation() {
+    // TODO
+}
+
+function cancelPage() {
+    // TODO
+}
+
+function #loginAsAdmin() {
+    // TODO
+}
+
+function #loginAsUser() {
+    // TODO
+}
+
+function #checkLocationName() {
+    // TODO
 }
