@@ -1,13 +1,50 @@
 'use strict';
+const locations = [ {
+    "locationName": "Bayerische Motoren Werke AG",
+    "streetName": "Am Juliusturm",
+    "streetNumber": 14,
+    "postcode": 13599,
+    "c02InTons": 12900,
+    "description": "-",
+    "latitude": "52.538329",
+    "longitude": "13.228278",
+    "photo": ""
+},
+    {
+        "locationName": "Bayer AG",
+        "streetName": "Müllerstr.",
+        "streetNumber": 178,
+        "postcode": 13353,
+        "c02InTons": 39648,
+        "description": "HKW Bayer",
+        "latitude": "52.540803",
+        "longitude": "13.368838",
+        "photo": ""
+    },
+    {
+        "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
+        "streetName": "Albert-Einstein-Str.",
+        "streetNumber": 22,
+        "postcode": 12489,
+        "c02InTons": 44997,
+        "description": "HKW Adlershof",
+        "latitude": "52.42700181421365 ",
+        "longitude": "13.5278661539540",
+        "photo": ""
+    }
+];
 
 const users = [{
     "userName": "admina",
     "password": "admina",
-    "admin": true },
+    "admin": true
+    },
     {
     "userName": "user",
     "password": "user",
-    "admin": false }];
+    "admin": false
+    }
+];
 
 // Events-Targets:
 const loginBtn = document.getElementById("login-btn")
@@ -82,6 +119,33 @@ function backToHomePage() {
 
 function addLocation() {
 
+    // Inputs validation:
+    // TODO
+
+    // Get inputs values:
+    let newLocationToAdd = {
+        "locationName": document.getElementById("new-location-name").value,
+        "streetName": document.getElementById("new-location-str-name").value,
+        "streetNumber": document.getElementById("new-location-str-nr").value,
+        "postcode": document.getElementById("new-location-postcode").value,
+        "c02InTons": document.getElementById("new-location-co2").value,
+        "description": document.getElementById("new-location-description").value,
+        "latitude": document.getElementById("new-location-latitude").value,
+        "longitude": document.getElementById("new-location-longitude").value,
+        "photo": document.getElementById("new-location-img").value
+    }
+
+    // save the new location temporary in list:
+    locations.push(newLocationToAdd)
+
+    // show success message:
+    document.getElementById("add-message").textContent = "Location has been added successfully "
+    let img = new Image()
+    img.src = "./img/ok-icon.png"
+    document.getElementById("add-message").appendChild(img)
+
+    // reset from inputs values:
+    document.getElementById("add-form").reset()
 }
 
 function updateLocation() {

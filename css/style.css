@@ -399,6 +399,13 @@ th {
     text-align: center;
 }
 
+.add-screen-contant-container p {
+    text-align: center;
+    font-size: var(--body-text);
+    color: var(--green-color);
+    line-height: 1.5rem;
+}
+
 .update-btn {
     padding: 5px 0;
     width: 45%;
