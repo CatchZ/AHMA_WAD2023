@@ -24,8 +24,10 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
 logoutBtn.addEventListener("click", logout)
-addLocationBtn.addEventListener("click", addLocation)
+addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
+cancelAddLocationBtn.addEventListener("click", backToHomePage)
+saveNewLocationBtn.addEventListener("click", addLocation)
 
 // Events-Handling Functions:
 function login() {
@@ -67,7 +69,7 @@ function logout() {
     displayToggle(["main-page","login-area","header-options"])
 }
 
-function addLocation() {
+function switchToAddLocation() {
     displayToggle(["main-page","header-options","add-location-page"])
 }
 
@@ -76,6 +78,10 @@ function backToHomePage() {
     document.getElementById("add-form").reset()
     // back to homepage:
     displayToggle(["add-location-page","main-page","header-options"])
+}
+
+function addLocation() {
+
 }
 
 function updateLocation() {
