@@ -1,62 +1,15 @@
 'use strict';
-const locations = [ {
-    "locationName": "Bayerische Motoren Werke AG",
-    "streetName": "Am Juliusturm",
-    "streetNumber": 14,
-    "postcode": 13599,
-    "c02InTons": 12900,
-    "description": "-",
-    "latitude": "52.538329",
-    "longitude": "13.228278",
-    "photo": ""
-},
-    {
-        "locationName": "Bayer AG",
-        "streetName": "Müllerstr.",
-        "streetNumber": 178,
-        "postcode": 13353,
-        "c02InTons": 39648,
-        "description": "HKW Bayer",
-        "latitude": "52.540803",
-        "longitude": "13.368838",
-        "photo": ""
-    },
-    {
-        "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
-        "streetName": "Albert-Einstein-Str.",
-        "streetNumber": 22,
-        "postcode": 12489,
-        "c02InTons": 44997,
-        "description": "HKW Adlershof",
-        "latitude": "52.42700181421365 ",
-        "longitude": "13.5278661539540",
-        "photo": ""
-    }
-];
-
-const users = [{
-    "userName": "admina",
-    "password": "admina",
-    "admin": true
-    },
-    {
-    "userName": "user",
-    "password": "user",
-    "admin": false
-    }
-];
 
 // Events-Targets:
 const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
 const addLocationBtn = document.getElementById("add-location-btn")
 const backToHomepageBtn = document.getElementById("homepage-btn")
-const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveNewLocationBtn = document.getElementById("save-new-location-btn")
 const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
+const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
-// TODO get delete&update Buttons for each Element (querySelector() onClick "event" as target obj ?)
 
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
@@ -74,7 +27,7 @@ function login() {
     let passwordInput = document.getElementById("password-input").value;
 
     // Iteration the users-list:
-    for(const user of users) {
+    for(const user of getUsersAsObj()) {
         if (usernameInput===user.userName) {
             if(passwordInput===user.password) {
                 // Reset the inputs values:
@@ -104,6 +57,7 @@ function login() {
 
 function logout() {
 
+    // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
         displayToggle(["main-page","login-area","header-options"])
@@ -195,4 +149,59 @@ function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
+}
+
+function getUsersAsObj() {
+    let users = [{
+        "userName": "admina",
+        "password": "admina",
+        "admin": true
+    },
+        {
+            "userName": "user",
+            "password": "user",
+            "admin": false
+        }
+    ];
+    return  users;
+}
+
+function getLocationsAsObj() {
+
+    let locations = [ {
+        "locationName": "Bayerische Motoren Werke AG",
+        "streetName": "Am Juliusturm",
+        "streetNumber": 14,
+        "postcode": 13599,
+        "c02InTons": 12900,
+        "description": "-",
+        "latitude": "52.538329",
+        "longitude": "13.228278",
+        "photo": ""
+    },
+        {
+            "locationName": "Bayer AG",
+            "streetName": "Müllerstr.",
+            "streetNumber": 178,
+            "postcode": 13353,
+            "c02InTons": 39648,
+            "description": "HKW Bayer",
+            "latitude": "52.540803",
+            "longitude": "13.368838",
+            "photo": ""
+        },
+        {
+            "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
+            "streetName": "Albert-Einstein-Str.",
+            "streetNumber": 22,
+            "postcode": 12489,
+            "c02InTons": 44997,
+            "description": "HKW Adlershof",
+            "latitude": "52.42700181421365 ",
+            "longitude": "13.5278661539540",
+            "photo": ""
+        }
+    ];
+
+    return locations
 }
