@@ -103,7 +103,13 @@ function login() {
 }
 
 function logout() {
-    displayToggle(["main-page","login-area","header-options"])
+
+    let logoutConfirm = confirm("Do you wont to logout ?")
+    if(logoutConfirm) {
+        displayToggle(["main-page","login-area","header-options"])
+    } else {
+
+    }
 }
 
 function switchToAddLocation() {
@@ -144,7 +150,7 @@ function addLocation() {
     img.src = "./img/ok-icon.png"
     document.getElementById("add-message").appendChild(img)
 
-    // reset from inputs values:
+    // reset form inputs values:
     document.getElementById("add-form").reset()
 }
 
