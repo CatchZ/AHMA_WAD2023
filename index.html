@@ -24,7 +24,7 @@
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
         <div class="header-content-container">
-            <ul class="header-icon-list">
+            <ul id="header-options" class="header-icon-list none-display">
                 <li class="header-icon-list-element"><a href="#"><img src="img/email-icon.png" alt="email-icon"></a></li>
                 <li id="logout-btn" class="header-icon-list-element"><a href="#"><img src="img/logout-icon.png" alt="logout-icon"></a></li>
             </ul>
@@ -34,24 +34,24 @@
         </div>
     </header> <!-- End Header Area -->
 
-    <div class="login-main-container"> <!-- Login Area -->
+    <div id="login-area" class="login-main-container"> <!-- Login Area -->
         <div class="login-content-container">
-            <form class="login-form-container" action="#" method="post">
+            <form id="login-form" class="login-form-container">
                 <div class="login-form-input-container">
                     <img src="img/username-icon.png" alt="username">
-                    <input type="text" placeholder="username" id="username-input">
+                    <input id="username-input" type="text" placeholder="username" required>
                 </div>
                 <div class="login-form-input-container">
                     <img src="img/password-icon.png" alt="password">
-                    <input type="password" placeholder="password">
+                    <input id="password-input" type="password" placeholder="password" required>
                 </div>
-                <button id="login-btn" class="login-btn">Login</button>
             </form>
+            <button id="login-btn" class="login-btn">Login</button>
         </div>
     </div> <!-- End Login Area -->
 
-    <div class="mainPage-main-container"> <!-- Main-Page Area -->
-        <h2>Welcome <span>USERNAME</span></h2>
+    <div id="main-page" class="mainPage-main-container none-display"> <!-- Main-Page Area -->
+        <h2>Hello <span id="welcome-user"></span> !</h2>
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
                 <div class="location-info-container">
@@ -63,34 +63,39 @@
                 </iframe>
             </div>
             <div class="mainPage-locations-container">
-                <ul class="locations-list">
-                    <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
-                    <li class="locations-list-element"><a href="#">Vattenfall Wärme Berlin HKW</a></li>
-                    <li class="locations-list-element"><a href="#">FHW Neukölln AG</a></li>
-                    <li class="locations-list-element"><a href="#">Location 4</a></li>
-                    <li class="locations-list-element"><a href="#">Location 5</a></li>
-                    <li class="locations-list-element"><a href="#">Location 6</a></li>
-                    <li class="locations-list-element"><a href="#">Location 7</a></li>
-                    <li class="locations-list-element"><a href="#">Location 8</a></li>
-                    <li class="locations-list-element"><a href="#">Location 9</a></li>
-                    <li class="locations-list-element"><a href="#">Location 10</a></li>
-                    <li class="locations-list-element"><a href="#">Location 11</a></li>
-                    <li class="locations-list-element"><a href="#">Location 12</a></li>
-                    <li class="locations-list-element"><a href="#">Location 13</a></li>
-                    <li class="locations-list-element"><a href="#">Location 14</a></li>
-                </ul>
-                <button id="add-location-btn" class="add-location-btn">Add Ort</button>
-                <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
+                <div class="locations-container">
+                    <ul class="locations-list">
+                        <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
+                        <li class="locations-list-element"><a href="#">Vattenfall Wärme Berlin HKW</a></li>
+                        <li class="locations-list-element"><a href="#">FHW Neukölln AG</a></li>
+                        <li class="locations-list-element"><a href="#">Location 4</a></li>
+                        <li class="locations-list-element"><a href="#">Location 5</a></li>
+                        <li class="locations-list-element"><a href="#">Location 6</a></li>
+                        <li class="locations-list-element"><a href="#">Location 7</a></li>
+                        <li class="locations-list-element"><a href="#">Location 8</a></li>
+                        <li class="locations-list-element"><a href="#">Location 9</a></li>
+                        <li class="locations-list-element"><a href="#">Location 10</a></li>
+                        <li class="locations-list-element"><a href="#">Location 11</a></li>
+                        <li class="locations-list-element"><a href="#">Location 12</a></li>
+                        <li class="locations-list-element"><a href="#">Location 13</a></li>
+                        <li class="locations-list-element"><a href="#">Location 14</a></li>
+                    </ul>
+                </div>
+                <div id="locations-options-btns" class="locations-options-container none-display">
+                    <button id="add-location-btn" class="add-location-btn">Add Ort</button>
+                    <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
+                </div>
             </div>
         </div>
     </div> <!-- End Main-Page Area -->
 
     <!-- ================================= -->
     <!-- Max -->
-    <div class="add-screen-container"> <!-- Add Area -->
+    <div id="add-location-page" class="add-screen-container none-display"> <!-- Add Area -->
+        <button id="homepage-btn" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage">Home</button>
         <div class="add-screen-contant-container">
             <h2>ADD NEW LOCATION</h2>
-            <form class="add-form-container">
+            <form id="add-form" class="add-form-container">
                 <div class="add-form-label-container ">
                     <label>Location Name</label>
                     <label>Streetname</label>
@@ -121,7 +126,7 @@
         </div>
     </div> <!-- End Add Area -->
 
-    <div class="update-container"> <!-- Update Area -->
+    <div class="update-container none-display"> <!-- Update Area -->
         <!-- Overview Area-->
         <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
@@ -228,5 +233,4 @@
             </div>
         </footer> <!-- End Footer Area -->
 </body>
-
 </html>
