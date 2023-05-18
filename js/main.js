@@ -65,7 +65,7 @@ function logout() {
     }
 }
 
-/*
+
 function displayAddresses() {
 
     let locations = getLocationsAsObj()
@@ -86,7 +86,6 @@ function displayAddresses() {
     mapInit()
 }
 
- */
 
 function switchToAddLocation() {
     displayToggle(["main-page","header-options","add-location-page"])
@@ -180,7 +179,11 @@ function loginAsAdmin(){
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
     //displayAddresses()
-    generateUpdateTableBody()
+    // map:
+    mapInit()
+
+    generateLocationList()
+
 }
 
 function loginAsUser() {
@@ -188,7 +191,11 @@ function loginAsUser() {
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
     //displayAddresses()
-    generateUpdateTableBody()
+    // map:
+    mapInit()
+
+    generateLocationList()
+
 }
 
 function getUsersAsObj() {
@@ -254,7 +261,7 @@ function mapInit() {
     }
 
     // Map Obj:
-    const map = L.map('map-container');
+    var map = L.map('map-container');
     map.setView(mapInitOptions.position, mapInitOptions.zoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -262,6 +269,7 @@ function mapInit() {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 }
+
 /**
  * toggles UpdateTable Container
  */
@@ -289,9 +297,6 @@ function generateUpdateTableBody(){
         updateTable.appendChild(row)
         
     })
-
-    // test:
-    mapInit()
 }
 
 const loacationList = document.getElementById("locations-list");
@@ -304,12 +309,12 @@ function generateLocationList(){
     getLocationsAsObj().forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
+
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         row.setAttribute("onClick",methodCall);
         row.textContent = location.locationName;
         loacationList.appendChild(row)
     })
-    
 }
 
 const locationInfoContainer = document.getElementById("location-info-container")

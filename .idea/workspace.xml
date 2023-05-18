@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="fix">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="ja update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "F:/Websites Workspace/AHMA_WAD2023_V2",
+    "last_opened_file_path": "C:/Users/alwai/WebstormProjects/testMap",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -94,7 +96,7 @@
       <workItem from="1684419448777" duration="764000" />
       <workItem from="1684420231578" duration="145000" />
       <workItem from="1684420390665" duration="115000" />
-      <workItem from="1684420527364" duration="1573000" />
+      <workItem from="1684420527364" duration="2381000" />
     </task>
     <task id="LOCAL-00001" summary="First Update">
       <created>1682708946444</created>
@@ -320,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684421963235</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="ja update">
+      <created>1684422147391</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1684422147391</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +359,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Vorschlaege" />
     <MESSAGE value="css teil1" />
     <MESSAGE value="Header css edit" />
     <MESSAGE value="Login css edit" />
@@ -375,6 +383,7 @@
     <MESSAGE value="JS update" />
     <MESSAGE value="Merge Fix" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="ja update" />
+    <option name="LAST_COMMIT_MESSAGE" value="ja update" />
   </component>
 </project>
