@@ -58,6 +58,7 @@ const saveLocationUpdateBtn = document.getElementById("save-location-update-btn"
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
 // TODO get delete&update Buttons for each Element (querySelector() onClick "event" as target obj ?)
 
+
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
 logoutBtn.addEventListener("click", logout)
@@ -65,6 +66,7 @@ addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 saveNewLocationBtn.addEventListener("click", addLocation)
+listUpdateBtn.addEventListener("click", toggleUpdateTable)
 
 // Events-Handling Functions:
 function login() {
@@ -173,17 +175,19 @@ function displayToggle(elementIds) {
     }
 }
 
+
 /**
  * disable an Element on the side by id or if diabled show it as display:"block"
  * @param {*} element name of element that is to enable or diabled
  */
+/** ready for cleanup
 function disableEnableElement(element) {
     if (document.getElementById(element).style.display!="none") {
         document.getElementById(element).style.display!="none"
     } else {
         document.getElementById(element).style.display!="block"
     }
-}
+}*/
 
 function loginAsAdmin(){
 
@@ -196,3 +200,58 @@ function loginAsUser() {
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
 }
+/**
+ * toggles UpdateTable Container
+ */
+ function toggleUpdateTable(){
+
+    displayToggle(["update-container"])
+
+ }
+
+const updateTable = document.getElementById("updateTable");
+/**
+ * takes the locations const and generates the table body for the 
+ * "overview-table"
+ */
+function generateUpdateTableBody(){
+    locations.forEach(location => {
+        const row = document.createElement("tr")
+        for (const key in location) {
+            if((key !=="latitude")&&(key!=="longitude")){
+            const cell = document.createElement("td");
+            cell.textContent = location[key];
+            row.appendChild(cell);
+            }
+          }
+        updateTable.appendChild(row)
+        
+    });
+
+const loacationList = document.getElementById("locations-list")
+/**
+ * takes the locations const and for each Element
+ * generates listelementes and appends them to the locationList const
+ * using the Name field as inner Text
+ */
+function generateLocationList(){
+    locations.forEach(location=>{
+        const row = document.createElement("li");
+        row.setAttribute("class","locations-list-element");
+        const methodCall = "\"setLocationInputContainer"+"("+location.locationName+")\""
+        row.setAttribute("onClick",methodCall);
+        row.textContent = location.locationName;
+        loacationList.appendChild(row)
+    })
+    
+}
+
+function setLocationInputContaine(locationName){
+    
+}
+
+
+
+
+}
+

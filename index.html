@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/main.js" defer></script>
 </head>
 
-<body>
+<body  onload="generateUpdateTableBody()">
     <!-- ================================= -->
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
@@ -64,7 +64,7 @@
             </div>
             <div class="mainPage-locations-container">
                 <div class="locations-container">
-                    <ul class="locations-list">
+                    <ul class="locations-list" id="locations-list">
                         <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
                         <li class="locations-list-element"><a href="#">Vattenfall Wärme Berlin HKW</a></li>
                         <li class="locations-list-element"><a href="#">FHW Neukölln AG</a></li>
@@ -127,11 +127,11 @@
         </div>
     </div> <!-- End Add Area -->
 
-    <div class="update-container none-display"> <!-- Update Area -->
+    <div class="update-container none-display" id="update-container"> <!-- Update Area -->
         <!-- Overview Area-->
         <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
-            <table class="overview-table">
+            <table class="overview-table" id="updateTable">
                 <tr>
                     <th>Locationname</th>
                     <th>Streetname</th>
@@ -140,7 +140,7 @@
                     <th>CO2 in T</th>
                     <th>Description</th>
                 </tr>
-                <tr>
+                <tr  >
                     <td>HME Brass Germany GmbH</td>
                     <td>Schwanebecker Chaussee</td>
                     <td>17</td>
