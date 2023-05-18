@@ -62,7 +62,7 @@
         </div>
     </div> <!-- End Login Area -->
 
-    <div class="mainpage-main-container"> <!-- Main-Page Area -->
+    <div id="main-area" class="mainpage-main-container none-display"> <!-- Main-Page Area -->
         <h2>Hello <span id="welcome-user"></span> !</h2>
 
         <div class="mainpage-map-container">
@@ -81,7 +81,7 @@
                 <ul id="locations-list" class="locations-list">
                 </ul>
             </div>
-            <div id="locations-options-btns" class="locations-options-container">
+            <div id="locations-options-btns" class="locations-options-container none-display">
                 <button id="add-location-btn" class="add-location-btn">Add Ort</button>
                 <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
             </div>
@@ -231,12 +231,5 @@
             <p class="copyright-text">Copyright© 2023, All Rights Reserved</p>
         </div>
     </footer> <!-- End Footer Area -->
-    <script>
-        var map = L.map('map-container').setView([51.505, -0.09], 13);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-    </script>
 </body>
 </html>

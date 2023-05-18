@@ -35,7 +35,7 @@ function login() {
                 document.getElementById("login-form").reset()
                 // set welcome message:
                 document.getElementById("welcome-user").textContent = user.userName
-                // prepare the display for user:
+                // prepare the control options for user:
                 switch (user.admin) {
                     case true : {
                         loginAsAdmin();
@@ -61,7 +61,7 @@ function logout() {
     // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
-        displayToggle(["main-page","login-area","header-options"])
+        displayToggle(["main-area","login-area","header-options"])
     }
 }
 
@@ -83,16 +83,15 @@ function displayAddresses() {
     }
 }
 
-
 function switchToAddLocation() {
-    displayToggle(["main-page","header-options","add-location-page"])
+    displayToggle(["main-area","header-options","add-location-page"])
 }
 
 function backToHomePage() {
     // reset all form inputs:
     document.getElementById("add-form").reset()
     // back to homepage:
-    displayToggle(["add-location-page","main-page","header-options"])
+    displayToggle(["add-location-page","main-area","header-options"])
 }
 
 function addLocation() {
@@ -142,27 +141,6 @@ function cancelPage() {
 
 // Sub-Functions:
 function displayToggle(elementIds) {
-    for (const elementId of elementIds) {
-        document.getElementById(elementId).classList.toggle("none-display")
-    }
-}
-
-
-/**
- * disable an Element on the side by id or if diabled show it as display:"block"
- * @param {*} element name of element that is to enable or diabled
- */
-/** ready for cleanup
-function disableEnableElement(element) {
-    if (document.getElementById(element).style.display!="none") {
-        document.getElementById(element).style.display!="none"
-    } else {
-        document.getElementById(element).style.display!="block"
-    }
-}*/
-
-function displayToggle(elementIds) {
-
     // Iteration the elements as list:
     for (const elementId of elementIds) {
         // Toggle the class "none-display" for the current element:
@@ -174,17 +152,21 @@ function displayToggle(elementIds) {
 function loginAsAdmin(){
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
+    displayToggle(["login-area","header-options", "locations-options-btns", "main-area"])
     //displayAddresses()
     generateLocationList()
+    // Display the Map
+    mapInit()
 }
 
 function loginAsUser() {
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-page"])
+    displayToggle(["login-area","header-options", "main-area"])
     //displayAddresses()
     generateLocationList()
+    // Display the Map
+    mapInit()
 }
 
 function getUsersAsObj() {
@@ -242,17 +224,15 @@ function getLocationsAsObj() {
     return locations
 }
 
-/*
 function mapInit() {
 
-    const mapInitOptions = {
-        position: [52.520008, 13.404954],
-        zoom: 10
+    const options = {
+        location: [ 52.520008, 13.404954],
+        defaultZoom: 10
     }
 
-    // Map Obj:
-    var map = L.map('map-container');
-    map.setView(mapInitOptions.position, mapInitOptions.zoom);
+    let map = L.map('map-container');
+    map.setView(options.location, options.defaultZoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -260,7 +240,6 @@ function mapInit() {
     }).addTo(map);
 }
 
- */
 
 /**
  * toggles UpdateTable Container
