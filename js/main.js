@@ -301,13 +301,13 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-    getLocationsAsObj().forEach(location=>{
+    locations.forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         row.setAttribute("onClick",methodCall);
         row.textContent = location.locationName;
-        loacationList.appendChild(row)
+        loacationList.appendChild(row);
     })
     
 }
