@@ -98,7 +98,7 @@ function addLocation() {
     }
 
     // save the new location temporary in list:
-    getLocationsAsObj().push(newLocationToAdd)
+    locations.push(newLocationToAdd)
 
     // show success message:
     let img = new Image()
@@ -110,6 +110,7 @@ function addLocation() {
     document.getElementById("add-form").reset()
 
     // update locations list:
+    generateLocationList()
 
     // update map:
     refreshLocatiosMarkers()
@@ -193,42 +194,42 @@ function getUsersAsObj() {
     return  users;
 }
 
-function getLocationsAsObj() {
-
-    let locations = [ {
-        "locationName": "Bayerische Motoren Werke AG",
-        "streetName": "Am Juliusturm",
-        "streetNumber": 14,
-        "postcode": 13599,
-        "c02InTons": 12900,
-        "description": "-",
-        "latitude": "52.538329",
-        "longitude": "13.228278",
+let locations = [ {
+    "locationName": "Bayerische Motoren Werke AG",
+    "streetName": "Am Juliusturm",
+    "streetNumber": 14,
+    "postcode": 13599,
+    "c02InTons": 12900,
+    "description": "-",
+    "latitude": "52.538329",
+    "longitude": "13.228278",
+    "photo": ""
+},
+    {
+        "locationName": "Bayer AG",
+        "streetName": "Müllerstr.",
+        "streetNumber": 178,
+        "postcode": 13353,
+        "c02InTons": 39648,
+        "description": "HKW Bayer",
+        "latitude": "52.540803",
+        "longitude": "13.368838",
         "photo": ""
     },
-        {
-            "locationName": "Bayer AG",
-            "streetName": "Müllerstr.",
-            "streetNumber": 178,
-            "postcode": 13353,
-            "c02InTons": 39648,
-            "description": "HKW Bayer",
-            "latitude": "52.540803",
-            "longitude": "13.368838",
-            "photo": ""
-        },
-        {
-            "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
-            "streetName": "Albert-Einstein-Str.",
-            "streetNumber": 22,
-            "postcode": 12489,
-            "c02InTons": 44997,
-            "description": "HKW Adlershof",
-            "latitude": "52.42700181421365 ",
-            "longitude": "13.5278661539540",
-            "photo": ""
-        }
-    ];
+    {
+        "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
+        "streetName": "Albert-Einstein-Str.",
+        "streetNumber": 22,
+        "postcode": 12489,
+        "c02InTons": 44997,
+        "description": "HKW Adlershof",
+        "latitude": "52.42700181421365 ",
+        "longitude": "13.5278661539540",
+        "photo": ""
+    }
+];
+
+function getLocationsAsObj() {
 
     return locations
 }
@@ -261,6 +262,10 @@ function refreshLocatiosMarkers() {
         marker.addTo(map);
         // Add Location info in popup window:
         marker.bindPopup(location.locationName);
+        // Callback Function:
+        marker.on("click", () => {
+            setLocationInfoContainer(location)
+        })
     })
 }
 
@@ -293,13 +298,22 @@ function generateUpdateTableBody(){
     })
 }
 
-const loacationList = document.getElementById("locations-list");
+const locationList = document.getElementById("locations-list");
+
+// -- damit wird die Methode an mehreren Stellen nutzen könnnen, hab sie erweitert
+// -- sodass wir sie zum refresch der Daten nutzen (löschen und neu eintragen)
 /**
  * takes the locations const and for each Element
  * generates listelementes and appends them to the locationList const
  * using the Name field as inner Text
  */
 function generateLocationList(){
+
+    // clear the list if there are elements:
+    if (locationList.children.length!==0) {
+        for(const child of locationList.children )
+        locationList.removeChild(child)
+    }
 
     getLocationsAsObj().forEach(location=> {
 
@@ -319,7 +333,7 @@ function generateLocationList(){
         row.appendChild(img)
 
         row.append(location.locationName)
-        loacationList.appendChild(row)
+        locationList.appendChild(row)
     })
 
     // set default values for info container:
