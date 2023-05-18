@@ -124,6 +124,8 @@ function addLocation() {
 
     // reset form inputs values:
     document.getElementById("add-form").reset()
+
+    // mainpage update
 }
 
 function updateLocation() {
