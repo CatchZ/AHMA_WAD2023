@@ -61,9 +61,27 @@ function logout() {
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
         displayToggle(["main-page","login-area","header-options"])
-    } else {
-
     }
+}
+
+function displayAddresses() {
+
+    let locations = getLocationsAsObj()
+
+    // Display as List:
+    for(const location of locations) {
+        // create li element for location:
+        let liElement = document.createElement("li")
+        let aElement = document.createElement("a")
+        aElement.textContent = location.locationName
+        liElement.classList.add("locations-list-element")
+        liElement.appendChild(aElement)
+        // append li to ul:
+        document.getElementById("location-list").appendChild(liElement)
+    }
+
+    // Display the map:
+    mapInit()
 }
 
 function switchToAddLocation() {
@@ -121,12 +139,6 @@ function cancelPage() {
 }
 
 // Sub-Functions:
-function displayToggle(elementIds) {
-    for (const elementId of elementIds) {
-        document.getElementById(elementId).classList.toggle("none-display")
-    }
-}
-
 /**
  * disable an Element on the side by id or if diabled show it as display:"block"
  * @param {*} element name of element that is to enable or diabled
@@ -139,16 +151,28 @@ function disableEnableElement(element) {
     }
 }
 
+function displayToggle(elementIds) {
+
+    // Iteration the elements as list:
+    for (const elementId of elementIds) {
+        // Toggle the class "none-display" for the current element:
+        document.getElementById(elementId).classList.toggle("none-display")
+    }
+}
+
+
 function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
+    displayAddresses()
 }
 
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
+    displayAddresses()
 }
 
 function getUsersAsObj() {
@@ -204,4 +228,21 @@ function getLocationsAsObj() {
     ];
 
     return locations
+}
+
+function mapInit() {
+
+    const mapInitOptions = {
+        position: [52.520008, 13.404954],
+        zoom: 10
+    }
+
+    // Map Obj:
+    const map = L.map('map-container');
+    map.setView(mapInitOptions.position, mapInitOptions.zoom);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 }
