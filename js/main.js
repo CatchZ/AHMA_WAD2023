@@ -10,6 +10,7 @@ const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
+// TODO get delete&update Buttons for each Element (querySelector() onClick "event" as target obj ?)
 
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
@@ -153,14 +154,13 @@ function displayToggle(elementIds) {
  * disable an Element on the side by id or if diabled show it as display:"block"
  * @param {*} element name of element that is to enable or diabled
  */
-/** ready for cleanup
 function disableEnableElement(element) {
     if (document.getElementById(element).style.display!="none") {
         document.getElementById(element).style.display!="none"
     } else {
         document.getElementById(element).style.display!="block"
     }
-}*/
+}
 
 function displayToggle(elementIds) {
 
@@ -183,79 +183,6 @@ function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
-    displayAddresses()
-}
-
-function getUsersAsObj() {
-    let users = [{
-        "userName": "admina",
-        "password": "admina",
-        "admin": true
-    },
-        {
-            "userName": "user",
-            "password": "user",
-            "admin": false
-        }
-    ];
-    return  users;
-}
-
-function getLocationsAsObj() {
-
-    let locations = [ {
-        "locationName": "Bayerische Motoren Werke AG",
-        "streetName": "Am Juliusturm",
-        "streetNumber": 14,
-        "postcode": 13599,
-        "c02InTons": 12900,
-        "description": "-",
-        "latitude": "52.538329",
-        "longitude": "13.228278",
-        "photo": ""
-    },
-        {
-            "locationName": "Bayer AG",
-            "streetName": "Müllerstr.",
-            "streetNumber": 178,
-            "postcode": 13353,
-            "c02InTons": 39648,
-            "description": "HKW Bayer",
-            "latitude": "52.540803",
-            "longitude": "13.368838",
-            "photo": ""
-        },
-        {
-            "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
-            "streetName": "Albert-Einstein-Str.",
-            "streetNumber": 22,
-            "postcode": 12489,
-            "c02InTons": 44997,
-            "description": "HKW Adlershof",
-            "latitude": "52.42700181421365 ",
-            "longitude": "13.5278661539540",
-            "photo": ""
-        }
-    ];
-
-    return locations
-}
-
-function mapInit() {
-
-    const mapInitOptions = {
-        position: [52.520008, 13.404954],
-        zoom: 10
-    }
-
-    // Map Obj:
-    const map = L.map('map-container');
-    map.setView(mapInitOptions.position, mapInitOptions.zoom);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
 }
 /**
  * toggles UpdateTable Container
