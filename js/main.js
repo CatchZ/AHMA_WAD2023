@@ -1,5 +1,6 @@
 'use strict';
 
+// Variables:
 let map;
 
 // Events-Targets:
@@ -108,7 +109,10 @@ function addLocation() {
     // reset form inputs values:
     document.getElementById("add-form").reset()
 
-    // mainpage update
+    // update locations list:
+
+    // update map:
+    refreshLocatiosMarkers()
 }
 
 function updateLocation() {
@@ -296,18 +300,28 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-    getLocationsAsObj().forEach(location=>{
+
+    getLocationsAsObj().forEach(location=> {
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
-        const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
-        row.setAttribute("onClick",methodCall);
+
+        row.addEventListener("click", () => {
+            setLocationInfoContainer(location);
+        })
+
+        //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
+        //row.setAttribute("onClick",methodCall);
+
         row.textContent = location.locationName;
         loacationList.appendChild(row)
     })
-    
+
+    // set default values for info container:
+    setLocationInfoContainer(getLocationsAsObj()[0])
 }
 
 const locationInfoContainer = document.getElementById("location-info-container")
+
 /**
  * changes the locationInputContainer to the clicked listelement
  * @param {*} locationName name of the location that shall be displayed
@@ -342,6 +356,19 @@ function setLocationInputContainer(locationName){
     })
 }
 
+// -- die Funtkion oben hat bei mir nicht funktioniert und wollt sie nicht anfassen weil ich den Ansatz nicht ganz verstanden habe,
+// -- meine Idee ist einfach, wir übergeben die Location (Click Event on Element in der Liste) und die Methode liest sich die Info aus dem Objekt und trägt sie ein
+// -- dynamische Erstellung finde ich sehr umständlich hier, wir müssen bei jedem Click die bereits erstellten Elemente löschen bzw. deren Content ändern können
+function setLocationInfoContainer(location) {
+
+    let locationInfoTitel = document.getElementById("location-info-title-text")
+    let locationInfoDes = document.getElementById("location-info-des-text")
+    let locationInfoCo2 = document.getElementById("location-info-co2-text")
+
+    locationInfoTitel.textContent = location.locationName
+    locationInfoDes.textContent = "- " + location.description
+    locationInfoCo2.textContent = "CO2 in T : " + location.c02InTons
+}
 
 /**
  * Wrapps all onload Functions 
