@@ -65,7 +65,6 @@ function logout() {
     }
 }
 
-/*
 function displayAddresses() {
 
     let locations = getLocationsAsObj()
@@ -85,8 +84,6 @@ function displayAddresses() {
     // Display the map:
     mapInit()
 }
-
- */
 
 function switchToAddLocation() {
     displayToggle(["main-page","header-options","add-location-page"])
@@ -179,16 +176,14 @@ function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
-    generateLocationList()
-    mapInit()
+    displayAddresses()
 }
 
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
-    generateLocationList()
-    mapInit()
+    displayAddresses()
 }
 
 function getUsersAsObj() {
@@ -298,16 +293,15 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-
-    getLocationsAsObj().forEach(location=>{
+    locations.forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
-
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         row.setAttribute("onClick",methodCall);
         row.textContent = location.locationName;
         loacationList.appendChild(row)
     })
+    
 }
 
 const locationInfoContainer = document.getElementById("location-info-container")

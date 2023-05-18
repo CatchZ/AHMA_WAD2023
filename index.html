@@ -32,7 +32,7 @@
     </script>
 </head>
 
-<body>
+<body  onload="onloadWrapper()">
     <!-- ================================= -->
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
@@ -67,10 +67,10 @@
         <h2>Hello <span id="welcome-user"></span> !</h2>
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
-                <div class="location-info-container">
+                <div class="location-info-container" id="location-info-container">        
                     <h3>Vattenfall Wärme Berlin HKW</h3>
                     <p>- CO2 in T:<span> 122.000</span> , Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
-                    <p>- Wärme- und Kälteversorgung</p>
+                    <p>- Wärme- und Kälteversorgung</p>                
                 </div>
                 <di id="map-container" class="map-container">
 
@@ -127,11 +127,11 @@
         </div>
     </div> <!-- End Add Area -->
 
-    <div class="update-container none-display"> <!-- Update Area -->
+    <div class="update-container none-display" id="update-container"> <!-- Update Area -->
         <!-- Overview Area-->
         <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
-            <table class="overview-table">
+            <table class="overview-table" id="updateTable">
                 <tr>
                     <th>Locationname</th>
                     <th>Streetname</th>
@@ -140,7 +140,7 @@
                     <th>CO2 in T</th>
                     <th>Description</th>
                 </tr>
-                <tr>
+                <tr  >
                     <td>HME Brass Germany GmbH</td>
                     <td>Schwanebecker Chaussee</td>
                     <td>17</td>
