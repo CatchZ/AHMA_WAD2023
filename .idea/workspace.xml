@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS and HTML: Map added">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS: Map Impl. Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +95,7 @@
       <workItem from="1684419448777" duration="764000" />
       <workItem from="1684420231578" duration="145000" />
       <workItem from="1684420390665" duration="115000" />
-      <workItem from="1684420527364" duration="7910000" />
+      <workItem from="1684420527364" duration="8975000" />
     </task>
     <task id="LOCAL-00001" summary="First Update">
       <created>1682708946444</created>
@@ -343,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684427310300</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="JS: Map Impl. Update">
+      <created>1684428720902</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1684428720902</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +379,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login css edit" />
     <MESSAGE value="Update Inputs" />
     <MESSAGE value="main page css" />
     <MESSAGE value="main page editing" />
@@ -398,6 +403,7 @@
     <MESSAGE value="ja update" />
     <MESSAGE value="HTML Update" />
     <MESSAGE value="JS and HTML: Map added" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS and HTML: Map added" />
+    <MESSAGE value="JS: Map Impl. Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS: Map Impl. Update" />
   </component>
 </project>

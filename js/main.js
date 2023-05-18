@@ -61,42 +61,19 @@ function logout() {
     // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
-        displayToggle(["main-page","login-area","header-options"])
+        displayToggle(["main-area","login-area","header-options"])
     }
 }
-
-/*
-function displayAddresses() {
-
-    let locations = getLocationsAsObj()
-
-    // Display as List:
-    for(const location of locations) {
-        // create li element for location:
-        let liElement = document.createElement("li")
-        let aElement = document.createElement("a")
-        aElement.textContent = location.locationName
-        liElement.classList.add("locations-list-element")
-        liElement.appendChild(aElement)
-        // append li to ul:
-        document.getElementById("location-list").appendChild(liElement)
-    }
-
-    // Display the map:
-    mapInit()
-}
-
- */
 
 function switchToAddLocation() {
-    displayToggle(["main-page","header-options","add-location-page"])
+    displayToggle(["main-area","header-options","add-location-page"])
 }
 
 function backToHomePage() {
     // reset all form inputs:
     document.getElementById("add-form").reset()
     // back to homepage:
-    displayToggle(["add-location-page","main-page","header-options"])
+    displayToggle(["add-location-page","main-area","header-options"])
 }
 
 function addLocation() {
@@ -178,17 +155,19 @@ function displayToggle(elementIds) {
 function loginAsAdmin(){
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
+    displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
     //displayAddresses()
     generateUpdateTableBody()
+    mapInit()
 }
 
 function loginAsUser() {
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-page"])
+    displayToggle(["login-area","header-options","main-area"])
     //displayAddresses()
     generateUpdateTableBody()
+    mapInit()
 }
 
 function getUsersAsObj() {
@@ -289,9 +268,6 @@ function generateUpdateTableBody(){
         updateTable.appendChild(row)
         
     })
-
-    // test:
-    mapInit()
 }
 
 const loacationList = document.getElementById("locations-list");
