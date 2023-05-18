@@ -12,11 +12,24 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/favicon.png" type="image/png" />
 
+    <!-- Import Google Font: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600&display=swap" rel="stylesheet">
 
-    <script type="text/javascript" src="js/main.js" defer></script>
+    <!-- Leaflet Map API -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="">
+    </script>
+
+    <!-- Main JS File: -->
+    <script type="text/javascript"
+            src="js/main.js" defer>
+    </script>
 </head>
 
 <body>
@@ -24,7 +37,7 @@
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
         <div class="header-content-container">
-            <ul class="header-icon-list">
+            <ul id="header-options" class="header-icon-list none-display">
                 <li class="header-icon-list-element"><a href="#"><img src="img/email-icon.png" alt="email-icon"></a></li>
                 <li id="logout-btn" class="header-icon-list-element"><a href="#"><img src="img/logout-icon.png" alt="logout-icon"></a></li>
             </ul>
@@ -34,24 +47,24 @@
         </div>
     </header> <!-- End Header Area -->
 
-    <div class="login-main-container"> <!-- Login Area -->
+    <div id="login-area" class="login-main-container"> <!-- Login Area -->
         <div class="login-content-container">
-            <form class="login-form-container" action="#" method="post">
+            <form id="login-form" class="login-form-container">
                 <div class="login-form-input-container">
                     <img src="img/username-icon.png" alt="username">
-                    <input type="text" placeholder="username" id="username-input">
+                    <input id="username-input" type="text" placeholder="username" required>
                 </div>
                 <div class="login-form-input-container">
                     <img src="img/password-icon.png" alt="password">
-                    <input type="password" placeholder="password">
+                    <input id="password-input" type="password" placeholder="password" required>
                 </div>
-                <button id="login-btn" class="login-btn">Login</button>
             </form>
+            <button id="login-btn" class="login-btn">Login</button>
         </div>
     </div> <!-- End Login Area -->
 
-    <div class="mainPage-main-container"> <!-- Main-Page Area -->
-        <h2>Welcome <span>USERNAME</span></h2>
+    <div id="main-page" class="mainPage-main-container none-display"> <!-- Main-Page Area -->
+        <h2>Hello <span id="welcome-user"></span> !</h2>
         <div class="mainPage-content-container">
             <div class="mainPage-map-container">
                 <div class="location-info-container">
@@ -59,38 +72,31 @@
                     <p>- CO2 in T:<span> 122.000</span> , Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
                     <p>- Wärme- und Kälteversorgung</p>
                 </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155422.44498945714!2d13.259929956398633!3d52.506729638867235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin!5e0!3m2!1sde!2sde!4v1682705948869!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <di id="map-container" class="map-container">
+
+                </di>
             </div>
             <div class="mainPage-locations-container">
-                <ul class="locations-list">
-                    <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
-                    <li class="locations-list-element"><a href="#">Vattenfall Wärme Berlin HKW</a></li>
-                    <li class="locations-list-element"><a href="#">FHW Neukölln AG</a></li>
-                    <li class="locations-list-element"><a href="#">Location 4</a></li>
-                    <li class="locations-list-element"><a href="#">Location 5</a></li>
-                    <li class="locations-list-element"><a href="#">Location 6</a></li>
-                    <li class="locations-list-element"><a href="#">Location 7</a></li>
-                    <li class="locations-list-element"><a href="#">Location 8</a></li>
-                    <li class="locations-list-element"><a href="#">Location 9</a></li>
-                    <li class="locations-list-element"><a href="#">Location 10</a></li>
-                    <li class="locations-list-element"><a href="#">Location 11</a></li>
-                    <li class="locations-list-element"><a href="#">Location 12</a></li>
-                    <li class="locations-list-element"><a href="#">Location 13</a></li>
-                    <li class="locations-list-element"><a href="#">Location 14</a></li>
-                </ul>
-                <button id="add-location-btn" class="add-location-btn">Add Ort</button>
-                <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
+                <div class="locations-container">
+                    <ul id="location-list" class="locations-list">
+                        <li class="locations-list-element"><a href="#">HME Brass Germany GmbH</a></li>
+                    </ul>
+                </div>
+                <div id="locations-options-btns" class="locations-options-container none-display">
+                    <button id="add-location-btn" class="add-location-btn">Add Ort</button>
+                    <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
+                </div>
             </div>
         </div>
     </div> <!-- End Main-Page Area -->
-
     <!-- ================================= -->
     <!-- Max -->
-    <div class="add-screen-container"> <!-- Add Area -->
+    <div id="add-location-page" class="add-screen-container none-display"> <!-- Add Area -->
+        <button id="homepage-btn" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage">Home</button>
         <div class="add-screen-contant-container">
             <h2>ADD NEW LOCATION</h2>
-            <form class="add-form-container">
+            <p id="add-message"></p>
+            <form id="add-form" class="add-form-container">
                 <div class="add-form-label-container ">
                     <label>Location Name</label>
                     <label>Streetname</label>
@@ -103,25 +109,25 @@
                     <label>Photo</label>
                 </div>
                 <div class="add-form-input-container login-form-input-container input" >
-                    <input type="text" placeholder="location name" required>
-                    <input type="text" placeholder="streetname name" required>
-                    <input type="number" placeholder="streetnumber" required>
-                    <input type="number" placeholder="Postcode" required>
-                    <input type="number" placeholder="C02 in T" required>
-                    <input type="text" placeholder="Description" required>
-                    <input type="number" placeholder="latitude">
-                    <input type="number" placeholder="longitude">
-                    <input type="file" placeholder="longitude">
+                    <input id="new-location-name" type="text" placeholder="location name" required>
+                    <input id="new-location-str-name" type="text" placeholder="streetname name" required>
+                    <input id="new-location-str-nr" type="number" placeholder="streetnumber" required>
+                    <input id="new-location-postcode" type="number" placeholder="Postcode" required>
+                    <input id="new-location-co2" type="number" placeholder="C02 in T" required>
+                    <input id="new-location-description" type="text" placeholder="Description" required>
+                    <input id="new-location-latitude" type="number" placeholder="latitude">
+                    <input id="new-location-longitude" type="number" placeholder="longitude">
+                    <input id="new-location-img" type="file" placeholder="longitude">
                 </div>
-                <div class="add-form-btns-container">
+            </form>
+            <div class="add-form-btns-container">
                 <button id="save-new-location-btn" class="save-btn form-button" >Save</button>
                 <button id="cancel-location-add-btn" class="cancel-btn form-button" >Cancel</button>
             </div>
-            </form>
         </div>
     </div> <!-- End Add Area -->
 
-    <div class="update-container"> <!-- Update Area -->
+    <div class="update-container none-display"> <!-- Update Area -->
         <!-- Overview Area-->
         <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
@@ -228,5 +234,4 @@
             </div>
         </footer> <!-- End Footer Area -->
 </body>
-
 </html>

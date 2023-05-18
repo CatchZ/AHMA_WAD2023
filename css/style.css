@@ -23,6 +23,10 @@ h2 {
     padding-bottom: 30px;
 }
 
+.none-display {
+    display: none;
+}
+
 /**
  Header
  */
@@ -110,7 +114,7 @@ form input:focus::placeholder , form textarea:focus::placeholder {
 
 .login-btn {
     margin-top: 20px;
-    width: 95%;
+    width: 30%;
     padding: 12px 0;
     font-size: var(--heading);
     text-transform: uppercase;
@@ -132,6 +136,7 @@ Main Site
 .mainPage-main-container {
     text-align: center;
     padding: 5% 0;
+    margin-bottom: 15%;
     width: 100%;
     height: 500px
 }
@@ -165,9 +170,8 @@ Main Site
     line-height: 1.5rem;
 }
 
-.mainPage-map-container iframe {
-    width: 100%;
-    height: 82%;
+.map-container {
+    height: 80%;
 }
 
 .mainPage-locations-container {
@@ -179,10 +183,14 @@ Main Site
     height: 100%;
 }
 
+.locations-container {
+    height: 85%;
+}
+
 .locations-list {
     list-style: none;
     padding: 0;
-    height: 80%;
+    height: 100%;
     overflow: hidden;
     overflow-y: scroll;
     width: 100%;
@@ -200,8 +208,12 @@ Main Site
     background-color: #dde5de;
 }
 
+.locations-options-container {
+    height: 15%;
+}
+
 .add-location-btn {
-    height: 18%;
+    height: 100%;
     margin-top: 5px;
     width: 49.6%;
     padding: 0;
@@ -290,6 +302,22 @@ Footer
 /**
 
  */
+.home-page-btn {
+    margin-top: 20px;
+    padding: 12px 0;
+    font-size: var(--heading);
+    text-transform: uppercase;
+    color: var(--green-color);
+    border: none;
+    transition: all .5s ease ;
+    background: var(--bg-color);
+    font-weight: 200;
+}
+
+.home-page-btn:hover {
+    cursor: pointer;
+}
+
 .update-form-label-container,
 .update-form-input-container,
 .add-form-label-container,
@@ -370,6 +398,13 @@ th {
     text-align: center;
 }
 
+.add-screen-contant-container p {
+    text-align: center;
+    font-size: var(--body-text);
+    color: var(--green-color);
+    line-height: 1.5rem;
+}
+
 .update-btn {
     padding: 5px 0;
     width: 45%;
@@ -389,7 +424,6 @@ th {
 
 
 .add-screen-container {
-    margin-top: 15%;
     padding: 5% 0;
     width: 80%;
 }
