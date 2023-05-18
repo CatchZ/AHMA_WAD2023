@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS update" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="JS_Branch_1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2P40Qoeq1rRSMJkEsHZkyAPLhWR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "F:/Websites Workspace/AHMA_WAD2023_V2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Websites Workspace\AHMA_WAD2023_V2\img" />
+      <recent name="F:\Websites Workspace\AHMA_WAD2023_V2\doc" />
+      <recent name="F:\Websites Workspace\AHMA_WAD2023_V2" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="" />
+      <created>1682701033560</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682701033560</updated>
+      <workItem from="1682701035865" duration="8985000" />
+      <workItem from="1682864097948" duration="33002000" />
+      <workItem from="1682953243453" duration="4304000" />
+      <workItem from="1683026336226" duration="130000" />
+      <workItem from="1683055272421" duration="880000" />
+      <workItem from="1683207945887" duration="247000" />
+      <workItem from="1683208219691" duration="1025000" />
+      <workItem from="1683310908618" duration="659000" />
+      <workItem from="1684084014363" duration="6429000" />
+      <workItem from="1684095641928" duration="1262000" />
+      <workItem from="1684147832804" duration="7327000" />
+      <workItem from="1684182329199" duration="2245000" />
+      <workItem from="1684329293446" duration="1981000" />
+      <workItem from="1684334956179" duration="92000" />
+      <workItem from="1684342343461" duration="13376000" />
+      <workItem from="1684402426361" duration="10287000" />
+      <workItem from="1684414128289" duration="737000" />
+      <workItem from="1684414879403" duration="4480000" />
+      <workItem from="1684419448777" duration="764000" />
+      <workItem from="1684420231578" duration="145000" />
+      <workItem from="1684420390665" duration="115000" />
+      <workItem from="1684420527364" duration="329000" />
+    </task>
+    <task id="LOCAL-00001" summary="First Update">
+      <created>1682708946444</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682708946444</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Vorschlaege">
+      <created>1682868826603</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682868826603</updated>
+    </task>
+    <task id="LOCAL-00003" summary="css teil1">
+      <created>1682870749801</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682870749801</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Header css edit">
+      <created>1682871558347</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682871558347</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Login css edit">
+      <created>1682873414607</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682873414607</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update Inputs">
+      <created>1682875704198</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682875704198</updated>
+    </task>
+    <task id="LOCAL-00007" summary="main page css">
+      <created>1682876159609</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682876159609</updated>
+    </task>
+    <task id="LOCAL-00008" summary="main page editing">
+      <created>1682877141803</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682877141803</updated>
+    </task>
+    <task id="LOCAL-00009" summary="icons changed">
+      <created>1682882269015</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682882269015</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Sections title update">
+      <created>1682882789031</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682882789031</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Header and Login-Site CSS-Update">
+      <created>1682936651504</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682936651504</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Main-Site HTML and CSS Update">
+      <created>1682938363229</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682938363229</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add-Site and Update-Site CSS Update">
+      <created>1682942814961</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682942814961</updated>
+    </task>
+    <task id="LOCAL-00014" summary="New Footer HTML and CSS Update">
+      <created>1682948004855</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682948004855</updated>
+    </task>
+    <task id="LOCAL-00015" summary="CSS Update">
+      <created>1682982784402</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682982784402</updated>
+    </task>
+    <task id="LOCAL-00016" summary="JS Methods Declaration">
+      <created>1684096412932</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684096412933</updated>
+    </task>
+    <task id="LOCAL-00017" summary="JS Events Handling Declaration">
+      <created>1684155250783</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684155250783</updated>
+    </task>
+    <task id="LOCAL-00018" summary="HTML Update: new Buttons">
+      <created>1684155350416</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684155350416</updated>
+    </task>
+    <task id="LOCAL-00019" summary="CSS Update">
+      <created>1684155720127</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684155720127</updated>
+    </task>
+    <task id="LOCAL-00020" summary="JS Impl. : login and logout functions">
+      <created>1684349882482</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1684349882482</updated>
+    </task>
+    <task id="LOCAL-00021" summary="JS Impl. : login and logout functions">
+      <created>1684350003606</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1684350003606</updated>
+    </task>
+    <task id="LOCAL-00022" summary="CSS update">
+      <created>1684351062563</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1684351062563</updated>
+    </task>
+    <task id="LOCAL-00023" summary="JS Impl. : add new location function">
+      <created>1684353526268</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684353526268</updated>
+    </task>
+    <task id="LOCAL-00024" summary="CSS Update">
+      <created>1684355239080</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684355239080</updated>
+    </task>
+    <task id="LOCAL-00025" summary="JS Update">
+      <created>1684358662062</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1684358662062</updated>
+    </task>
+    <task id="LOCAL-00026" summary="JS Mainpage update, Map API Impl.">
+      <created>1684418486786</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1684418486786</updated>
+    </task>
+    <task id="LOCAL-00027" summary="JS Mainpage update, Map API Impl.">
+      <created>1684418685122</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1684418685122</updated>
+    </task>
+    <task id="LOCAL-00028" summary="JS update">
+      <created>1684419174623</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1684419174623</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Update" />
+    <MESSAGE value="Vorschlaege" />
+    <MESSAGE value="css teil1" />
+    <MESSAGE value="Header css edit" />
+    <MESSAGE value="Login css edit" />
+    <MESSAGE value="Update Inputs" />
+    <MESSAGE value="main page css" />
+    <MESSAGE value="main page editing" />
+    <MESSAGE value="icons changed" />
+    <MESSAGE value="Sections title update" />
+    <MESSAGE value="Header and Login-Site CSS-Update" />
+    <MESSAGE value="Main-Site HTML and CSS Update" />
+    <MESSAGE value="Add-Site and Update-Site CSS Update" />
+    <MESSAGE value="New Footer HTML and CSS Update" />
+    <MESSAGE value="JS Methods Declaration" />
+    <MESSAGE value="JS Events Handling Declaration" />
+    <MESSAGE value="HTML Update: new Buttons" />
+    <MESSAGE value="JS Impl. : login and logout functions" />
+    <MESSAGE value="CSS update" />
+    <MESSAGE value="JS Impl. : add new location function" />
+    <MESSAGE value="CSS Update" />
+    <MESSAGE value="JS Update" />
+    <MESSAGE value="JS Mainpage update, Map API Impl." />
+    <MESSAGE value="JS update" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS update" />
+  </component>
+</project>
