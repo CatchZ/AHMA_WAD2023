@@ -10,6 +10,7 @@ const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
+// TODO get delete&update Buttons for each Element (querySelector() onClick "event" as target obj ?)
 
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
@@ -182,74 +183,89 @@ function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
-    displayAddresses()
+}
+/**
+ * toggles UpdateTable Container
+ */
+ function toggleUpdateTable(){
+
+    displayToggle(["update-container"])
+
+ }
+
+const updateTable = document.getElementById("updateTable");
+/**
+ * takes the locations const and generates the table body for the 
+ * "overview-table"
+ */
+function generateUpdateTableBody(){
+    locations.forEach(location => {
+        const row = document.createElement("tr")
+        for (const key in location) {
+            if((key !=="latitude")&&(key!=="longitude")){
+            const cell = document.createElement("td");
+            cell.textContent = location[key];
+            row.appendChild(cell);
+            }
+          }
+        updateTable.appendChild(row)
+        
+    })
 }
 
-function getUsersAsObj() {
-    let users = [{
-        "userName": "admina",
-        "password": "admina",
-        "admin": true
-    },
-        {
-            "userName": "user",
-            "password": "user",
-            "admin": false
-        }
-    ];
-    return  users;
+const loacationList = document.getElementById("locations-list");
+/**
+ * takes the locations const and for each Element
+ * generates listelementes and appends them to the locationList const
+ * using the Name field as inner Text
+ */
+function generateLocationList(){
+    locations.forEach(location=>{
+        const row = document.createElement("li");
+        row.setAttribute("class","locations-list-element");
+        const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
+        row.setAttribute("onClick",methodCall);
+        row.textContent = location.locationName;
+        loacationList.appendChild(row)
+    })
+    
 }
 
-function getLocationsAsObj() {
-
-    let locations = [ {
-        "locationName": "Bayerische Motoren Werke AG",
-        "streetName": "Am Juliusturm",
-        "streetNumber": 14,
-        "postcode": 13599,
-        "c02InTons": 12900,
-        "description": "-",
-        "latitude": "52.538329",
-        "longitude": "13.228278",
-        "photo": ""
-    },
-        {
-            "locationName": "Bayer AG",
-            "streetName": "Müllerstr.",
-            "streetNumber": 178,
-            "postcode": 13353,
-            "c02InTons": 39648,
-            "description": "HKW Bayer",
-            "latitude": "52.540803",
-            "longitude": "13.368838",
-            "photo": ""
-        },
-        {
-            "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
-            "streetName": "Albert-Einstein-Str.",
-            "streetNumber": 22,
-            "postcode": 12489,
-            "c02InTons": 44997,
-            "description": "HKW Adlershof",
-            "latitude": "52.42700181421365 ",
-            "longitude": "13.5278661539540",
-            "photo": ""
-        }
-    ];
-
-    return locations
-}
-
-function mapInit() {
-
-    const mapInitOptions = {
-        position: [52.520008, 13.404954],
-        zoom: 10
+const locationInfoContainer = document.getElementById("location-info-container")
+/**
+ * changes the locationInputContainer to the clicked listelement
+ * @param {*} locationName name of the location that shall be displayed
+ */
+function setLocationInputContainer(locationName){
+    // remove old contant 
+    while (locationInfoContainer.firstChild){
+        locationInfoContainer.removeChild(locationInfoContainer.firstChild)
     }
+    // add new 
+    //add name
+    locations.forEach(location => {
+        if (location.locationName == locationName) {
+            const name = document.createElement("h3")
+            name.innerText = location.locationName;
+            locationInfoContainer.appendChild(name);
+            // inner spanns
+           const details = document.createElement("p")
+            for(const key in location) {
+                if (key != "locationName" && key != "description") {
+                    const span = document.createElement("span");
+                    span.innerText = key+": "+location[key];
+                    details.appendChild(span)
+                }
+            }
+            locationInfoContainer.appendChild(details)
+            //describtion
+            const des = document.createElement("p")
+            des.innerText = location.description;
+            locationInfoContainer.appendChild(des);
+        }
+    })
+}
 
-    // Map Obj:
-    const map = L.map('map-container');
-    map.setView(mapInitOptions.position, mapInitOptions.zoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -337,7 +353,6 @@ function setLocationInputContainer(locationName){
         }
     })
 }
-
 
 /**
  * Wrapps all onload Functions 
