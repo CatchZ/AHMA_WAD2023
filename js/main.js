@@ -18,6 +18,7 @@ addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 saveNewLocationBtn.addEventListener("click", addLocation)
+listUpdateBtn.addEventListener("click", toggleUpdateTable)
 
 // Events-Handling Functions:
 function login() {
@@ -141,17 +142,25 @@ function cancelPage() {
 }
 
 // Sub-Functions:
+function displayToggle(elementIds) {
+    for (const elementId of elementIds) {
+        document.getElementById(elementId).classList.toggle("none-display")
+    }
+}
+
+
 /**
  * disable an Element on the side by id or if diabled show it as display:"block"
  * @param {*} element name of element that is to enable or diabled
  */
+/** ready for cleanup
 function disableEnableElement(element) {
     if (document.getElementById(element).style.display!="none") {
         document.getElementById(element).style.display!="none"
     } else {
         document.getElementById(element).style.display!="block"
     }
-}
+}*/
 
 function displayToggle(elementIds) {
 
@@ -161,7 +170,6 @@ function displayToggle(elementIds) {
         document.getElementById(elementId).classList.toggle("none-display")
     }
 }
-
 
 function loginAsAdmin(){
 
@@ -247,4 +255,94 @@ function mapInit() {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+}
+/**
+ * toggles UpdateTable Container
+ */
+ function toggleUpdateTable(){
+
+    displayToggle(["update-container"])
+
+ }
+
+const updateTable = document.getElementById("updateTable");
+/**
+ * takes the locations const and generates the table body for the 
+ * "overview-table"
+ */
+function generateUpdateTableBody(){
+    locations.forEach(location => {
+        const row = document.createElement("tr")
+        for (const key in location) {
+            if((key !=="latitude")&&(key!=="longitude")){
+            const cell = document.createElement("td");
+            cell.textContent = location[key];
+            row.appendChild(cell);
+            }
+          }
+        updateTable.appendChild(row)
+        
+    })
+}
+
+const loacationList = document.getElementById("locations-list");
+/**
+ * takes the locations const and for each Element
+ * generates listelementes and appends them to the locationList const
+ * using the Name field as inner Text
+ */
+function generateLocationList(){
+    locations.forEach(location=>{
+        const row = document.createElement("li");
+        row.setAttribute("class","locations-list-element");
+        const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
+        row.setAttribute("onClick",methodCall);
+        row.textContent = location.locationName;
+        loacationList.appendChild(row)
+    })
+    
+}
+
+const locationInfoContainer = document.getElementById("location-info-container")
+/**
+ * changes the locationInputContainer to the clicked listelement
+ * @param {*} locationName name of the location that shall be displayed
+ */
+function setLocationInputContainer(locationName){
+    // remove old contant 
+    while (locationInfoContainer.firstChild){
+        locationInfoContainer.removeChild(locationInfoContainer.firstChild)
+    }
+    // add new 
+    //add name
+    locations.forEach(location => {
+        if (location.locationName == locationName) {
+            const name = document.createElement("h3")
+            name.innerText = location.locationName;
+            locationInfoContainer.appendChild(name);
+            // inner spanns
+           const details = document.createElement("p")
+            for(const key in location) {
+                if (key != "locationName" && key != "description") {
+                    const span = document.createElement("span");
+                    span.innerText = key+": "+location[key];
+                    details.appendChild(span)
+                }
+            }
+            locationInfoContainer.appendChild(details)
+            //describtion
+            const des = document.createElement("p")
+            des.innerText = location.description;
+            locationInfoContainer.appendChild(des);
+        }
+    })
+}
+
+
+/**
+ * Wrapps all onload Functions 
+ */
+function onloadWrapper(){
+    generateLocationList()
+    generateUpdateTableBody()
 }
