@@ -30,9 +30,8 @@
     <script type="text/javascript"
             src="js/main.js" defer>
     </script>
-</head>
 
-<body  onload="onloadWrapper()">
+<body onload="onloadWrapper()">
     <!-- ================================= -->
     <!-- Ahmed -->
     <header class="header-main-container"> <!-- Header Area -->
@@ -63,32 +62,32 @@
         </div>
     </div> <!-- End Login Area -->
 
-    <div id="main-page" class="mainPage-main-container none-display"> <!-- Main-Page Area -->
+    <div class="mainpage-main-container"> <!-- Main-Page Area -->
         <h2>Hello <span id="welcome-user"></span> !</h2>
-        <div class="mainPage-content-container">
-            <div class="mainPage-map-container">
-                <div class="location-info-container" id="location-info-container">        
-                    <h3>Vattenfall Wärme Berlin HKW</h3>
-                    <p>- CO2 in T:<span> 122.000</span> , Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
-                    <p>- Wärme- und Kälteversorgung</p>                
-                </div>
-                <di id="map-container" class="map-container">
 
-                </di>
+        <div class="mainpage-map-container">
+            <div class="location-info-container" id="location-info-container2">
+                <h3>Vattenfall Wärme Berlin HKW</h3>
+                <p>- CO2 in T:<span> 122.000</span> , Latitude: <span>latitude</span> , Longitude: <span>longitude</span></p>
+                <p>- Wärme- und Kälteversorgung</p>
             </div>
-            <div class="mainPage-locations-container">
-                <div class="locations-container">
-                    <ul id="locations-list" class="locations-list">
+            <div id="map-container" class="map">
+                <!--  Leaflet Map -->
+            </div>
+        </div>
 
-                    </ul>
-                </div>
-                <div id="locations-options-btns" class="locations-options-container none-display">
-                    <button id="add-location-btn" class="add-location-btn">Add Ort</button>
-                    <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
-                </div>
+        <div class="mainage-locations-list-container">
+            <div class="locations-list-container">
+                <ul id="locations-list" class="locations-list">
+                </ul>
+            </div>
+            <div id="locations-options-btns" class="locations-options-container">
+                <button id="add-location-btn" class="add-location-btn">Add Ort</button>
+                <button id="locations-list-update-btn" class="add-location-btn">Update List</button>
             </div>
         </div>
     </div> <!-- End Main-Page Area -->
+
     <!-- ================================= -->
     <!-- Max -->
     <div id="add-location-page" class="add-screen-container none-display"> <!-- Add Area -->
@@ -208,30 +207,36 @@
         </div>-->
     </div>
      <!-- End Update Area -->
-
-        <footer class="footer-container"> <!-- start Footer Area -->
-            <div class="footer-content-container">
-                <div class="footer-impressum-container">
-                    <div class="footer-impressum-info-container">
-                        <!-- <img class="footer-logo-img" src="img/footer-logo.png" alt="footer-logo"> -->
-                        <p class="footer-heading">AHMA Webprojekt</p>
-                        <p>It's just a simple Webproject</p>
-                        <p>to improve the city's infrastructure</p>
-                    </div>
-                    <div class="footer-impressum-info-container">
-                        <p class="footer-heading">Contact us:</p>
-                        <p>mail@berlin-nachhaltig.de</p>
-                        <p>+49 111 00000001</p>
-                    </div>
-                    <div class="footer-impressum-info-container">
-                        <p class="footer-heading">Information:</p>
-                        <a href="#"><img src="img/footer-icon-link2.png"> Privacy Policy</a>
-                        <a href="#"><img src="img/footer-icon-link2.png"> About Berlin</a>
-                        <a href="#"><img src="img/footer-icon-link2.png"> Support</a>
-                    </div>
+    <footer class="footer-container"> <!-- start Footer Area -->
+        <div class="footer-content-container">
+            <div class="footer-impressum-container">
+                <div class="footer-impressum-info-container">
+                    <!-- <img class="footer-logo-img" src="img/footer-logo.png" alt="footer-logo"> -->
+                    <p class="footer-heading">AHMA Webprojekt</p>
+                    <p>It's just a simple Webproject</p>
+                    <p>to improve the city's infrastructure</p>
                 </div>
-                <p class="copyright-text">Copyright© 2023, All Rights Reserved</p>
+                <div class="footer-impressum-info-container">
+                    <p class="footer-heading">Contact us:</p>
+                    <p>mail@berlin-nachhaltig.de</p>
+                    <p>+49 111 00000001</p>
+                </div>
+                <div class="footer-impressum-info-container">
+                    <p class="footer-heading">Information:</p>
+                    <a href="#"><img src="img/footer-icon-link2.png"> Privacy Policy</a>
+                    <a href="#"><img src="img/footer-icon-link2.png"> About Berlin</a>
+                    <a href="#"><img src="img/footer-icon-link2.png"> Support</a>
+                </div>
             </div>
-        </footer> <!-- End Footer Area -->
+            <p class="copyright-text">Copyright© 2023, All Rights Reserved</p>
+        </div>
+    </footer> <!-- End Footer Area -->
+    <script>
+        var map = L.map('map-container').setView([51.505, -0.09], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    </script>
 </body>
 </html>

@@ -81,9 +81,6 @@ function displayAddresses() {
         // append li to ul:
         document.getElementById("location-list").appendChild(liElement)
     }
-
-    // Display the map:
-    mapInit()
 }
 
 
@@ -179,11 +176,7 @@ function loginAsAdmin(){
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
     //displayAddresses()
-    // map:
-    mapInit()
-
     generateLocationList()
-
 }
 
 function loginAsUser() {
@@ -191,11 +184,7 @@ function loginAsUser() {
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
     //displayAddresses()
-    // map:
-    mapInit()
-
     generateLocationList()
-
 }
 
 function getUsersAsObj() {
@@ -253,6 +242,7 @@ function getLocationsAsObj() {
     return locations
 }
 
+/*
 function mapInit() {
 
     const mapInitOptions = {
@@ -269,6 +259,8 @@ function mapInit() {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 }
+
+ */
 
 /**
  * toggles UpdateTable Container
@@ -306,7 +298,7 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-    getLocationsAsObj().forEach(location=>{
+    getLocationsAsObj().forEach(location=> {
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
 
@@ -351,7 +343,6 @@ function setLocationInputContainer(locationName){
         }
     })
 }
-
 
 /**
  * Wrapps all onload Functions 
