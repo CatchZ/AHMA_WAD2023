@@ -226,9 +226,10 @@ function generateUpdateTableBody(){
           }
         updateTable.appendChild(row)
         
-    });
+    })
+}
 
-const loacationList = document.getElementById("locations-list")
+const loacationList = document.getElementById("locations-list");
 /**
  * takes the locations const and for each Element
  * generates listelementes and appends them to the locationList const
@@ -238,7 +239,7 @@ function generateLocationList(){
     locations.forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
-        const methodCall = "\"setLocationInputContainer"+"("+location.locationName+")\""
+        const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         row.setAttribute("onClick",methodCall);
         row.textContent = location.locationName;
         loacationList.appendChild(row)
@@ -246,12 +247,46 @@ function generateLocationList(){
     
 }
 
-function setLocationInputContaine(locationName){
-    
+const locationInfoContainer = document.getElementById("location-info-container")
+/**
+ * changes the locationInputContainer to the clicked listelement
+ * @param {*} locationName name of the location that shall be displayed
+ */
+function setLocationInputContainer(locationName){
+    // remove old contant 
+    while (locationInfoContainer.firstChild){
+        locationInfoContainer.removeChild(locationInfoContainer.firstChild)
+    }
+    // add new 
+    //add name
+    locations.forEach(location => {
+        if (location.locationName == locationName) {
+            const name = document.createElement("h3")
+            name.innerText = location.locationName;
+            locationInfoContainer.appendChild(name);
+            // inner spanns
+           const details = document.createElement("p")
+            for(const key in location) {
+                if (key != "locationName" && key != "description") {
+                    const span = document.createElement("span");
+                    span.innerText = key+": "+location[key];
+                    details.appendChild(span)
+                }
+            }
+            locationInfoContainer.appendChild(details)
+            //describtion
+            const des = document.createElement("p")
+            des.innerText = location.description;
+            locationInfoContainer.appendChild(des);
+        }
+    })
 }
 
 
-
-
+/**
+ * Wrapps all onload Functions 
+ */
+function onloadWrapper(){
+    generateLocationList()
+    generateUpdateTableBody()
 }
-
