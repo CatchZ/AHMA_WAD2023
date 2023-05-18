@@ -35,7 +35,7 @@ function login() {
                 document.getElementById("login-form").reset()
                 // set welcome message:
                 document.getElementById("welcome-user").textContent = user.userName
-                // prepare the control options for user:
+                // prepare the display for user:
                 switch (user.admin) {
                     case true : {
                         loginAsAdmin();
@@ -61,11 +61,11 @@ function logout() {
     // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
-        displayToggle(["main-area","login-area","header-options"])
+        displayToggle(["main-page","login-area","header-options"])
     }
 }
 
-
+/*
 function displayAddresses() {
 
     let locations = getLocationsAsObj()
@@ -81,17 +81,22 @@ function displayAddresses() {
         // append li to ul:
         document.getElementById("location-list").appendChild(liElement)
     }
+
+    // Display the map:
+    mapInit()
 }
 
+ */
+
 function switchToAddLocation() {
-    displayToggle(["main-area","header-options","add-location-page"])
+    displayToggle(["main-page","header-options","add-location-page"])
 }
 
 function backToHomePage() {
     // reset all form inputs:
     document.getElementById("add-form").reset()
     // back to homepage:
-    displayToggle(["add-location-page","main-area","header-options"])
+    displayToggle(["add-location-page","main-page","header-options"])
 }
 
 function addLocation() {
@@ -141,6 +146,27 @@ function cancelPage() {
 
 // Sub-Functions:
 function displayToggle(elementIds) {
+    for (const elementId of elementIds) {
+        document.getElementById(elementId).classList.toggle("none-display")
+    }
+}
+
+
+/**
+ * disable an Element on the side by id or if diabled show it as display:"block"
+ * @param {*} element name of element that is to enable or diabled
+ */
+/** ready for cleanup
+function disableEnableElement(element) {
+    if (document.getElementById(element).style.display!="none") {
+        document.getElementById(element).style.display!="none"
+    } else {
+        document.getElementById(element).style.display!="block"
+    }
+}*/
+
+function displayToggle(elementIds) {
+
     // Iteration the elements as list:
     for (const elementId of elementIds) {
         // Toggle the class "none-display" for the current element:
@@ -152,21 +178,17 @@ function displayToggle(elementIds) {
 function loginAsAdmin(){
 
     // Change Display:
-    displayToggle(["login-area","header-options", "locations-options-btns", "main-area"])
+    displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
     //displayAddresses()
-    generateLocationList()
-    // Display the Map
-    mapInit()
+    generateUpdateTableBody()
 }
 
 function loginAsUser() {
 
     // Change Display:
-    displayToggle(["login-area","header-options", "main-area"])
+    displayToggle(["login-area","header-options","main-page"])
     //displayAddresses()
-    generateLocationList()
-    // Display the Map
-    mapInit()
+    generateUpdateTableBody()
 }
 
 function getUsersAsObj() {
@@ -226,21 +248,20 @@ function getLocationsAsObj() {
 
 function mapInit() {
 
-    const options = {
-        location: [ 52.520008, 13.404954],
-        defaultZoom: 10
+    const mapInitOptions = {
+        position: [52.520008, 13.404954],
+        zoom: 10
     }
 
-    let map = L.map('map-container');
-    map.setView(options.location, options.defaultZoom);
+    // Map Obj:
+    const map = L.map('map-container');
+    map.setView(mapInitOptions.position, mapInitOptions.zoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 }
-
-
 /**
  * toggles UpdateTable Container
  */
@@ -268,6 +289,9 @@ function generateUpdateTableBody(){
         updateTable.appendChild(row)
         
     })
+
+    // test:
+    mapInit()
 }
 
 const loacationList = document.getElementById("locations-list");
@@ -277,15 +301,15 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-    getLocationsAsObj().forEach(location=> {
+    getLocationsAsObj().forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
-
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         row.setAttribute("onClick",methodCall);
         row.textContent = location.locationName;
         loacationList.appendChild(row)
     })
+    
 }
 
 const locationInfoContainer = document.getElementById("location-info-container")
@@ -322,6 +346,7 @@ function setLocationInputContainer(locationName){
         }
     })
 }
+
 
 /**
  * Wrapps all onload Functions 
