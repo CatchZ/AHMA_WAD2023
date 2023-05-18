@@ -301,7 +301,7 @@ const loacationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList(){
-    locations.forEach(location=>{
+    getLocationsAsObj().forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
@@ -324,7 +324,7 @@ function setLocationInputContainer(locationName){
     }
     // add new 
     //add name
-    locations.forEach(location => {
+    getLocationsAsObj().forEach(location => {
         if (location.locationName == locationName) {
             const name = document.createElement("h3")
             name.innerText = location.locationName;
