@@ -98,13 +98,13 @@ function addLocation() {
     }
 
     // save the new location temporary in list:
-    locations.push(newLocationToAdd)
+    getLocationsAsObj().push(newLocationToAdd)
 
     // show success message:
-    document.getElementById("add-message").textContent = "Location has been added successfully "
     let img = new Image()
     img.src = "./img/ok-icon.png"
     document.getElementById("add-message").appendChild(img)
+    document.getElementById("add-message").append(" has been added successfully ")
 
     // reset form inputs values:
     document.getElementById("add-form").reset()
@@ -302,6 +302,7 @@ const loacationList = document.getElementById("locations-list");
 function generateLocationList(){
 
     getLocationsAsObj().forEach(location=> {
+
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
 
@@ -312,7 +313,12 @@ function generateLocationList(){
         //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
         //row.setAttribute("onClick",methodCall);
 
-        row.textContent = location.locationName;
+        let img = new Image()
+        img.src = "./img/location-icon.png"
+        img.classList.add("locations-list-icon")
+        row.appendChild(img)
+
+        row.append(location.locationName)
         loacationList.appendChild(row)
     })
 

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS: Map Markers">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Impl. : set info container function">
+      <change afterPath="$PROJECT_DIR$/img/location-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,7 @@
       <workItem from="1684419448777" duration="764000" />
       <workItem from="1684420231578" duration="145000" />
       <workItem from="1684420390665" duration="115000" />
-      <workItem from="1684420527364" duration="13755000" />
+      <workItem from="1684420527364" duration="14988000" />
     </task>
     <task id="LOCAL-00001" summary="First Update">
       <created>1682708946444</created>
@@ -364,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684435680633</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="JS Impl. : set info container function">
+      <created>1684438217191</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1684438217191</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="main page editing" />
     <MESSAGE value="icons changed" />
     <MESSAGE value="Sections title update" />
     <MESSAGE value="Header and Login-Site CSS-Update" />
@@ -419,6 +426,7 @@
     <MESSAGE value="JS: Map Impl. Update" />
     <MESSAGE value="JS: Ids changed" />
     <MESSAGE value="JS: Map Markers" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS: Map Markers" />
+    <MESSAGE value="JS Impl. : set info container function" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS Impl. : set info container function" />
   </component>
 </project>

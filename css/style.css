@@ -191,18 +191,21 @@ Main Site
     overflow: hidden;
     overflow-y: scroll;
     width: 100%;
-}
-
-.locations-list-element a {
     display: block;
     text-decoration: none;
     color: var(--gray-color);
     font-size: var(--body-text);
+    vertical-align: middle;
 }
 
-.locations-list-element a:hover {
+.locations-list-element:hover {
     cursor: pointer;
-    background-color: #dde5de;
+    color: #b6b9b6;
+    border-bottom: #d3d5d3 solid 0.5px ;
+}
+
+.locations-list-icon {
+    vertical-align: middle;
 }
 
 .locations-options-container {
