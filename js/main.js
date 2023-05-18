@@ -65,6 +65,7 @@ function logout() {
     }
 }
 
+/*
 function displayAddresses() {
 
     let locations = getLocationsAsObj()
@@ -84,6 +85,8 @@ function displayAddresses() {
     // Display the map:
     mapInit()
 }
+
+ */
 
 function switchToAddLocation() {
     displayToggle(["main-page","header-options","add-location-page"])
@@ -176,14 +179,16 @@ function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
-    displayAddresses()
+    //displayAddresses()
+    generateUpdateTableBody()
 }
 
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
-    displayAddresses()
+    //displayAddresses()
+    generateUpdateTableBody()
 }
 
 function getUsersAsObj() {
@@ -272,7 +277,7 @@ const updateTable = document.getElementById("updateTable");
  * "overview-table"
  */
 function generateUpdateTableBody(){
-    locations.forEach(location => {
+    getLocationsAsObj().forEach(location => {
         const row = document.createElement("tr")
         for (const key in location) {
             if((key !=="latitude")&&(key!=="longitude")){
@@ -284,6 +289,9 @@ function generateUpdateTableBody(){
         updateTable.appendChild(row)
         
     })
+
+    // test:
+    mapInit()
 }
 
 const loacationList = document.getElementById("locations-list");
