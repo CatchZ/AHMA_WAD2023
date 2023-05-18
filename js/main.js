@@ -180,6 +180,7 @@ function loginAsAdmin(){
     // Change Display:
     displayToggle(["login-area","header-options","main-page", "locations-options-btns"])
     generateLocationList()
+    mapInit()
 }
 
 function loginAsUser() {
@@ -187,6 +188,7 @@ function loginAsUser() {
     // Change Display:
     displayToggle(["login-area","header-options","main-page"])
     generateLocationList()
+    mapInit()
 }
 
 function getUsersAsObj() {
