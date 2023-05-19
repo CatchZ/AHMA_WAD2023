@@ -75,11 +75,16 @@ function switchToAddLocation() {
 function backToHomePage() {
     // reset all form inputs:
     document.getElementById("add-form").reset()
+    document.getElementById("add-message").textContent = ""
+
     // back to homepage:
     displayToggle(["add-location-page","main-area","header-options"])
 }
 
 function addLocation() {
+
+    // clear message text:
+    document.getElementById("add-message").textContent = ""
 
     // Inputs validation:
     // TODO
@@ -97,23 +102,37 @@ function addLocation() {
         "photo": document.getElementById("new-location-img").value
     }
 
-    // save the new location temporary in list:
+    // save the new location temporary in list variable:
     locations.push(newLocationToAdd)
 
-    // show success message:
-    let img = new Image()
-    img.src = "./img/ok-icon.png"
-    document.getElementById("add-message").appendChild(img)
-    document.getElementById("add-message").append(" has been added successfully ")
+    // update JSON file:
+    let updateResult = updateJsonFileLocations()
 
-    // reset form inputs values:
-    document.getElementById("add-form").reset()
+    // HTML Element to show message:
+    const addMessageDisplayText = document.getElementById("add-message");
 
-    // update locations list:
-    generateLocationList()
+    if (updateResult) {
+        // show success message:
+        let img = new Image()
+        img.src = "./img/ok-icon.png"
+        addMessageDisplayText.appendChild(img)
+        addMessageDisplayText.append(" has been added successfully ")
 
-    // update map:
-    refreshLocatiosMarkers()
+        // reset form inputs values:
+        document.getElementById("add-form").reset()
+
+        // update locations list:
+        generateLocationList()
+
+        // update map:
+        refreshLocatiosMarkers()
+    } else {
+        // show failed message:
+        let img = new Image()
+        img.src = "./img/failed-icon.png"
+        addMessageDisplayText.appendChild(img)
+        addMessageDisplayText.append(" add failed, try again ")
+    }
 }
 
 function updateLocation() {
@@ -129,26 +148,6 @@ function cancelPage() {
 }
 
 // Sub-Functions:
-function displayToggle(elementIds) {
-    for (const elementId of elementIds) {
-        document.getElementById(elementId).classList.toggle("none-display")
-    }
-}
-
-
-/**
- * disable an Element on the side by id or if diabled show it as display:"block"
- * @param {*} element name of element that is to enable or diabled
- */
-/** ready for cleanup
-function disableEnableElement(element) {
-    if (document.getElementById(element).style.display!="none") {
-        document.getElementById(element).style.display!="none"
-    } else {
-        document.getElementById(element).style.display!="block"
-    }
-}*/
-
 function displayToggle(elementIds) {
 
     // Iteration the elements as list:
@@ -180,7 +179,12 @@ function loginAsUser() {
 }
 
 function getUsersAsObj() {
-    let users = [{
+
+    // get data from JSON file:
+    // TODO
+
+    // return data as JS-Object:
+    return  [{
         "userName": "admina",
         "password": "admina",
         "admin": true
@@ -191,7 +195,6 @@ function getUsersAsObj() {
             "admin": false
         }
     ];
-    return  users;
 }
 
 let locations = [ {
@@ -203,7 +206,7 @@ let locations = [ {
     "description": "-",
     "latitude": "52.538329",
     "longitude": "13.228278",
-    "photo": ""
+    "photo": "",
 },
     {
         "locationName": "Bayer AG",
@@ -214,7 +217,7 @@ let locations = [ {
         "description": "HKW Bayer",
         "latitude": "52.540803",
         "longitude": "13.368838",
-        "photo": ""
+        "photo": "",
     },
     {
         "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
@@ -225,13 +228,33 @@ let locations = [ {
         "description": "HKW Adlershof",
         "latitude": "52.42700181421365 ",
         "longitude": "13.5278661539540",
-        "photo": ""
+        "photo": "",
     }
 ];
 
 function getLocationsAsObj() {
+    // get Data from JSON:
+    // TODO
 
+    // save in variable as JS-Object:
+    // TODO
+
+    // return the object:
     return locations
+}
+
+function updateJsonFileLocations() {
+    // get the variable list as JS-Object:
+    // TODO
+
+    // convert to JSON:
+    // TODO
+
+    // update JSON file:
+    // TODO
+
+    // return true if update success or false:
+    return true
 }
 
 function initMap() {
@@ -258,7 +281,7 @@ function refreshLocatiosMarkers() {
 
     getLocationsAsObj().forEach( location => {
         // Marker Object:
-        var marker = L.marker([location.latitude,location.longitude]);
+        let marker = L.marker([location.latitude,location.longitude]);
         marker.addTo(map);
         // Add Location info in popup window:
         marker.bindPopup(location.locationName);
@@ -300,8 +323,8 @@ function generateUpdateTableBody(){
 
 const locationList = document.getElementById("locations-list");
 
-// -- damit wird die Methode an mehreren Stellen nutzen könnnen, hab sie erweitert
-// -- sodass wir sie zum refresch der Daten nutzen (löschen und neu eintragen)
+// -- damit wird die Methode an mehreren Stellen nutzen können, hab sie erweitert
+// -- sodass wir sie zum refresh der Daten nutzen (löschen und neu eintragen)
 /**
  * takes the locations const and for each Element
  * generates listelementes and appends them to the locationList const
@@ -310,9 +333,8 @@ const locationList = document.getElementById("locations-list");
 function generateLocationList(){
 
     // clear the list if there are elements:
-    if (locationList.children.length!==0) {
-        for(const child of locationList.children )
-        locationList.removeChild(child)
+    while (locationList.lastElementChild) {
+        locationList.removeChild(locationList.lastElementChild);
     }
 
     getLocationsAsObj().forEach(location=> {
@@ -347,28 +369,28 @@ const locationInfoContainer = document.getElementById("location-info-container")
  * @param {*} locationName name of the location that shall be displayed
  */
 function setLocationInputContainer(locationName){
-    // remove old contant 
+    // remove old content
     while (locationInfoContainer.firstChild){
         locationInfoContainer.removeChild(locationInfoContainer.firstChild)
     }
     // add new 
     //add name
     getLocationsAsObj().forEach(location => {
-        if (location.locationName == locationName) {
+        if (location.locationName === locationName) {
             const name = document.createElement("h3")
             name.innerText = location.locationName;
             locationInfoContainer.appendChild(name);
             // inner spanns
            const details = document.createElement("p")
             for(const key in location) {
-                if (key != "locationName" && key != "description") {
+                if (key !== "locationName" && key !== "description") {
                     const span = document.createElement("span");
                     span.innerText = key+": "+location[key];
                     details.appendChild(span)
                 }
             }
             locationInfoContainer.appendChild(details)
-            //describtion
+            //description
             const des = document.createElement("p")
             des.innerText = location.description;
             locationInfoContainer.appendChild(des);
@@ -376,8 +398,8 @@ function setLocationInputContainer(locationName){
     })
 }
 
-// -- die Funtkion oben hat bei mir nicht funktioniert und wollt sie nicht anfassen weil ich den Ansatz nicht ganz verstanden habe,
-// -- meine Idee ist einfach, wir übergeben die Location (Click Event on Element in der Liste) und die Methode liest sich die Info aus dem Objekt und trägt sie ein
+// -- die Function oben hat bei mir nicht funktioniert und wollt sie nicht anfassen, weil ich den Ansatz nicht ganz verstanden habe,
+// -- meine Idee ist einfach, wir übergeben die Location (Click Event on Element in der Liste) und die Methode liest sich die Information aus dem Objekt und trägt sie ein
 // -- dynamische Erstellung finde ich sehr umständlich hier, wir müssen bei jedem Click die bereits erstellten Elemente löschen bzw. deren Content ändern können
 function setLocationInfoContainer(location) {
 
@@ -394,6 +416,6 @@ function setLocationInfoContainer(location) {
  * Wrapps all onload Functions 
  */
 function onloadWrapper(){
-    generateLocationList()
-    generateUpdateTableBody()
+    //generateLocationList()
+    //generateUpdateTableBody()
 }

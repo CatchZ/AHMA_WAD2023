@@ -398,11 +398,15 @@ th {
     text-align: center;
 }
 
-.add-screen-contant-container p {
+.add-message {
     text-align: center;
     font-size: var(--body-text);
-    color: var(--green-color);
-    line-height: 1.5rem;
+    color: var(--gray-color);
+    vertical-align: middle;
+}
+
+.add-message img {
+    vertical-align: middle;
 }
 
 .update-btn {
