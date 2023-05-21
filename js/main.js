@@ -2,8 +2,10 @@
 
 // Variables:
 let map;
+let sessionAsAdmin;
 
 // Events-Targets:
+const loginFormBtn = document.getElementById("login-form")
 const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
 const addLocationBtn = document.getElementById("add-location-btn")
@@ -13,9 +15,12 @@ const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
+const usernameInput = document.getElementById("username-input")
+const passwordInput = document.getElementById("password-input")
 
 // Events-Handlers:
-loginBtn.addEventListener("click", login)
+passwordInput.addEventListener("input", validateLoginFields)
+loginFormBtn.addEventListener("submit", login)
 logoutBtn.addEventListener("click", logout)
 addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
@@ -24,16 +29,15 @@ saveNewLocationBtn.addEventListener("click", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
 
 // Events-Handling Functions:
-function login() {
+function login(loginEvent) {
 
-    // Inputs-Values:
-    let usernameInput = document.getElementById("username-input").value;
-    let passwordInput = document.getElementById("password-input").value;
+    // deactivate default reaction (until the next "Beleg"):
+    loginEvent.preventDefault()
 
     // Iteration the users-list:
     for(const user of getUsersAsObj()) {
-        if (usernameInput===user.userName) {
-            if(passwordInput===user.password) {
+        if (usernameInput.value===user.userName) {
+            if(passwordInput.value===user.password) {
                 // Reset the inputs values:
                 document.getElementById("login-form").reset()
                 // set welcome message:
@@ -56,7 +60,7 @@ function login() {
         }
     }
     // if there is no match to the username:
-    alert(usernameInput +" is not registered !")
+    alert(usernameInput.value +" is not registered !")
 }
 
 function logout() {
@@ -64,12 +68,20 @@ function logout() {
     // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
     if(logoutConfirm) {
-        displayToggle(["main-area","login-area","header-options"])
-    }
 
-    // clear homepage:
-    while (locationList.lastElementChild) {
-        locationList.removeChild(locationList.lastElementChild);
+        displayToggle(["main-area","login-area","header-options"])
+
+        // clear admin controls:
+        if(sessionAsAdmin) {
+            sessionAsAdmin = false
+            console.log("Session as admin: " + sessionAsAdmin)
+            displayToggle(["locations-options-btns"])
+        }
+
+        // clear homepage:
+        while (locationList.lastElementChild) {
+            locationList.removeChild(locationList.lastElementChild);
+        }
     }
 }
 
@@ -171,6 +183,9 @@ function loginAsAdmin(){
     generateLocationList()
     // Display the Map:
     initMap()
+
+    sessionAsAdmin = true
+    console.log("session as admin login: " + sessionAsAdmin)
 }
 
 function loginAsUser() {
@@ -181,6 +196,12 @@ function loginAsUser() {
     generateLocationList()
     // Display the Map
     initMap()
+}
+
+function validateLoginFields() {
+    if (passwordInput.value !== '' && usernameInput.value !== '') {
+        loginBtn.disabled = false;
+    }
 }
 
 function getUsersAsObj() {
