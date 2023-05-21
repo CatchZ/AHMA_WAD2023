@@ -66,6 +66,11 @@ function logout() {
     if(logoutConfirm) {
         displayToggle(["main-area","login-area","header-options"])
     }
+
+    // clear homepage:
+    while (locationList.lastElementChild) {
+        locationList.removeChild(locationList.lastElementChild);
+    }
 }
 
 function switchToAddLocation() {
@@ -125,7 +130,7 @@ function addLocation() {
         generateLocationList()
 
         // update map:
-        refreshLocatiosMarkers()
+        refreshLocationsMarkers()
     } else {
         // show failed message:
         let img = new Image()
@@ -162,20 +167,20 @@ function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
-    // Display the Map:
-    initMap()
     // Display the Locations:
     generateLocationList()
+    // Display the Map:
+    initMap()
 }
 
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area"])
-    // Display the Map
-    initMap()
     // Display the Locations:
     generateLocationList()
+    // Display the Map
+    initMap()
 }
 
 function getUsersAsObj() {
@@ -220,7 +225,7 @@ let locations = [ {
         "photo": "",
     },
     {
-        "locationName": "Blockheizkraftwerks- Träger- und Betreibergesellschaft mbH Berlin",
+        "locationName": "Blockheizkraftwerks- Träger und Betreibergesellschaft GmbH",
         "streetName": "Albert-Einstein-Str.",
         "streetNumber": 22,
         "postcode": 12489,
@@ -274,10 +279,10 @@ function initMap() {
     }).addTo(map);
 
     // Markers:
-    refreshLocatiosMarkers()
+    refreshLocationsMarkers()
 }
 
-function refreshLocatiosMarkers() {
+function refreshLocationsMarkers() {
 
     getLocationsAsObj().forEach( location => {
         // Marker Object:
@@ -343,7 +348,11 @@ function generateLocationList(){
         row.setAttribute("class","locations-list-element");
 
         row.addEventListener("click", () => {
+            // show the info of the location:
             setLocationInfoContainer(location);
+            // pan the map to the location:
+            map.flyTo([location.latitude,location.longitude],15)
+            map.marker.popup
         })
 
         //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
