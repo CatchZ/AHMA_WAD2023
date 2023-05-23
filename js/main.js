@@ -1,8 +1,9 @@
 'use strict';
 
 // Variables:
-let map;
-let sessionAsAdmin;
+let locationsList = new Array()
+let map
+let sessionAsAdmin
 const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
 const geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
@@ -137,7 +138,7 @@ function addLocation(addEvent) {
             }
 
             // save the new location temporary in list variable:
-            locations.push(newLocationToAdd)
+            locationsList.push(newLocationToAdd)
 
             // update JSON file:
             let updateResult = updateJsonFileLocations()
@@ -240,6 +241,7 @@ function getUsersAsObj() {
     ];
 }
 
+/*
 let locations = [ {
     "locationName": "Bayerische Motoren Werke AG",
     "streetName": "Am Juliusturm",
@@ -275,15 +277,33 @@ let locations = [ {
     }
 ];
 
-function getLocationsAsObj() {
-    // get Data from JSON:
-    // TODO
+ */
 
-    // save in variable as JS-Object:
-    // TODO
+function getLocationsAsObj() {
+
+    // get Data from JSON:
+    let request = new XMLHttpRequest();
+    request.open("GET", "/json/location.json", false);
+
+    request.onreadystatechange = function() {
+        // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
+        if (request.readyState === 4 && request.status === 200) {
+            let data = JSON.parse(request.responseText);
+            // save in variable as JS-Object:
+            locationsList = data;
+            console.log("json date are ready as object: " + data[0].locationName);
+        } else {
+            console.log("error on loading jason file")
+            console.log("request Status: "+ request.status)
+            console.log("request ready status: "+ request.readyState)
+        }
+    };
+
+    request.send();
 
     // return the object:
-    return locations
+    // have to be checked if not null:
+    return locationsList
 }
 
 function updateJsonFileLocations() {
@@ -322,17 +342,23 @@ function initMap() {
 
 function refreshLocationsMarkers() {
 
-    getLocationsAsObj().forEach( location => {
-        // Marker Object:
-        let marker = L.marker([location.latitude,location.longitude]);
-        marker.addTo(map);
-        // Add Location info in popup window:
-        marker.bindPopup(location.locationName);
-        // Callback Function:
-        marker.on("click", () => {
-            setLocationInfoContainer(location)
+    // get locations:
+    getLocationsAsObj()
+
+    console.log(locationsList.length)
+    if (locationsList.length !== 0) {
+        locationsList.forEach(location => {
+            // Marker Object:
+            let marker = L.marker([location.latitude,location.longitude]);
+            marker.addTo(map);
+            // Add Location info in popup window:
+            marker.bindPopup(location.locationName);
+            // Callback Function:
+            marker.on("click", () => {
+                setLocationInfoContainer(location)
+            })
         })
-    })
+    }
 }
 
 /**
@@ -380,32 +406,39 @@ function generateLocationList(){
         locationList.removeChild(locationList.lastElementChild);
     }
 
-    getLocationsAsObj().forEach(location=> {
+    // get the locations:
+    getLocationsAsObj()
 
-        const row = document.createElement("li");
-        row.setAttribute("class","locations-list-element");
+    console.log(locationsList.length)
 
-        row.addEventListener("click", () => {
-            // show the info of the location:
-            setLocationInfoContainer(location);
-            // pan the map to the location:
-            map.flyTo([location.latitude,location.longitude],15)
+    if (locationsList.length !== 0) {
+        locationsList.forEach(location => {
+
+            const row = document.createElement("li");
+            row.setAttribute("class","locations-list-element");
+
+            row.addEventListener("click", () => {
+                // show the info of the location:
+                setLocationInfoContainer(location);
+                // pan the map to the location:
+                map.flyTo([location.latitude,location.longitude],15)
+            })
+
+            //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
+            //row.setAttribute("onClick",methodCall);
+
+            let img = new Image()
+            img.src = "./img/location-icon.png"
+            img.classList.add("locations-list-icon")
+            row.appendChild(img)
+
+            row.append(location.locationName)
+            locationList.appendChild(row)
+
         })
-
-        //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
-        //row.setAttribute("onClick",methodCall);
-
-        let img = new Image()
-        img.src = "./img/location-icon.png"
-        img.classList.add("locations-list-icon")
-        row.appendChild(img)
-
-        row.append(location.locationName)
-        locationList.appendChild(row)
-    })
-
-    // set default values for info container:
-    setLocationInfoContainer(getLocationsAsObj()[0])
+        // set default values for info container:
+        setLocationInfoContainer(locationsList[0])
+    }
 }
 
 const locationInfoContainer = document.getElementById("location-info-container")
@@ -501,5 +534,5 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
  */
 function onloadWrapper(){
     //generateLocationList()
-    generateUpdateTableBody()
+    //generateUpdateTableBody()
 }
