@@ -3,14 +3,16 @@
 // Variables:
 let map;
 let sessionAsAdmin;
+const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
+const geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
 // Events-Targets:
-const loginFormBtn = document.getElementById("login-form")
+const loginForm = document.getElementById("login-form")
 const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
 const addLocationBtn = document.getElementById("add-location-btn")
 const backToHomepageBtn = document.getElementById("homepage-btn")
-const saveNewLocationBtn = document.getElementById("save-new-location-btn")
+const addForm = document.getElementById("add-form")
 const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
@@ -19,19 +21,18 @@ const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 
 // Events-Handlers:
-passwordInput.addEventListener("input", validateLoginFields)
-loginFormBtn.addEventListener("submit", login)
+loginForm.addEventListener("submit", login)
 logoutBtn.addEventListener("click", logout)
 addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
-saveNewLocationBtn.addEventListener("click", addLocation)
+addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
 
 // Events-Handling Functions:
 function login(loginEvent) {
 
-    // deactivate default reaction (until the next "Beleg"):
+    // deactivate default submit:
     loginEvent.preventDefault()
 
     // Iteration the users-list:
@@ -98,58 +99,82 @@ function backToHomePage() {
     displayToggle(["add-location-page","main-area","header-options"])
 }
 
-function addLocation() {
+function addLocation(addEvent) {
+
+    // deactivate default submit:
+    addEvent.preventDefault()
 
     // clear message text:
     document.getElementById("add-message").textContent = ""
 
-    // Inputs validation:
-    // TODO
+    // get inputs values:
+    let locationName = document.getElementById("new-location-name").value
+    let streetName = document.getElementById("new-location-str-name").value
+    let streetNr = document.getElementById("new-location-str-nr").value
+    let postCode = document.getElementById("new-location-postcode").value
+    let co2InT = document.getElementById("new-location-co2").value
+    let description = document.getElementById("new-location-description").value
+    let photos = document.getElementById("new-location-img").value
 
-    // Get inputs values:
-    let newLocationToAdd = {
-        "locationName": document.getElementById("new-location-name").value,
-        "streetName": document.getElementById("new-location-str-name").value,
-        "streetNumber": document.getElementById("new-location-str-nr").value,
-        "postcode": document.getElementById("new-location-postcode").value,
-        "c02InTons": document.getElementById("new-location-co2").value,
-        "description": document.getElementById("new-location-description").value,
-        "latitude": document.getElementById("new-location-latitude").value,
-        "longitude": document.getElementById("new-location-longitude").value,
-        "photo": document.getElementById("new-location-img").value
-    }
+    // get geocoding:
+    getGeocoding(streetName, streetNr , "Berlin", postCode, function (response) {
+        // if we got a geocoding:
+        if(response != null) {
 
-    // save the new location temporary in list variable:
-    locations.push(newLocationToAdd)
+            // Get inputs values:
+            let newLocationToAdd = {
+                "locationName": locationName,
+                "streetName": streetName,
+                "streetNumber": streetNr,
+                "postcode": postCode,
+                "c02InTons": co2InT,
+                "description": description,
+                // get lat and lang from the object:
+                "latitude": response.results[0].geometry.location.lat,
+                "longitude": response.results[0].geometry.location.lng,
+                "photo": photos
+            }
 
-    // update JSON file:
-    let updateResult = updateJsonFileLocations()
+            // save the new location temporary in list variable:
+            locations.push(newLocationToAdd)
 
-    // HTML Element to show message:
-    const addMessageDisplayText = document.getElementById("add-message");
+            // update JSON file:
+            let updateResult = updateJsonFileLocations()
 
-    if (updateResult) {
-        // show success message:
-        let img = new Image()
-        img.src = "./img/ok-icon.png"
-        addMessageDisplayText.appendChild(img)
-        addMessageDisplayText.append(" has been added successfully ")
+            // HTML Element to show message:
+            const addMessageDisplayText = document.getElementById("add-message");
 
-        // reset form inputs values:
-        document.getElementById("add-form").reset()
+            if (updateResult) {
+                // show success message:
+                let img = new Image()
+                img.src = "./img/ok-icon.png"
+                addMessageDisplayText.appendChild(img)
+                addMessageDisplayText.append(" has been added successfully ")
 
-        // update locations list:
-        generateLocationList()
+                // reset form inputs values:
+                document.getElementById("add-form").reset()
 
-        // update map:
-        refreshLocationsMarkers()
-    } else {
-        // show failed message:
-        let img = new Image()
-        img.src = "./img/failed-icon.png"
-        addMessageDisplayText.appendChild(img)
-        addMessageDisplayText.append(" add failed, try again ")
-    }
+                // update locations list:
+                generateLocationList()
+
+                // update map:
+                refreshLocationsMarkers()
+            } else {
+                // show failed message:
+                let img = new Image()
+                img.src = "./img/failed-icon.png"
+                addMessageDisplayText.appendChild(img)
+                addMessageDisplayText.append(" add failed, try again")
+            }
+
+        } else {
+            // show failed message:
+            let img = new Image()
+            img.src = "./img/failed-icon.png"
+            addMessageDisplayText.appendChild(img)
+            addMessageDisplayText.append(" The address could not be resolved, try again")
+        }
+    })
 }
 
 function updateLocation() {
@@ -196,12 +221,6 @@ function loginAsUser() {
     generateLocationList()
     // Display the Map
     initMap()
-}
-
-function validateLoginFields() {
-    if (passwordInput.value !== '' && usernameInput.value !== '') {
-        loginBtn.disabled = false;
-    }
 }
 
 function getUsersAsObj() {
@@ -442,10 +461,45 @@ function setLocationInfoContainer(location) {
     locationInfoCo2.textContent = "CO2 in T : " + location.c02InTons
 }
 
+function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
+
+    // Geocoding API:
+    let xhr = new XMLHttpRequest()
+    let address = streetname + streetnr + "," + city + "," + postcode
+
+    xhr.open('GET', geocodingUrl + encodeURIComponent(address) + '&key=' + googleAPIKey, true);
+
+    // Callback-Function:
+    xhr.onload = function() {
+
+        let response = JSON.parse(xhr.responseText);
+
+        if (xhr.status === 200) {
+            if (response.status !== "ZERO_RESULTS") {
+                // callback the parameter function to return the results:
+                callbackResult(response)
+            } else {
+                // just to test:
+                console.log("The address could not be resolved!");
+                // callback the parameter function to return the results:
+                callbackResult(null)
+            }
+        } else {
+            // just to test:
+            console.log("Error: " + xhr.status + " , Obj-state: " + response.status);
+            // callback the parameter function to return the results:
+            callbackResult(null)
+        }
+    };
+
+    // send request:
+    xhr.send();
+}
+
 /**
  * Wrapps all onload Functions 
  */
 function onloadWrapper(){
     //generateLocationList()
-    //generateUpdateTableBody()
+    generateUpdateTableBody()
 }
