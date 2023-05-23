@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Impl. : disabled login button until fill the user and password">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Impl. : Geocoding API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +102,7 @@
       <workItem from="1684494311897" duration="5072000" />
       <workItem from="1684679012849" duration="5998000" />
       <workItem from="1684694568940" duration="3141000" />
-      <workItem from="1684771464439" duration="6130000" />
+      <workItem from="1684771464439" duration="8110000" />
     </task>
     <task id="LOCAL-00001" summary="First Update">
       <created>1682708946444</created>
@@ -413,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684698467970</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="JS Impl. : Geocoding API">
+      <created>1684851856013</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1684851856013</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="New Footer HTML and CSS Update" />
     <MESSAGE value="JS Methods Declaration" />
     <MESSAGE value="JS Events Handling Declaration" />
     <MESSAGE value="HTML Update: new Buttons" />
@@ -468,6 +473,7 @@
     <MESSAGE value="JS Impl. : add function bugs fixed" />
     <MESSAGE value="JS Impl. : pan the map on click" />
     <MESSAGE value="JS Impl. : disabled login button until fill the user and password" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS Impl. : disabled login button until fill the user and password" />
+    <MESSAGE value="JS Impl. : Geocoding API" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS Impl. : Geocoding API" />
   </component>
 </project>

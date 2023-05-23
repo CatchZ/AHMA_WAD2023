@@ -19,6 +19,7 @@ const saveLocationUpdateBtn = document.getElementById("save-location-update-btn"
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
+const addMessageDisplayText = document.getElementById("add-message");
 
 // Events-Handlers:
 loginForm.addEventListener("submit", login)
@@ -105,7 +106,7 @@ function addLocation(addEvent) {
     addEvent.preventDefault()
 
     // clear message text:
-    document.getElementById("add-message").textContent = ""
+    addMessageDisplayText.textContent = ""
 
     // get inputs values:
     let locationName = document.getElementById("new-location-name").value
@@ -140,9 +141,6 @@ function addLocation(addEvent) {
 
             // update JSON file:
             let updateResult = updateJsonFileLocations()
-
-            // HTML Element to show message:
-            const addMessageDisplayText = document.getElementById("add-message");
 
             if (updateResult) {
                 // show success message:
@@ -392,7 +390,6 @@ function generateLocationList(){
             setLocationInfoContainer(location);
             // pan the map to the location:
             map.flyTo([location.latitude,location.longitude],15)
-            map.marker.popup
         })
 
         //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
@@ -472,10 +469,13 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
     // Callback-Function:
     xhr.onload = function() {
 
+        console.log("trying to get the geocoding of: " + address)
+
         let response = JSON.parse(xhr.responseText);
 
         if (xhr.status === 200) {
             if (response.status !== "ZERO_RESULTS") {
+                console.log("result-state : " + response.status)
                 // callback the parameter function to return the results:
                 callbackResult(response)
             } else {
