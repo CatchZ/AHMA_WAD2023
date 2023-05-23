@@ -1,7 +1,7 @@
 'use strict';
 
 // Variables:
-let locationsList = new Array()
+let locationsList = []
 let map
 let sessionAsAdmin
 const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
@@ -137,7 +137,7 @@ function addLocation(addEvent) {
                 "photo": photos
             }
 
-            // save the new location temporary in list variable:
+            // save the new location in list variable:
             locationsList.push(newLocationToAdd)
 
             // update JSON file:
@@ -224,21 +224,29 @@ function loginAsUser() {
 
 function getUsersAsObj() {
 
-    // get data from JSON file:
-    // TODO
+    let request = new XMLHttpRequest();
+    let usersList = []
+
+    request.open("GET", "/json/user.json", false)  // false because we need the data bevor we check
+
+    request.onreadystatechange = function() {
+        // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
+        if (request.readyState === 4 && request.status === 200) {
+            let data = JSON.parse(request.responseText);
+            console.log("json date are ready, there are " + data.length + " users");
+            // save in variable as JS-Object:
+            usersList = data;
+        } else {
+            console.log("error on loading jason file")
+            console.log("request Status: "+ request.status)
+            console.log("requestReady status: "+ request.readyState)
+        }
+    };
+
+    request.send();
 
     // return data as JS-Object:
-    return  [{
-        "userName": "admina",
-        "password": "admina",
-        "admin": true
-    },
-        {
-            "userName": "user",
-            "password": "user",
-            "admin": false
-        }
-    ];
+    return  usersList
 }
 
 /*
@@ -289,21 +297,17 @@ function getLocationsAsObj() {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
         if (request.readyState === 4 && request.status === 200) {
             let data = JSON.parse(request.responseText);
+            console.log("json date are ready, there are " + data.length + " locations");
             // save in variable as JS-Object:
             locationsList = data;
-            console.log("json date are ready as object: " + data[0].locationName);
         } else {
             console.log("error on loading jason file")
             console.log("request Status: "+ request.status)
-            console.log("request ready status: "+ request.readyState)
+            console.log("requestReady status: "+ request.readyState)
         }
     };
 
     request.send();
-
-    // return the object:
-    // have to be checked if not null:
-    return locationsList
 }
 
 function updateJsonFileLocations() {
@@ -342,10 +346,12 @@ function initMap() {
 
 function refreshLocationsMarkers() {
 
-    // get locations:
-    getLocationsAsObj()
+    // should be already called
+    // getLocationsAsObj()
 
-    console.log(locationsList.length)
+    // to test:
+    console.log("locationsList length: " + locationsList.length)
+
     if (locationsList.length !== 0) {
         locationsList.forEach(location => {
             // Marker Object:
@@ -409,7 +415,8 @@ function generateLocationList(){
     // get the locations:
     getLocationsAsObj()
 
-    console.log(locationsList.length)
+    // just to test
+    console.log("locationsList length: " + locationsList.length)
 
     if (locationsList.length !== 0) {
         locationsList.forEach(location => {
@@ -438,6 +445,11 @@ function generateLocationList(){
         })
         // set default values for info container:
         setLocationInfoContainer(locationsList[0])
+    } else {
+        const row = document.createElement("li");
+        row.setAttribute("class","locations-list-element");
+        row.append("No locations right now ..")
+        locationList.appendChild(row)
     }
 }
 
