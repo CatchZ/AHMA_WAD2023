@@ -249,44 +249,6 @@ function getUsersAsObj() {
     return  usersList
 }
 
-/*
-let locations = [ {
-    "locationName": "Bayerische Motoren Werke AG",
-    "streetName": "Am Juliusturm",
-    "streetNumber": 14,
-    "postcode": 13599,
-    "c02InTons": 12900,
-    "description": "-",
-    "latitude": "52.538329",
-    "longitude": "13.228278",
-    "photo": "",
-},
-    {
-        "locationName": "Bayer AG",
-        "streetName": "Müllerstr.",
-        "streetNumber": 178,
-        "postcode": 13353,
-        "c02InTons": 39648,
-        "description": "HKW Bayer",
-        "latitude": "52.540803",
-        "longitude": "13.368838",
-        "photo": "",
-    },
-    {
-        "locationName": "Blockheizkraftwerks- Träger und Betreibergesellschaft GmbH",
-        "streetName": "Albert-Einstein-Str.",
-        "streetNumber": 22,
-        "postcode": 12489,
-        "c02InTons": 44997,
-        "description": "HKW Adlershof",
-        "latitude": "52.42700181421365 ",
-        "longitude": "13.5278661539540",
-        "photo": "",
-    }
-];
-
- */
-
 function getLocationsAsObj() {
 
     // get Data from JSON:
