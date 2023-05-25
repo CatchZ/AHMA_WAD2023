@@ -509,7 +509,7 @@ function generateLocationList() {
     }
 
     // get the locations:
-    getLocationsAsObj()
+    //getLocationsAsObj()
 
     // just to test
     console.log("locationsList length: " + locationsList.length)
