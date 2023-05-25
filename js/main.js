@@ -179,6 +179,40 @@ function addLocation(addEvent) {
 
 function updateLocation(key) {
     console.log("uclicked:"+key.locationName)
+    generateUpdateForm(key)
+}
+
+function generateUpdateForm(elem) {
+    const inputIds = [
+        'updLocationName',
+        'updStreetNum',
+        'updStreetName',
+        'updPostcode',
+        'updC02InT',
+        'updDescription',
+        'updLatitude',
+        'updLongitude',
+        'updFile'];
+
+const inputElements = {};
+
+inputIds.forEach(function(id) {
+  inputElements[id] = document.getElementById(id);
+});
+
+console.log(elem);
+elem.locationName;
+console.log(inputElements);
+inputElements.updLocationName.value=elem.locationName
+inputElements.updStreetNum.value=elem.streetNumber
+inputElements.updStreetName.value=elem.streetName
+inputElements.updPostcode.value=elem.postcode
+inputElements.updC02InT.value=elem.c02InTons
+inputElements.updDescription.value=elem.description
+inputElements.updLatitude.value=elem.latitude
+inputElements.updLongitude.value=elem.longitude
+inputElements.updFile.value=elem.photo
+
 }
 
 function deleteLocation(key) {
@@ -369,25 +403,25 @@ function generateUpdateTableBody(){
  * @param {} location 
  * @returns tabellen reihe
  */
-function generateUpdateTableBodyRow(location){
+function generateUpdateTableBodyRow(location) {
     const row = document.createElement("tr")
-    row.setAttribute("id",location.locationName)
+    row.setAttribute("id", location.locationName)
     for (const key in location) {
-        if((key !=="latitude")&&(key!=="longitude")&&(key!=="photo")){
-        const cell = document.createElement("td");
-        cell.textContent = location[key];
-        row.appendChild(cell);
+        if ((key !== "latitude") && (key !== "longitude") && (key !== "photo")) {
+            const cell = document.createElement("td");
+            cell.textContent = location[key];
+            row.appendChild(cell);
         }
-      }
+    }
     const updateButton = document.createElement("button")
     const deleteButton = document.createElement("button")
     const cell = document.createElement("td");
-    updateButton.setAttribute("class","update-btn")
-    updateButton.setAttribute("id","upd"+location.locationName)
-    updateButton.textContent="Update"
-    deleteButton.setAttribute("class","update-btn")
-    deleteButton.setAttribute("id","del"+location.locationName)
-    deleteButton.textContent="Delete"
+    updateButton.setAttribute("class", "update-btn")
+    updateButton.setAttribute("id", "upd" + location.locationName)
+    updateButton.textContent = "Update"
+    deleteButton.setAttribute("class", "update-btn")
+    deleteButton.setAttribute("id", "del" + location.locationName)
+    deleteButton.textContent = "Delete"
     updateButtonList.push(updateButton)
     updateButtonList.push(deleteButton)
     cell.appendChild(updateButton)
