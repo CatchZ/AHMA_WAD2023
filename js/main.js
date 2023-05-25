@@ -236,8 +236,8 @@ function generateUpdateForm(elem) {
     inputElements.updLongitude.value = elem.longitude
     inputElements.updFile.value = elem.photo
 
-    const safebtn = document.getElementById("save-location-update-btn")
-    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements) })
+    const saveBtn = document.getElementById("save-location-update-btn")
+    saveBtn.addEventListener("click", function () { updateFormSafe(elem, inputElements) })
 }
 
 function updateFormSafe(oldData, inputElements) {
@@ -274,7 +274,7 @@ function updateFormSafe(oldData, inputElements) {
             console.log(locationsList);
 
             formCheckandCleanup()
-            
+            generateUpdateTableBody()
 
         } else {
             // show failed message:
