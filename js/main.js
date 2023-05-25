@@ -269,8 +269,9 @@ function updateFormSafe(oldData, inputElements) {
             addMessageDisplayText.append(" The address could not be resolved, try again")
         }
     })
-    
+    generateLocationList()
     refreshLocationsMarkers()
+    
 }
 
 function deleteLocation(key) {
