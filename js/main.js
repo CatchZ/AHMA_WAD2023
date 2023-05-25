@@ -174,7 +174,7 @@ function loginAsUser() {
     generateLocationList()
 }
 
-function getUsersAsObj() {
+ function getUsersAsObj() {
     let users = [{
         "userName": "admina",
         "password": "admina",
@@ -189,9 +189,22 @@ function getUsersAsObj() {
     return  users;
 }
 
-function getLocationsAsObj() {
+async function getLocationsAsObj() {
 
-    let locations = [ {
+    const locations =
+        await fetch("./json/location.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("location.json retrievel wasn`t sucessful");
+                }
+                return response.json();
+            }).catch(error => {
+                console.error("Error", error)
+            })
+
+    return locations;
+   
+    /*[ {
         "locationName": "Bayerische Motoren Werke AG",
         "streetName": "Am Juliusturm",
         "streetNumber": 14,
@@ -224,9 +237,8 @@ function getLocationsAsObj() {
             "longitude": "13.5278661539540",
             "photo": ""
         }
-    ];
-
-    return locations
+    ];*/
+    
 }
 
 function initMap() {
@@ -249,9 +261,9 @@ function initMap() {
     refreshLocatiosMarkers()
 }
 
-function refreshLocatiosMarkers() {
-
-    getLocationsAsObj().forEach( location => {
+async function refreshLocatiosMarkers() {
+ const data = await getLocationsAsObj();
+    data.forEach( location => {
         // Marker Object:
         var marker = L.marker([location.latitude,location.longitude]);
         marker.addTo(map);
@@ -274,8 +286,9 @@ const updateTable = document.getElementById("updateTable");
  * takes the locations const and generates the table body for the 
  * "overview-table"
  */
-function generateUpdateTableBody(){
-    getLocationsAsObj().forEach(location => {
+async function generateUpdateTableBody(){
+    const data= await getLocationsAsObj();
+    data.forEach(location => {
         const row = document.createElement("tr")
         for (const key in location) {
             if((key !=="latitude")&&(key!=="longitude")){
@@ -295,8 +308,9 @@ const loacationList = document.getElementById("locations-list");
  * generates listelementes and appends them to the locationList const
  * using the Name field as inner Text
  */
-function generateLocationList(){
-    getLocationsAsObj().forEach(location=>{
+async function generateLocationList(){
+    const data = await getLocationsAsObj()
+    data.forEach(location=>{
         const row = document.createElement("li");
         row.setAttribute("class","locations-list-element");
         const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
@@ -346,7 +360,10 @@ function setLocationInputContainer(locationName){
 /**
  * Wrapps all onload Functions 
  */
-function onloadWrapper(){
+async function onloadWrapper(){
     generateLocationList()
     generateUpdateTableBody()
 }
+
+//update Local Storage
+//read Local Storage 
