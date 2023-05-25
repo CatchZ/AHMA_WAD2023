@@ -361,9 +361,22 @@ function setLocationInputContainer(locationName){
  * Wrapps all onload Functions 
  */
 async function onloadWrapper(){
-    generateLocationList()
-    generateUpdateTableBody()
+    const data = await getLocationsAsObj();
+    await updateLocalStorage("locations",data);
+    generateLocationList();
+    generateUpdateTableBody();
+    
 }
 
 //update Local Storage
-//read Local Storage 
+function updateLocalStorage (key,data) {
+    localStorage.setItem(key,JSON.stringify(data));
+}
+/**
+ * holt Daten von key als Js
+ * @param {*} key  muss ein String sien
+ * @returns wert am Key als JSON Object
+ */
+function readLocalStorage (key) {
+    return JSON.parse(localStorage.getItem(key));
+}
