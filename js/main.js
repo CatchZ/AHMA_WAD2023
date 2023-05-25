@@ -21,7 +21,7 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
-let updateButtonList;
+let updateButtonList=[];
 
 // Events-Handlers:
 loginForm.addEventListener("submit", login)
@@ -178,11 +178,15 @@ function addLocation(addEvent) {
 }
 
 function updateLocation(key) {
-    // TODO
+    console.log("uclicked:"+key.locationName)
 }
 
 function deleteLocation(key) {
-    // TODO
+    console.log("dclicked:"+key.locationName)
+    let logoutConfirm = confirm("Do you really want to remove "+key.locationName)
+    if(logoutConfirm) {
+    // TODO add datastrucktur manipulation
+    document.getElementById(key.locationName).remove()}
 }
 
 function cancelPage() {
@@ -346,26 +350,47 @@ const updateTable = document.getElementById("updateTable");
  * "overview-table"
  */
 function generateUpdateTableBody(){
-   locationList.forEach(location => {
-        const row = document.createElement("tr")
-        for (const key in location) {
-            if((key !=="latitude")&&(key!=="longitude")){
-            const cell = document.createElement("td");
-            cell.textContent = location[key];
-            row.appendChild(cell);
-            }
-          }
-       /* const updateButton = document.createElement("button")
-        const deleteButton = document.createElement("button")
-        updateButton.addEventListener("submit", updateLocation(location.locationName))
-        deleteButton.addEventListener("submit", updateLocation(location.locationName))
-        updateButtonList.push(updateButton)
-        updateButtonList.push(deleteButton)
-        row.appendChild(updateButton)
-        row.appendChild(deleteButton)
-        updateTable.appendChild(row)*/
+    getLocationsAsObj()
+   locationsList.forEach(async location => {
+  
+       await updateTable.appendChild(generateUpdateTableBodyRow(location));
+        const delBtn = document.getElementById("del"+location.locationName)
+        const updBtn = document.getElementById("upd"+location.locationName)
+        updBtn.addEventListener("click",function(){updateLocation(location)})
+        delBtn.addEventListener("click",function(){deleteLocation(location)})
         
     })
+}
+/**
+ * erstellt auf Basis einer Location eine Tabellein reihe
+ * @param {} location 
+ * @returns tabellen reihe
+ */
+function generateUpdateTableBodyRow(location){
+    const row = document.createElement("tr")
+    row.setAttribute("id",location.locationName)
+    for (const key in location) {
+        if((key !=="latitude")&&(key!=="longitude")&&(key!=="photo")){
+        const cell = document.createElement("td");
+        cell.textContent = location[key];
+        row.appendChild(cell);
+        }
+      }
+    const updateButton = document.createElement("button")
+    const deleteButton = document.createElement("button")
+    const cell = document.createElement("td");
+    updateButton.setAttribute("class","update-btn")
+    updateButton.setAttribute("id","upd"+location.locationName)
+    updateButton.textContent="Update"
+    deleteButton.setAttribute("class","update-btn")
+    deleteButton.setAttribute("id","del"+location.locationName)
+    deleteButton.textContent="Delete"
+    updateButtonList.push(updateButton)
+    updateButtonList.push(deleteButton)
+    cell.appendChild(updateButton)
+    cell.appendChild(deleteButton)
+    row.appendChild(cell)
+    return row
 }
 
 
@@ -524,5 +549,5 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
  */
 function onloadWrapper(){
     //generateLocationList()
-    //generateUpdateTableBody()
+    generateUpdateTableBody()
 }
