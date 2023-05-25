@@ -385,7 +385,9 @@ function updateJsonFileLocations() {
     // return true if update success or false:
     return true
 }
-
+/**
+ * initialsiert map, erst nach ausblenden benutzen!!
+ */
 function initMap() {
 
     const mapInitOptions = {
