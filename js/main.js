@@ -182,11 +182,13 @@ function updateLocation(key) {
 }
 
 function deleteLocation(key) {
-    console.log("dclicked:"+key.locationName)
-    let logoutConfirm = confirm("Do you really want to remove "+key.locationName)
-    if(logoutConfirm) {
-    // TODO add datastrucktur manipulation
-    document.getElementById(key.locationName).remove()}
+    console.log("dclicked:" + key.locationName)
+    let logoutConfirm = confirm("Do you really want to remove " + key.locationName)
+    if (logoutConfirm) {
+        const index = locationsList.findIndex(elem => key.locationName = elem.locationName)
+        locationsList.splice(index, 1)
+        document.getElementById(key.locationName).remove()
+    }
 }
 
 function cancelPage() {
@@ -343,13 +345,14 @@ function refreshLocationsMarkers() {
 
  }
 
-const updateTable = document.getElementById("updateTable");
+
 
 /**
  * takes the locations const and generates the table body for the 
  * "overview-table"
  */
 function generateUpdateTableBody(){
+    const updateTable = document.getElementById("updateTable");
     getLocationsAsObj()
    locationsList.forEach(async location => {
   
