@@ -288,19 +288,22 @@ function updateJsonFileLocations() {
 
 function initMap() {
 
-    const mapInitOptions = {
-        position: [52.520008, 13.404954],
-        zoom: 10
+    // map as singelton-object:
+    if (typeof map === "undefined") {
+        const mapInitOptions = {
+            position: [52.520008, 13.404954],
+            zoom: 10
+        }
+
+        // Map Obj:
+        map = L.map('map-container');
+        map.setView(mapInitOptions.position, mapInitOptions.zoom);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
     }
-
-    // Map Obj:
-    map = L.map('map-container');
-    map.setView(mapInitOptions.position, mapInitOptions.zoom);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
 
     // Markers:
     refreshLocationsMarkers()
