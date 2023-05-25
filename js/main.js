@@ -21,6 +21,7 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
+let updateButtonList;
 
 // Events-Handlers:
 loginForm.addEventListener("submit", login)
@@ -176,11 +177,11 @@ function addLocation(addEvent) {
     })
 }
 
-function updateLocation() {
+function updateLocation(key) {
     // TODO
 }
 
-function deleteLocation() {
+function deleteLocation(key) {
     // TODO
 }
 
@@ -339,12 +340,13 @@ function refreshLocationsMarkers() {
  }
 
 const updateTable = document.getElementById("updateTable");
+
 /**
  * takes the locations const and generates the table body for the 
  * "overview-table"
  */
 function generateUpdateTableBody(){
-    getLocationsAsObj().forEach(location => {
+   locationList.forEach(location => {
         const row = document.createElement("tr")
         for (const key in location) {
             if((key !=="latitude")&&(key!=="longitude")){
@@ -353,10 +355,19 @@ function generateUpdateTableBody(){
             row.appendChild(cell);
             }
           }
-        updateTable.appendChild(row)
+       /* const updateButton = document.createElement("button")
+        const deleteButton = document.createElement("button")
+        updateButton.addEventListener("submit", updateLocation(location.locationName))
+        deleteButton.addEventListener("submit", updateLocation(location.locationName))
+        updateButtonList.push(updateButton)
+        updateButtonList.push(deleteButton)
+        row.appendChild(updateButton)
+        row.appendChild(deleteButton)
+        updateTable.appendChild(row)*/
         
     })
 }
+
 
 const locationList = document.getElementById("locations-list");
 
@@ -415,12 +426,14 @@ function generateLocationList(){
     }
 }
 
+//------------------cleanup--------------
 const locationInfoContainer = document.getElementById("location-info-container")
 
 /**
  * changes the locationInputContainer to the clicked listelement
  * @param {*} locationName name of the location that shall be displayed
  */
+/*
 function setLocationInputContainer(locationName){
     // remove old content
     while (locationInfoContainer.firstChild){
@@ -450,10 +463,13 @@ function setLocationInputContainer(locationName){
         }
     })
 }
-
+*/
 // -- die Function oben hat bei mir nicht funktioniert und wollt sie nicht anfassen, weil ich den Ansatz nicht ganz verstanden habe,
 // -- meine Idee ist einfach, wir übergeben die Location (Click Event on Element in der Liste) und die Methode liest sich die Information aus dem Objekt und trägt sie ein
 // -- dynamische Erstellung finde ich sehr umständlich hier, wir müssen bei jedem Click die bereits erstellten Elemente löschen bzw. deren Content ändern können
+//------------------ clean up---------------------
+
+
 function setLocationInfoContainer(location) {
 
     let locationInfoTitel = document.getElementById("location-info-title-text")
