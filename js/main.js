@@ -256,7 +256,7 @@ function getUsersAsObj() {
     return  usersList
 }
 
-function getLocationsAsObj() {
+async function getLocationsAsObj() {
 
     // get Data from JSON:
     let request = new XMLHttpRequest();
@@ -353,8 +353,9 @@ const updateTable = document.getElementById("updateTable");
  * takes the locations const and generates the table body for the 
  * "overview-table"
  */
-function generateUpdateTableBody(){
-    getLocationsAsObj().forEach(location => {
+async function generateUpdateTableBody(){
+    const data= await getLocationsAsObj();
+    data.forEach(location => {
         const row = document.createElement("tr")
         for (const key in location) {
             if((key !=="latitude")&&(key!=="longitude")){
@@ -363,7 +364,9 @@ function generateUpdateTableBody(){
             row.appendChild(cell);
             }
           }
-        updateTable.appendChild(row)
+        //const UpdateButtons
+       // const 
+        //updateTable.appendChild(row)
         
     })
 }
