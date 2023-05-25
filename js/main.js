@@ -291,11 +291,13 @@ function updateFormSafe(oldData, inputElements) {
 
 function deleteLocation(key) {
     console.log("dclicked:" + key.locationName)
-    let logoutConfirm = confirm("Do you really want to remove " + key.locationName)
-    if (logoutConfirm) {
+    let deleteConfirm = confirm("Do you really want to remove " + key.locationName)
+    if (deleteConfirm) {
         const index = locationsList.findIndex(elem => key.locationName == elem.locationName)
         locationsList.splice(index, 1)
         document.getElementById(key.locationName).remove()
+        generateLocationList()
+        refreshLocationsMarkers()
     }
 }
 
