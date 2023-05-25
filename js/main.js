@@ -49,10 +49,22 @@ function login(loginEvent) {
                 switch (user.admin) {
                     case true : {
                         loginAsAdmin();
+                        // get locations:
+                        getLocationsAsObj()
+                        // Display the Locations:
+                        generateLocationList()
+                        // Display the Map
+                        initMap()
                         return;
                     }
                     case false : {
                         loginAsUser();
+                        // get locations:
+                        getLocationsAsObj()
+                        // Display the Locations:
+                        generateLocationList()
+                        // Display the Map
+                        initMap()
                         return;
                     }
                 }
@@ -122,6 +134,9 @@ function addLocation(addEvent) {
     getGeocoding(streetName, streetNr , "Berlin", postCode, function (response) {
         // if we got a geocoding:
         if(response != null) {
+
+            console.log("lat: " + response.results[0].geometry.location.lat)
+            console.log("lng: " + response.results[0].geometry.location.lng)
 
             // Get inputs values:
             let newLocationToAdd = {
@@ -203,10 +218,6 @@ function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
-    // Display the Locations:
-    generateLocationList()
-    // Display the Map:
-    initMap()
 
     sessionAsAdmin = true
     console.log("session as admin login: " + sessionAsAdmin)
@@ -216,10 +227,6 @@ function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area"])
-    // Display the Locations:
-    generateLocationList()
-    // Display the Map
-    initMap()
 }
 
 function getUsersAsObj() {
@@ -378,7 +385,7 @@ function generateLocationList(){
     }
 
     // get the locations:
-    getLocationsAsObj()
+    // getLocationsAsObj()
 
     // just to test
     console.log("locationsList length: " + locationsList.length)
