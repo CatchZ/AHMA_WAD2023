@@ -227,7 +227,7 @@ function getUsersAsObj() {
     let request = new XMLHttpRequest();
     let usersList = []
 
-    request.open("GET", "/json/user.json", false)  // false because we need the data bevor we check
+    request.open("GET", "./json/user.json", false)  // false because we need the data bevor we check
 
     request.onreadystatechange = function() {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
@@ -253,7 +253,7 @@ function getLocationsAsObj() {
 
     // get Data from JSON:
     let request = new XMLHttpRequest();
-    request.open("GET", "/json/location.json", false);
+    request.open("GET", "./json/location.json", false);
 
     request.onreadystatechange = function() {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
