@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Update: getUsersAsObj()">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Names refactored">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,13 +104,6 @@
       <workItem from="1684694568940" duration="3141000" />
       <workItem from="1684771464439" duration="14007000" />
       <workItem from="1685010867313" duration="8125000" />
-    </task>
-    <task id="LOCAL-00002" summary="Vorschlaege">
-      <created>1682868826603</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1682868826603</updated>
     </task>
     <task id="LOCAL-00003" summary="css teil1">
       <created>1682870749801</created>
@@ -447,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685012832044</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Names refactored">
+      <created>1685041306784</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1685041306784</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CSS update" />
     <MESSAGE value="JS Impl. : add new location function" />
     <MESSAGE value="CSS Update" />
     <MESSAGE value="JS Update" />
@@ -502,6 +502,7 @@
     <MESSAGE value="JS Impl. : get data from JSON file using httpRequest" />
     <MESSAGE value="JS Impl. : get users from JSON using httpRequest" />
     <MESSAGE value="JS Update: getUsersAsObj()" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS Update: getUsersAsObj()" />
+    <MESSAGE value="Names refactored" />
+    <option name="LAST_COMMIT_MESSAGE" value="Names refactored" />
   </component>
 </project>

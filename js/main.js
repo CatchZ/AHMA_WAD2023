@@ -3,6 +3,7 @@
 // Variables:
 let locationsList = []
 let map
+let mapMarkersList = []
 let sessionAsAdmin
 const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
 const geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
@@ -328,10 +329,7 @@ function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area", "header-options", "main-area"])
-    // Display the Locations:
-    generateLocationList()
-    // Display the Map
-    initMap()
+
 }
 
 function getUsersAsObj() {
@@ -425,6 +423,9 @@ function initMap() {
 
 function refreshLocationsMarkers() {
 
+    // clear old markers:
+    clearAllMarkers()
+
     // should be already called
     // getLocationsAsObj()
 
@@ -433,9 +434,12 @@ function refreshLocationsMarkers() {
 
     if (locationsList.length !== 0) {
         locationsList.forEach(location => {
+            console.log("set markers ..")
             // Marker Object:
             let marker = L.marker([location.latitude, location.longitude]);
             marker.addTo(map);
+            // add marker to the list:
+            mapMarkersList.push(marker)
             // Add Location info in popup window:
             marker.bindPopup(location.locationName);
             // Callback Function:
@@ -444,6 +448,13 @@ function refreshLocationsMarkers() {
             })
         })
     }
+}
+
+function clearAllMarkers() {
+    mapMarkersList.forEach( marker => {
+        map.removeLayer(marker)
+    })
+    mapMarkersList = []
 }
 
 /**
