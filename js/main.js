@@ -12,7 +12,7 @@ const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
 const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
-
+let UpdateButtonsList;
 // Events-Handlers:
 loginBtn.addEventListener("click", login)
 logoutBtn.addEventListener("click", logout)
@@ -297,7 +297,9 @@ async function generateUpdateTableBody(){
             row.appendChild(cell);
             }
           }
-        updateTable.appendChild(row)
+        //const UpdateButtons
+       // const 
+        //updateTable.appendChild(row)
         
     })
 }
