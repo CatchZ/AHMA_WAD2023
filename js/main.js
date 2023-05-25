@@ -233,7 +233,7 @@ function updateFormSafe(oldData, inputElements) {
     let postCode = inputElements.updPostcode.value
     let co2InT = inputElements.updC02InT.value
     let description = inputElements.updDescription.value
-    let photos = inputElements.updFile.value = ""
+    let photos = inputElements.updFile.value
    
     getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
         // if we got a geocoding:
