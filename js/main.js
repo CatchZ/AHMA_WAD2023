@@ -1,5 +1,7 @@
 'use strict';
 
+let map;
+
 // Events-Targets:
 const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
@@ -156,18 +158,20 @@ function loginAsAdmin(){
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
-    //displayAddresses()
-    generateUpdateTableBody()
-    mapInit()
+    // Display the Map:
+    initMap()
+    // Display the Locations:
+    generateLocationList()
 }
 
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area","header-options","main-area"])
-    //displayAddresses()
-    generateUpdateTableBody()
-    mapInit()
+    // Display the Map
+    initMap()
+    // Display the Locations:
+    generateLocationList()
 }
 
 function getUsersAsObj() {
@@ -225,7 +229,7 @@ function getLocationsAsObj() {
     return locations
 }
 
-function mapInit() {
+function initMap() {
 
     const mapInitOptions = {
         position: [52.520008, 13.404954],
@@ -233,14 +237,29 @@ function mapInit() {
     }
 
     // Map Obj:
-    const map = L.map('map-container');
+    map = L.map('map-container');
     map.setView(mapInitOptions.position, mapInitOptions.zoom);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    // Markers:
+    refreshLocatiosMarkers()
 }
+
+function refreshLocatiosMarkers() {
+
+    getLocationsAsObj().forEach( location => {
+        // Marker Object:
+        var marker = L.marker([location.latitude,location.longitude]);
+        marker.addTo(map);
+        // Add Location info in popup window:
+        marker.bindPopup(location.locationName);
+    })
+}
+
 /**
  * toggles UpdateTable Container
  */

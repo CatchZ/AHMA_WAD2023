@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS: Map Impl. Update">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS: Ids changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
@@ -28,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="JS_Branch_1" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "JS-Update2-Ahmed",
     "last_opened_file_path": "C:/Users/alwai/WebstormProjects/testMap",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,7 +95,7 @@
       <workItem from="1684419448777" duration="764000" />
       <workItem from="1684420231578" duration="145000" />
       <workItem from="1684420390665" duration="115000" />
-      <workItem from="1684420527364" duration="8975000" />
+      <workItem from="1684420527364" duration="11344000" />
     </task>
     <task id="LOCAL-00001" summary="First Update">
       <created>1682708946444</created>
@@ -349,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684428720902</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="JS: Ids changed">
+      <created>1684433265269</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1684433265269</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +386,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update Inputs" />
     <MESSAGE value="main page css" />
     <MESSAGE value="main page editing" />
     <MESSAGE value="icons changed" />
@@ -404,6 +410,7 @@
     <MESSAGE value="HTML Update" />
     <MESSAGE value="JS and HTML: Map added" />
     <MESSAGE value="JS: Map Impl. Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS: Map Impl. Update" />
+    <MESSAGE value="JS: Ids changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS: Ids changed" />
   </component>
 </project>
