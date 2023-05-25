@@ -21,7 +21,7 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
-let updateButtonList=[];
+let updateButtonList = [];
 
 // Events-Handlers:
 loginForm.addEventListener("submit", login)
@@ -39,20 +39,20 @@ function login(loginEvent) {
     loginEvent.preventDefault()
 
     // Iteration the users-list:
-    for(const user of getUsersAsObj()) {
-        if (usernameInput.value===user.userName) {
-            if(passwordInput.value===user.password) {
+    for (const user of getUsersAsObj()) {
+        if (usernameInput.value === user.userName) {
+            if (passwordInput.value === user.password) {
                 // Reset the inputs values:
                 document.getElementById("login-form").reset()
                 // set welcome message:
                 document.getElementById("welcome-user").textContent = user.userName
                 // prepare the display for user:
                 switch (user.admin) {
-                    case true : {
+                    case true: {
                         loginAsAdmin();
                         return;
                     }
-                    case false : {
+                    case false: {
                         loginAsUser();
                         return;
                     }
@@ -64,19 +64,19 @@ function login(loginEvent) {
         }
     }
     // if there is no match to the username:
-    alert(usernameInput.value +" is not registered !")
+    alert(usernameInput.value + " is not registered !")
 }
 
 function logout() {
 
     // ask to confirm the logout:
     let logoutConfirm = confirm("Do you wont to logout ?")
-    if(logoutConfirm) {
+    if (logoutConfirm) {
 
-        displayToggle(["main-area","login-area","header-options"])
+        displayToggle(["main-area", "login-area", "header-options"])
 
         // clear admin controls:
-        if(sessionAsAdmin) {
+        if (sessionAsAdmin) {
             sessionAsAdmin = false
             console.log("Session as admin: " + sessionAsAdmin)
             displayToggle(["locations-options-btns"])
@@ -90,7 +90,7 @@ function logout() {
 }
 
 function switchToAddLocation() {
-    displayToggle(["main-area","header-options","add-location-page"])
+    displayToggle(["main-area", "header-options", "add-location-page"])
 }
 
 function backToHomePage() {
@@ -99,7 +99,7 @@ function backToHomePage() {
     document.getElementById("add-message").textContent = ""
 
     // back to homepage:
-    displayToggle(["add-location-page","main-area","header-options"])
+    displayToggle(["add-location-page", "main-area", "header-options"])
 }
 
 function addLocation(addEvent) {
@@ -120,9 +120,9 @@ function addLocation(addEvent) {
     let photos = document.getElementById("new-location-img").value
 
     // get geocoding:
-    getGeocoding(streetName, streetNr , "Berlin", postCode, function (response) {
+    getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
         // if we got a geocoding:
-        if(response != null) {
+        if (response != null) {
 
             // Get inputs values:
             let newLocationToAdd = {
@@ -137,35 +137,10 @@ function addLocation(addEvent) {
                 "longitude": response.results[0].geometry.location.lng,
                 "photo": photos
             }
-
             // save the new location in list variable:
             locationsList.push(newLocationToAdd)
 
-            // update JSON file:
-            let updateResult = updateJsonFileLocations()
-
-            if (updateResult) {
-                // show success message:
-                let img = new Image()
-                img.src = "./img/ok-icon.png"
-                addMessageDisplayText.appendChild(img)
-                addMessageDisplayText.append(" has been added successfully ")
-
-                // reset form inputs values:
-                document.getElementById("add-form").reset()
-
-                // update locations list:
-                generateLocationList()
-
-                // update map:
-                refreshLocationsMarkers()
-            } else {
-                // show failed message:
-                let img = new Image()
-                img.src = "./img/failed-icon.png"
-                addMessageDisplayText.appendChild(img)
-                addMessageDisplayText.append(" add failed, try again")
-            }
+            formCheckandCleanup()// code from before moved to this method to be reusable 
 
         } else {
             // show failed message:
@@ -177,8 +152,41 @@ function addLocation(addEvent) {
     })
 }
 
+function formCheckandCleanup() {
+
+
+    // update JSON file:
+    let updateResult = updateJsonFileLocations()
+
+    if (updateResult) {
+        // show success message:
+        let img = new Image()
+        img.src = "./img/ok-icon.png"
+        addMessageDisplayText.appendChild(img)
+        addMessageDisplayText.append(" has been added successfully ")
+
+        // reset form inputs values:
+        document.getElementById("add-form").reset()
+
+        // update locations list:
+        generateLocationList()
+
+        // update map:
+        refreshLocationsMarkers()
+    } else {
+        // show failed message:
+        let img = new Image()
+        img.src = "./img/failed-icon.png"
+        addMessageDisplayText.appendChild(img)
+        addMessageDisplayText.append(" add failed, try again")
+    }
+
+}
+
+
+
 function updateLocation(key) {
-    console.log("uclicked:"+key.locationName)
+    console.log("uclicked:" + key.locationName)
     generateUpdateForm(key)
 }
 
@@ -194,32 +202,82 @@ function generateUpdateForm(elem) {
         'updLongitude',
         'updFile'];
 
-const inputElements = {};
+    const inputElements = {};
 
-inputIds.forEach(function(id) {
-  inputElements[id] = document.getElementById(id);
-});
+    inputIds.forEach(function (id) {
+        inputElements[id] = document.getElementById(id);
+    });
 
-console.log(elem);
-elem.locationName;
-console.log(inputElements);
-inputElements.updLocationName.value=elem.locationName
-inputElements.updStreetNum.value=elem.streetNumber
-inputElements.updStreetName.value=elem.streetName
-inputElements.updPostcode.value=elem.postcode
-inputElements.updC02InT.value=elem.c02InTons
-inputElements.updDescription.value=elem.description
-inputElements.updLatitude.value=elem.latitude
-inputElements.updLongitude.value=elem.longitude
-inputElements.updFile.value=elem.photo
 
+    elem.locationName;
+
+    inputElements.updLocationName.value = elem.locationName
+    inputElements.updStreetNum.value = elem.streetNumber
+    inputElements.updStreetName.value = elem.streetName
+    inputElements.updPostcode.value = elem.postcode
+    inputElements.updC02InT.value = elem.c02InTons
+    inputElements.updDescription.value = elem.description
+    inputElements.updLatitude.value = elem.latitude
+    inputElements.updLongitude.value = elem.longitude
+    inputElements.updFile.value = elem.photo
+
+    const safebtn = document.getElementById("save-location-update-btn")
+    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements) })
+}
+
+function updateFormSafe(oldData, inputElements) {
+    console.log("clicked")
+    let locationName = inputElements.updLocationName.value
+    let streetName = inputElements.updStreetName.value
+    let streetNr = inputElements.updStreetNum.value
+    let postCode = inputElements.updPostcode.value
+    let co2InT = inputElements.updC02InT.value
+    let description = inputElements.updDescription.value
+    let photos = inputElements.updFile.value = ""
+   
+    getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
+        // if we got a geocoding:
+        if (response != null) {
+
+            // Get inputs values:
+            let newLocationToAdd = {
+                "locationName": locationName,
+                "streetName": streetName,
+                "streetNumber": streetNr,
+                "postcode": postCode,
+                "c02InTons": co2InT,
+                "description": description,
+                // get lat and lang from the object:
+                "latitude": response.results[0].geometry.location.lat,
+                "longitude": response.results[0].geometry.location.lng,
+                "photo": photos
+            }
+            // save the new location in list variable:
+            const index = locationsList.findIndex(e =>e.locationName==oldData.locationName);
+            console.log("index"+index);
+            locationsList[index]= newLocationToAdd;
+            console.log(locationsList);
+
+            formCheckandCleanup()
+            
+
+        } else {
+            // show failed message:
+            let img = new Image()
+            img.src = "./img/failed-icon.png"
+            addMessageDisplayText.appendChild(img)
+            addMessageDisplayText.append(" The address could not be resolved, try again")
+        }
+    })
+    
+    refreshLocationsMarkers()
 }
 
 function deleteLocation(key) {
     console.log("dclicked:" + key.locationName)
     let logoutConfirm = confirm("Do you really want to remove " + key.locationName)
     if (logoutConfirm) {
-        const index = locationsList.findIndex(elem => key.locationName = elem.locationName)
+        const index = locationsList.findIndex(elem => key.locationName == elem.locationName)
         locationsList.splice(index, 1)
         document.getElementById(key.locationName).remove()
     }
@@ -240,10 +298,10 @@ function displayToggle(elementIds) {
 }
 
 
-function loginAsAdmin(){
+function loginAsAdmin() {
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
+    displayToggle(["login-area", "header-options", "main-area", "locations-options-btns"])
     // Display the Locations:
     generateLocationList()
     // Display the Map:
@@ -256,7 +314,7 @@ function loginAsAdmin(){
 function loginAsUser() {
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-area"])
+    displayToggle(["login-area", "header-options", "main-area"])
     // Display the Locations:
     generateLocationList()
     // Display the Map
@@ -270,7 +328,7 @@ function getUsersAsObj() {
 
     request.open("GET", "./json/user.json", false)  // false because we need the data bevor we check
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
         if (request.readyState === 4 && request.status === 200) {
             let data = JSON.parse(request.responseText);
@@ -279,15 +337,15 @@ function getUsersAsObj() {
             usersList = data;
         } else {
             console.log("error on loading jason file")
-            console.log("request Status: "+ request.status)
-            console.log("requestReady status: "+ request.readyState)
+            console.log("request Status: " + request.status)
+            console.log("requestReady status: " + request.readyState)
         }
     };
 
     request.send();
 
     // return data as JS-Object:
-    return  usersList
+    return usersList
 }
 
 function getLocationsAsObj() {
@@ -296,7 +354,7 @@ function getLocationsAsObj() {
     let request = new XMLHttpRequest();
     request.open("GET", "./json/location.json", false);
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
         if (request.readyState === 4 && request.status === 200) {
             let data = JSON.parse(request.responseText);
@@ -305,8 +363,8 @@ function getLocationsAsObj() {
             locationsList = data;
         } else {
             console.log("error on loading jason file")
-            console.log("request Status: "+ request.status)
-            console.log("requestReady status: "+ request.readyState)
+            console.log("request Status: " + request.status)
+            console.log("requestReady status: " + request.readyState)
         }
     };
 
@@ -358,7 +416,7 @@ function refreshLocationsMarkers() {
     if (locationsList.length !== 0) {
         locationsList.forEach(location => {
             // Marker Object:
-            let marker = L.marker([location.latitude,location.longitude]);
+            let marker = L.marker([location.latitude, location.longitude]);
             marker.addTo(map);
             // Add Location info in popup window:
             marker.bindPopup(location.locationName);
@@ -373,11 +431,11 @@ function refreshLocationsMarkers() {
 /**
  * toggles UpdateTable Container
  */
- function toggleUpdateTable(){
+function toggleUpdateTable() {
 
     displayToggle(["update-container"])
 
- }
+}
 
 
 
@@ -385,17 +443,17 @@ function refreshLocationsMarkers() {
  * takes the locations const and generates the table body for the 
  * "overview-table"
  */
-function generateUpdateTableBody(){
+function generateUpdateTableBody() {
     const updateTable = document.getElementById("updateTable");
     getLocationsAsObj()
-   locationsList.forEach(async location => {
-  
-       await updateTable.appendChild(generateUpdateTableBodyRow(location));
-        const delBtn = document.getElementById("del"+location.locationName)
-        const updBtn = document.getElementById("upd"+location.locationName)
-        updBtn.addEventListener("click",function(){updateLocation(location)})
-        delBtn.addEventListener("click",function(){deleteLocation(location)})
-        
+    locationsList.forEach(async location => {
+
+        await updateTable.appendChild(generateUpdateTableBodyRow(location));
+        const delBtn = document.getElementById("del" + location.locationName)
+        const updBtn = document.getElementById("upd" + location.locationName)
+        updBtn.addEventListener("click", function () { updateLocation(location) })
+        delBtn.addEventListener("click", function () { deleteLocation(location) })
+
     })
 }
 /**
@@ -440,7 +498,7 @@ const locationList = document.getElementById("locations-list");
  * generates listelementes and appends them to the locationList const
  * using the Name field as inner Text
  */
-function generateLocationList(){
+function generateLocationList() {
 
     // clear the list if there are elements:
     while (locationList.lastElementChild) {
@@ -457,13 +515,13 @@ function generateLocationList(){
         locationsList.forEach(location => {
 
             const row = document.createElement("li");
-            row.setAttribute("class","locations-list-element");
+            row.setAttribute("class", "locations-list-element");
 
             row.addEventListener("click", () => {
                 // show the info of the location:
                 setLocationInfoContainer(location);
                 // pan the map to the location:
-                map.flyTo([location.latitude,location.longitude],15)
+                map.flyTo([location.latitude, location.longitude], 15)
             })
 
             //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
@@ -482,7 +540,7 @@ function generateLocationList(){
         setLocationInfoContainer(locationsList[0])
     } else {
         const row = document.createElement("li");
-        row.setAttribute("class","locations-list-element");
+        row.setAttribute("class", "locations-list-element");
         row.append("No locations right now ..")
         locationList.appendChild(row)
     }
@@ -552,7 +610,7 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
     xhr.open('GET', geocodingUrl + encodeURIComponent(address) + '&key=' + googleAPIKey, true);
 
     // Callback-Function:
-    xhr.onload = function() {
+    xhr.onload = function () {
 
         console.log("trying to get the geocoding of: " + address)
 
@@ -584,7 +642,7 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
 /**
  * Wrapps all onload Functions 
  */
-function onloadWrapper(){
+function onloadWrapper() {
     //generateLocationList()
     generateUpdateTableBody()
 }
