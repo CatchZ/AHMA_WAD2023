@@ -284,9 +284,7 @@ function updateFormSafe(oldData, inputElements) {
             addMessageDisplayText.append(" The address could not be resolved, try again")
         }
     })
-    generateLocationList()
-    refreshLocationsMarkers()
-    
+   
 }
 
 function deleteLocation(key) {
@@ -298,6 +296,7 @@ function deleteLocation(key) {
         document.getElementById(key.locationName).remove()
         generateLocationList()
         refreshLocationsMarkers()
+        generateUpdateTableBody()
     }
 }
 
@@ -452,7 +451,9 @@ function refreshLocationsMarkers() {
  */
 function toggleUpdateTable() {
 
+    generateUpdateTableBody()
     displayToggle(["update-container"])
+    
 
 }
 
@@ -464,10 +465,14 @@ function toggleUpdateTable() {
  */
 function generateUpdateTableBody() {
     const updateTable = document.getElementById("updateTable");
-    getLocationsAsObj()
-    locationsList.forEach(async location => {
 
-        await updateTable.appendChild(generateUpdateTableBodyRow(location));
+     while (updateTable.lastElementChild) {
+        updateTable.removeChild(updateTable.lastElementChild);
+    }
+    
+    locationsList.forEach( location => {
+
+        updateTable.appendChild(generateUpdateTableBodyRow(location));
         const delBtn = document.getElementById("del" + location.locationName)
         const updBtn = document.getElementById("upd" + location.locationName)
         updBtn.addEventListener("click", function () { updateLocation(location) })
@@ -481,6 +486,7 @@ function generateUpdateTableBody() {
  * @returns tabellen reihe
  */
 function generateUpdateTableBodyRow(location) {
+
     const row = document.createElement("tr")
     row.setAttribute("id", location.locationName)
     for (const key in location) {
@@ -663,5 +669,5 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
  */
 function onloadWrapper() {
     //generateLocationList()
-    generateUpdateTableBody()
+   
 }
