@@ -35,9 +35,11 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
-// TODO:
+
+// TODO: switch to page
 //backToHomepageBtnFromUpdatePage.addEventListener("click", )
 //backToUpdateList.addEventListener("click", )
+//cancelLocationUpdateBtn.addEventListener("click", )
 
 // Events-Handling Functions:
 function login(loginEvent) {

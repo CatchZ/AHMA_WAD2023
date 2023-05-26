@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Update: change button to icon &amp; add Table-Update Head">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Add Back Btns &amp; show message on update">
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/location.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/location.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,13 +103,6 @@
       <workItem from="1684694568940" duration="3141000" />
       <workItem from="1684771464439" duration="14007000" />
       <workItem from="1685010867313" duration="8125000" />
-    </task>
-    <task id="LOCAL-00005" summary="Login css edit">
-      <created>1682873414607</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1682873414607</updated>
     </task>
     <task id="LOCAL-00006" summary="Update Inputs">
       <created>1682875704198</created>
@@ -451,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685060734813</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Add Back Btns &amp; show message on update">
+      <created>1685063041555</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1685063041555</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS Update" />
     <MESSAGE value="JS Mainpage update, Map API Impl." />
     <MESSAGE value="JS update" />
     <MESSAGE value="Merge Fix" />
@@ -506,6 +501,7 @@
     <MESSAGE value="Names refactored" />
     <MESSAGE value="JS Update: clear old markers und reset" />
     <MESSAGE value="JS Update: change button to icon &amp; add Table-Update Head" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS Update: change button to icon &amp; add Table-Update Head" />
+    <MESSAGE value="Add Back Btns &amp; show message on update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Back Btns &amp; show message on update" />
   </component>
 </project>
