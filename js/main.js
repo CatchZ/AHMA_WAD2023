@@ -14,6 +14,8 @@ const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
 const addLocationBtn = document.getElementById("add-location-btn")
 const backToHomepageBtn = document.getElementById("homepage-btn")
+const backToHomepageBtnFromUpdatePage = document.getElementById("homepage-btn-update-page")
+const backToUpdateList = document.getElementById("back-to-update-list")
 const addForm = document.getElementById("add-form")
 const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
@@ -22,6 +24,7 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
+const updateMessageDisplayText = document.getElementById("update-message");
 let updateButtonList = [];
 
 // Events-Handlers:
@@ -32,6 +35,9 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
+// TODO:
+//backToHomepageBtnFromUpdatePage.addEventListener("click", )
+//backToUpdateList.addEventListener("click", )
 
 // Events-Handling Functions:
 function login(loginEvent) {
@@ -103,7 +109,12 @@ function logout() {
 }
 
 function switchToAddLocation() {
+
+    // clear message text:
+    addMessageDisplayText.textContent = ""
+
     displayToggle(["main-area", "header-options", "add-location-page"])
+
 }
 
 function backToHomePage() {
@@ -207,6 +218,10 @@ function updateLocation(key) {
 }
 
 function generateUpdateForm(elem) {
+
+    // clear message text:
+    updateMessageDisplayText.textContent = ""
+
     const inputIds = [
         'updLocationName',
         'updStreetNum',
@@ -238,10 +253,17 @@ function generateUpdateForm(elem) {
     inputElements.updFile.value = elem.photo
 
     const saveBtn = document.getElementById("save-location-update-btn")
-    saveBtn.addEventListener("click", function () { updateFormSafe(elem, inputElements) })
+    saveBtn.addEventListener("click", function () {
+
+        updateFormSafe(elem, inputElements)
+    })
 }
 
 function updateFormSafe(oldData, inputElements) {
+
+    // clear message text:
+    updateMessageDisplayText.textContent = ""
+
     console.log("clicked")
     let locationName = inputElements.updLocationName.value
     let streetName = inputElements.updStreetName.value
@@ -274,6 +296,12 @@ function updateFormSafe(oldData, inputElements) {
             locationsList[index]= newLocationToAdd;
             console.log(locationsList);
 
+            // show success message:
+            let img = new Image()
+            img.src = "./img/ok-icon.png"
+            updateMessageDisplayText.appendChild(img)
+            updateMessageDisplayText.append(" Address has been changed successfully")
+
             formCheckandCleanup()
             generateUpdateTableBody()
 
@@ -281,8 +309,8 @@ function updateFormSafe(oldData, inputElements) {
             // show failed message:
             let img = new Image()
             img.src = "./img/failed-icon.png"
-            addMessageDisplayText.appendChild(img)
-            addMessageDisplayText.append(" The address could not be resolved, try again")
+            updateMessageDisplayText.appendChild(img)
+            updateMessageDisplayText.append(" The address could not be resolved, try again")
         }
     })
    

@@ -88,7 +88,7 @@
     </div> <!-- End Main-Page Area -->
 
     <div id="add-location-page" class="add-screen-container none-display"> <!-- Add Area -->
-        <button id="homepage-btn" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage">Home</button>
+        <button id="homepage-btn" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>home</p></button>
         <div class="add-screen-contant-container">
             <h2>ADD NEW LOCATION</h2>
             <p id="add-message" class="add-message"></p>
@@ -125,34 +125,18 @@
 
     <div class="update-container none-display" id="update-container"> <!-- Update Area -->
         <!-- Overview Area-->
+        <button id="homepage-btn-update-page" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>home</p></button>
         <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
             <table class="overview-table" id="updateTable">
-                <tr>
-                    <th>Locationname</th>
-                    <th>Streetname</th>
-                    <th>Street Nr.</th>
-                    <th>Postcode</th>
-                    <th>CO2 in T</th>
-                    <th>Description</th>
-                </tr>
-                <tr  >
-                    <td>HME Brass Germany GmbH</td>
-                    <td>Schwanebecker Chaussee</td>
-                    <td>17</td>
-                    <td>13125</td>
-                    <td>38.384</td>
-                    <td>HKW Buch</td>
-                    <td>
-                        <img src="img/edit-icon.png">
-                        <img src="img/delete-icon-red.png">
-                    </td>
-                </tr>
+
             </table>
             </div> <!-- End Overview Area-->
 
         <div class="update-screen-contant-conatainer"> <!--Update Formular-->
+            <button id="back-to-update-list" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>update list</p></button>
             <h2>Update Location info </h2>
+            <p id="update-message" class="add-message"></p>
             <form class="update-form" action="">
             <div class="update-form-label-container">
                 <label>Location Name</label>
@@ -179,16 +163,9 @@
             </form>
             <button id="save-location-update-btn" class="form-button" type="submit" class="update-submit-btn">submit</button>
             <button id="cancel-location-update-btn" class="form-button" type="submit" class="update-submit-btn">cancel</button>
-        </div><!---Update Formulart Ende-->
-        <!--<div class = "delete-form-container">
-            <form class="delete-form" action="/action_page.php">
-                <label>Location Name</label>
-                <input type="text" >
-                <input type="submit" value="Submit">
-            </form>
-        </div>-->
-    </div>
-     <!-- End Update Area -->
+        </div> <!---Update Formular Ende-->
+    </div> <!-- End Update Area -->
+
     <footer class="footer-container"> <!-- start Footer Area -->
         <div class="footer-content-container">
             <div class="footer-impressum-container">

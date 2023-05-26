@@ -1,7 +1,7 @@
 :root {
-    --heading: 2.5rem;
-    --body-text: 1.4rem;
-    --nav-text: 1.3rem;
+    --heading: 2.3rem;
+    --body-text: 1.3rem;
+    --nav-text: 1.1rem;
     --bg-color: #ecedef;
     --red-color: #d63939;
     --gray-color: #898989;
@@ -303,6 +303,11 @@ Footer
 
  */
 .home-page-btn {
+    /*
+    display: block;
+    justify-content: left;
+    text-align: left;
+     */
     margin-top: 20px;
     padding: 12px 0;
     font-size: var(--heading);
@@ -312,6 +317,16 @@ Footer
     transition: all .5s ease ;
     background: var(--bg-color);
     font-weight: 200;
+    vertical-align: middle;
+}
+
+.home-page-btn p {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.home-page-btn img {
+    vertical-align: middle;
 }
 
 .home-page-btn:hover {
@@ -387,10 +402,12 @@ th {
 
 .update-screen-contant-conatainer,
 .add-screen-contant-container{
-    align-content: center;
     width: 100%;
-    text-align: center;
     height: inherit;
+}
+
+.add-screen-contant-container h2 {
+    text-align: center;
 }
 .update-form{
     display: block;
@@ -444,11 +461,14 @@ th {
 .update-container {
     padding: 5% 0;
     width: 80%;
-    text-align: center;
 }
 
+.update-container h2 {
+    text-align: center;
+}
 .location-overview-container{
     padding-bottom: 10%;
+    text-align: center;
 }
 
 .add-form-container {
