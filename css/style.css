@@ -409,6 +409,15 @@ th {
     vertical-align: middle;
 }
 
+.update-table-btn {
+    margin: 0 5px;
+    padding: 0;
+}
+
+.update-table-btn:hover {
+    cursor: pointer;
+}
+
 .update-btn {
     padding: 5px 0;
     width: 45%;

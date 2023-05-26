@@ -480,9 +480,34 @@ function generateUpdateTableBody() {
      while (updateTable.lastElementChild) {
         updateTable.removeChild(updateTable.lastElementChild);
     }
-    
-    locationsList.forEach( location => {
 
+    // Table head:
+    const tableHead = document.createElement("tr")
+    const locationNameTitle = document.createElement("th")
+    const streetNameTitle = document.createElement("th")
+    const streetNrTitle = document.createElement("th")
+    const postcodeTitle = document.createElement("th")
+    const co2Title = document.createElement("th")
+    const descriptionTitle = document.createElement("th")
+
+    locationNameTitle.textContent = "Location"
+    streetNrTitle.textContent = "Str. Nr."
+    streetNameTitle.textContent = "Str. Name"
+    postcodeTitle.textContent = "Postcode"
+    co2Title.textContent = "CO2 in T"
+    descriptionTitle.textContent = "Description"
+
+    tableHead.appendChild(locationNameTitle)
+    tableHead.appendChild(streetNameTitle)
+    tableHead.appendChild(streetNrTitle)
+    tableHead.appendChild(postcodeTitle)
+    tableHead.appendChild(co2Title)
+    tableHead.appendChild(descriptionTitle)
+
+    updateTable.appendChild(tableHead)
+
+    // Table rows:
+    locationsList.forEach( location => {
         updateTable.appendChild(generateUpdateTableBodyRow(location));
         const delBtn = document.getElementById("del" + location.locationName)
         const updBtn = document.getElementById("upd" + location.locationName)
@@ -507,20 +532,35 @@ function generateUpdateTableBodyRow(location) {
             row.appendChild(cell);
         }
     }
-    const updateButton = document.createElement("button")
-    const deleteButton = document.createElement("button")
+    let updateButton = new Image()
+    updateButton.src = "./img/edit-icon.png"
+
+    let deleteButton = new Image()
+    deleteButton.src = "./img/delete-icon-red.png"
+
+    //const updateButton = document.createElement("button")
+    //const deleteButton = document.createElement("button")
     const cell = document.createElement("td");
-    updateButton.setAttribute("class", "update-btn")
-    updateButton.setAttribute("id", "upd" + location.locationName)
-    updateButton.textContent = "Update"
-    deleteButton.setAttribute("class", "update-btn")
-    deleteButton.setAttribute("id", "del" + location.locationName)
-    deleteButton.textContent = "Delete"
+
+    //updateButton.setAttribute("class", "update-btn")
+    //updateButton.setAttribute("id", "upd" + location.locationName)
+    updateButton.id = "upd" + location.locationName
+    updateButton.classList.add("update-table-btn")
+    //updateButton.textContent = "Update"
+
+    //deleteButton.setAttribute("class", "update-btn")
+    //deleteButton.setAttribute("id", "del" + location.locationName)
+    deleteButton.id = "del" + location.locationName
+    deleteButton.classList.add("update-table-btn")
+    //deleteButton.textContent = "Delete"
+
     updateButtonList.push(updateButton)
     updateButtonList.push(deleteButton)
+
     cell.appendChild(updateButton)
     cell.appendChild(deleteButton)
     row.appendChild(cell)
+
     return row
 }
 
