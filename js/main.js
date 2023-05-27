@@ -29,7 +29,7 @@ logoutBtn.addEventListener("click", logout)
 addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
-addForm.addEventListener("submit", addLocation)
+addForm.addEventListener("submit", switchToAddLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
 
 // Events-Handling Functions:
@@ -114,7 +114,7 @@ function backToHomePage() {
     displayToggle(["add-location-page", "main-area", "header-options"])
 }
 
-function addLocation(addEvent) {
+function caddLocation(addEvent) {
 
     // deactivate default submit:
     addEvent.preventDefault()
@@ -514,7 +514,7 @@ function generateUpdateTableBodyRow(location) {
 }
 
 
-const locationList = document.getElementById("locations-list");
+
 
 // -- damit wird die Methode an mehreren Stellen nutzen können, hab sie erweitert
 // -- sodass wir sie zum refresh der Daten nutzen (löschen und neu eintragen)
@@ -524,7 +524,7 @@ const locationList = document.getElementById("locations-list");
  * using the Name field as inner Text
  */
 function generateLocationList() {
-
+    const locationList = document.getElementById("locations-list");
     // clear the list if there are elements:
     while (locationList.lastElementChild) {
         locationList.removeChild(locationList.lastElementChild);
