@@ -21,7 +21,8 @@ const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
-let updateButtonList = [];
+
+//let updateButtonList = [];
 
 // Events-Handlers:
 loginForm.addEventListener("submit", login)
@@ -31,6 +32,7 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", switchToAddLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
+cancelLocationUpdateBtn.addEventListener("click",function (){displayToggle(["update-container","main-area"])})
 
 // Events-Handling Functions:
 function login(loginEvent) {
@@ -237,7 +239,8 @@ function generateUpdateForm(elem) {
     inputElements.updFile.value = elem.photo
 
     const safebtn = document.getElementById("save-location-update-btn")
-    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements) })
+    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements),displayToggle(["update-container","main-area"]) })
+
 }
 
 function updateFormSafe(oldData, inputElements) {
@@ -452,7 +455,7 @@ function refreshLocationsMarkers() {
 function toggleUpdateTable() {
 
     generateUpdateTableBody()
-    displayToggle(["update-container"])
+    displayToggle(["update-container","main-area","update-form"])
     
 
 }
@@ -475,7 +478,7 @@ function generateUpdateTableBody() {
         updateTable.appendChild(generateUpdateTableBodyRow(location));
         const delBtn = document.getElementById("del" + location.locationName)
         const updBtn = document.getElementById("upd" + location.locationName)
-        updBtn.addEventListener("click", function () { updateLocation(location) })
+        updBtn.addEventListener("click", function () { updateLocation(location),displayToggle(["update-form"]) })
         delBtn.addEventListener("click", function () { deleteLocation(location) })
 
     })
@@ -505,8 +508,8 @@ function generateUpdateTableBodyRow(location) {
     deleteButton.setAttribute("class", "update-btn")
     deleteButton.setAttribute("id", "del" + location.locationName)
     deleteButton.textContent = "Delete"
-    updateButtonList.push(updateButton)
-    updateButtonList.push(deleteButton)
+    //updateButtonList.push(updateButton)
+    //updateButtonList.push(deleteButton)
     cell.appendChild(updateButton)
     cell.appendChild(deleteButton)
     row.appendChild(cell)
