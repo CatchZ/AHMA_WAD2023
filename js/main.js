@@ -2,6 +2,7 @@
 
 // Variables:
 let locationsList = []
+let markersList = []
 let map
 let sessionAsAdmin
 const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
@@ -427,6 +428,7 @@ function initMap() {
 }
 
 function refreshLocationsMarkers() {
+    removeAllMarkers()
 
     // should be already called
     // getLocationsAsObj()
@@ -439,6 +441,7 @@ function refreshLocationsMarkers() {
             // Marker Object:
             let marker = L.marker([location.latitude, location.longitude]);
             marker.addTo(map);
+            markersList.push(marker);
             // Add Location info in popup window:
             marker.bindPopup(location.locationName);
             // Callback Function:
@@ -447,7 +450,15 @@ function refreshLocationsMarkers() {
             })
         })
     }
+
+    function removeAllMarkers() {
+        markersList.forEach(marker => {
+          map.removeLayer(marker);
+        })
+      }
 }
+
+
 
 /**
  * toggles UpdateTable Container
