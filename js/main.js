@@ -31,7 +31,7 @@ logoutBtn.addEventListener("click", logout)
 addLocationBtn.addEventListener("click", switchToAddLocation)
 backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
-addForm.addEventListener("submit", switchToAddLocation)
+addForm.addEventListener("submit",addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
 cancelLocationUpdateBtn.addEventListener("click",function (){displayToggle(["update-container","main-area"])})
 
@@ -117,7 +117,7 @@ function backToHomePage() {
     displayToggle(["add-location-page", "main-area", "header-options"])
 }
 
-function caddLocation(addEvent) {
+function addLocation(addEvent) {
 
     // deactivate default submit:
     addEvent.preventDefault()
