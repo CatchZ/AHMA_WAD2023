@@ -35,11 +35,7 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
-
-// TODO: switch to page
-//backToHomepageBtnFromUpdatePage.addEventListener()
-//backToUpdateList.addEventListener()
-//cancelLocationUpdateBtn.addEventListener()
+cancelLocationUpdateBtn.addEventListener("click",function (){displayToggle(["update-container","main-area"])})
 
 // Events-Handling Functions:
 function login(loginEvent) {
@@ -87,7 +83,9 @@ function login(loginEvent) {
     // if there is no match to the username:
     alert(usernameInput.value + " is not registered !")
 }
-
+/**
+ * log out current user 
+ */
 function logout() {
 
     // ask to confirm the logout:
@@ -109,7 +107,9 @@ function logout() {
         }
     }
 }
-
+/**
+ * toggles add Location Elements
+ */
 function switchToAddLocation() {
 
     // clear message text:
@@ -118,7 +118,10 @@ function switchToAddLocation() {
     displayToggle(["main-area", "header-options", "add-location-page"])
 
 }
-
+/**
+ * reset for add form and addform message 
+ * enables main page elements
+ */
 function backToHomePage() {
     // reset all form inputs:
     document.getElementById("add-form").reset()
@@ -127,7 +130,11 @@ function backToHomePage() {
     // back to homepage:
     displayToggle(["add-location-page", "main-area", "header-options"])
 }
-
+/**
+ * reads the add Form  gets geocode for given address 
+ * useses input if geocode service not available 
+ * @param {*} addEvent 
+ */
 function addLocation(addEvent) {
 
     // deactivate default submit:
@@ -181,6 +188,12 @@ function addLocation(addEvent) {
     })
 }
 
+/**
+ * helperfunction for add Location 
+ * updates Json file 
+ * generates locationlist 
+ * update map 
+ */
 function formCheckandCleanup() {
 
 
@@ -213,13 +226,21 @@ function formCheckandCleanup() {
 }
 
 
-
+/**
+ * wrapper for generateUpdateform 
+ * creates update form for given element updateFormSafe at the end
+ * @param {*} key name der Location die Manipuliert werden soll  
+ */
 function updateLocation(key) {
     console.log("uclicked:" + key.locationName)
     generateUpdateForm(key)
 }
-
+/**
+ * gets values for the update process calls 
+ * @param {*} elem element that shall be updatet 
+ */
 function generateUpdateForm(elem) {
+    // initialize conts for imput field 
 
     // clear message text:
     updateMessageDisplayText.textContent = ""
@@ -236,7 +257,7 @@ function generateUpdateForm(elem) {
         'updFile'];
 
     const inputElements = {};
-
+        // get inputfields 
     inputIds.forEach(function (id) {
         inputElements[id] = document.getElementById(id);
     });
@@ -254,13 +275,15 @@ function generateUpdateForm(elem) {
     inputElements.updLongitude.value = elem.longitude
     inputElements.updFile.value = elem.photo
 
-    const saveBtn = document.getElementById("save-location-update-btn")
-    saveBtn.addEventListener("click", function () {
+    const safebtn = document.getElementById("save-location-update-btn")
+    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements),displayToggle(["update-container","main-area"]) })
 
         updateFormSafe(elem, inputElements)
     })
 }
-
+/** 
+ * takes form inputs and updates datastruktur 
+*/
 function updateFormSafe(oldData, inputElements) {
 
     // clear message text:
@@ -317,7 +340,11 @@ function updateFormSafe(oldData, inputElements) {
     })
    
 }
-
+/**
+ * deltes given Element 
+ * resets scene 
+ * @param {*} key Element to delete  
+ */
 function deleteLocation(key) {
     console.log("dclicked:" + key.locationName)
     let deleteConfirm = confirm("Do you really want to remove " + key.locationName)
@@ -331,11 +358,11 @@ function deleteLocation(key) {
     }
 }
 
-function cancelPage() {
-    // TODO
-}
-
 // Sub-Functions:
+/**
+ * toggles if given elements are displayed or not
+ * @param {*} elementIds elements that should be toggled
+ */
 function displayToggle(elementIds) {
 
     // Iteration the elements as list:
@@ -345,7 +372,10 @@ function displayToggle(elementIds) {
     }
 }
 
-
+/**
+ * sets session var to true if called
+ * displays admin view
+ */
 function loginAsAdmin() {
 
     // Change Display:
@@ -354,14 +384,19 @@ function loginAsAdmin() {
     sessionAsAdmin = true
     console.log("session as admin login: " + sessionAsAdmin)
 }
-
+/**
+ * sets view for user
+ */
 function loginAsUser() {
 
     // Change Display:
     displayToggle(["login-area", "header-options", "main-area"])
 
 }
-
+/**
+ *
+ * @returns UserObject data
+ */
 function getUsersAsObj() {
 
     let request = new XMLHttpRequest();
@@ -388,8 +423,10 @@ function getUsersAsObj() {
     // return data as JS-Object:
     return usersList
 }
-
-async function getLocationsAsObj() {
+/**
+ * syncronize locationList with location Data
+ */
+function getLocationsAsObj() {
 
     // get Data from JSON:
     let request = new XMLHttpRequest();
@@ -411,7 +448,10 @@ async function getLocationsAsObj() {
 
     request.send();
 }
-
+/**
+ * updates Json file
+ * @returns
+ */
 function updateJsonFileLocations() {
     // get the variable list as JS-Object:
     // TODO
@@ -493,7 +533,7 @@ function clearAllMarkers() {
 function toggleUpdateTable() {
 
     generateUpdateTableBody()
-    displayToggle(["update-container"])
+    displayToggle(["update-container","main-area","update-form"])
     
 
 }
@@ -597,8 +637,6 @@ function generateUpdateTableBodyRow(location) {
 
 const locationList = document.getElementById("locations-list");
 
-// -- damit wird die Methode an mehreren Stellen nutzen können, hab sie erweitert
-// -- sodass wir sie zum refresh der Daten nutzen (löschen und neu eintragen)
 /**
  * takes the locations const and for each Element
  * generates listelementes and appends them to the locationList const
@@ -656,46 +694,9 @@ function generateLocationList() {
 const locationInfoContainer = document.getElementById("location-info-container")
 
 /**
- * changes the locationInputContainer to the clicked listelement
- * @param {*} locationName name of the location that shall be displayed
+ *  sets data displayed in the location Container
+ * @param {*} location location that should be displayed
  */
-/*
-function setLocationInputContainer(locationName){
-    // remove old content
-    while (locationInfoContainer.firstChild){
-        locationInfoContainer.removeChild(locationInfoContainer.firstChild)
-    }
-    // add new 
-    //add name
-    getLocationsAsObj().forEach(location => {
-        if (location.locationName === locationName) {
-            const name = document.createElement("h3")
-            name.innerText = location.locationName;
-            locationInfoContainer.appendChild(name);
-            // inner spanns
-           const details = document.createElement("p")
-            for(const key in location) {
-                if (key !== "locationName" && key !== "description") {
-                    const span = document.createElement("span");
-                    span.innerText = key+": "+location[key];
-                    details.appendChild(span)
-                }
-            }
-            locationInfoContainer.appendChild(details)
-            //description
-            const des = document.createElement("p")
-            des.innerText = location.description;
-            locationInfoContainer.appendChild(des);
-        }
-    })
-}
-*/
-// -- die Function oben hat bei mir nicht funktioniert und wollt sie nicht anfassen, weil ich den Ansatz nicht ganz verstanden habe,
-// -- meine Idee ist einfach, wir übergeben die Location (Click Event on Element in der Liste) und die Methode liest sich die Information aus dem Objekt und trägt sie ein
-// -- dynamische Erstellung finde ich sehr umständlich hier, wir müssen bei jedem Click die bereits erstellten Elemente löschen bzw. deren Content ändern können
-//------------------ clean up---------------------
-
-
 function setLocationInfoContainer(location) {
 
     let locationInfoTitel = document.getElementById("location-info-title-text")
@@ -706,7 +707,14 @@ function setLocationInfoContainer(location) {
     locationInfoDes.textContent = "- " + location.description
     locationInfoCo2.textContent = "CO2 in T : " + location.c02InTons
 }
-
+/**
+ * gets lat and long for given addres
+ * @param {*} streetname
+ * @param {*} streetnr
+ * @param {*} city
+ * @param {*} postcode
+ * @param {*} callbackResult
+ */
 function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
 
     // Geocoding API:
@@ -743,12 +751,4 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
 
     // send request:
     xhr.send();
-}
-
-/**
- * Wrapps all onload Functions 
- */
-function onloadWrapper() {
-    //generateLocationList()
-   
 }
