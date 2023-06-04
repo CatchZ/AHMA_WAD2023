@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="CSS Updaet">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="JS Update: scroll to the top on change the div">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,14 +109,7 @@
       <workItem from="1685225190138" duration="588000" />
       <workItem from="1685879217831" duration="121000" />
       <workItem from="1685879376273" duration="5801000" />
-      <workItem from="1685896794036" duration="2821000" />
-    </task>
-    <task id="LOCAL-00012" summary="Main-Site HTML and CSS Update">
-      <created>1682938363229</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1682938363229</updated>
+      <workItem from="1685896794036" duration="3449000" />
     </task>
     <task id="LOCAL-00013" summary="Add-Site and Update-Site CSS Update">
       <created>1682942814961</created>
@@ -454,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685899486858</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="JS Update: scroll to the top on change the div">
+      <created>1685899689014</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1685899689015</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HTML Update" />
     <MESSAGE value="JS and HTML: Map added" />
     <MESSAGE value="JS: Map Impl. Update" />
     <MESSAGE value="JS: Ids changed" />
@@ -509,6 +508,7 @@
     <MESSAGE value="cleanup update" />
     <MESSAGE value="code optimization" />
     <MESSAGE value="CSS Updaet" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS Updaet" />
+    <MESSAGE value="JS Update: scroll to the top on change the div" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS Update: scroll to the top on change the div" />
   </component>
 </project>

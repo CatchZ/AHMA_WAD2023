@@ -10,7 +10,6 @@ const geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=
 
 // Events-Targets:
 const loginForm = document.getElementById("login-form")
-const loginBtn = document.getElementById("login-btn")
 const logoutBtn = document.getElementById("logout-btn")
 const addLocationBtn = document.getElementById("add-location-btn")
 const backToHomepageBtn = document.getElementById("homepage-btn")
@@ -19,12 +18,12 @@ const backToUpdateList = document.getElementById("back-to-update-list")
 const addForm = document.getElementById("add-form")
 const cancelAddLocationBtn = document.getElementById("cancel-location-add-btn")
 const listUpdateBtn = document.getElementById("locations-list-update-btn")
-const saveLocationUpdateBtn = document.getElementById("save-location-update-btn")
 const cancelLocationUpdateBtn = document.getElementById("cancel-location-update-btn")
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
 const updateMessageDisplayText = document.getElementById("update-message");
+const locationList = document.getElementById("locations-list");
 let updateButtonList = [];
 
 // Events-Handlers:
@@ -39,7 +38,6 @@ cancelLocationUpdateBtn.addEventListener("click",toggleToUpdateList)
 backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpdatePage)
 backToUpdateList.addEventListener("click", toggleToUpdateList)
 
-// Events-Handling Functions:
 function login(loginEvent) {
 
     // deactivate default submit:
@@ -120,6 +118,7 @@ function switchToAddLocation() {
     displayToggle(["main-area", "header-options", "add-location-page"])
 
 }
+
 /**
  * reset for add form and addform message 
  * enables main page elements
@@ -132,6 +131,7 @@ function backToHomePage() {
     // back to homepage:
     displayToggle(["add-location-page", "main-area", "header-options"])
 }
+
 /**
  * reads the add Form  gets geocode for given address 
  * useses input if geocode service not available 
@@ -226,7 +226,6 @@ function formCheckandCleanup() {
 
 }
 
-
 /**
  * wrapper for generateUpdateform 
  * creates update form for given element updateFormSafe at the end
@@ -266,7 +265,6 @@ function generateUpdateForm(elem) {
         inputElements[id] = document.getElementById(id);
     });
 
-
     elem.locationName;
 
     inputElements.updLocationName.value = elem.locationName
@@ -280,8 +278,7 @@ function generateUpdateForm(elem) {
     inputElements.updFile.value = elem.photo
 
     const safebtn = document.getElementById("save-location-update-btn")
-    safebtn.addEventListener("click", function (saveEvent) {
-        //saveEvent.preventDefault()
+    safebtn.addEventListener("click", function () {
         updateFormSafe(elem, inputElements)
     })
 
@@ -323,7 +320,7 @@ function updateFormSafe(oldData, inputElements) {
                 "photo": photos
             }
             // save the new location in list variable:
-            const index = locationsList.findIndex(e =>e.locationName==oldData.locationName);
+            const index = locationsList.findIndex(e =>e.locationName===oldData.locationName);
             console.log("index"+index);
             locationsList[index]= newLocationToAdd;
             console.log(locationsList);
@@ -347,6 +344,7 @@ function updateFormSafe(oldData, inputElements) {
     })
    
 }
+
 /**
  * deltes given Element 
  * resets scene 
@@ -356,7 +354,7 @@ function deleteLocation(key) {
     console.log("dclicked:" + key.locationName)
     let deleteConfirm = confirm("Do you really want to remove " + key.locationName)
     if (deleteConfirm) {
-        const index = locationsList.findIndex(elem => key.locationName == elem.locationName)
+        const index = locationsList.findIndex(elem => key.locationName === elem.locationName)
         locationsList.splice(index, 1)
         document.getElementById(key.locationName).remove()
         generateLocationList()
@@ -365,7 +363,6 @@ function deleteLocation(key) {
     }
 }
 
-// Sub-Functions:
 /**
  * toggles if given elements are displayed or not
  * @param {*} elementIds elements that should be toggled
@@ -393,6 +390,7 @@ function loginAsAdmin() {
     sessionAsAdmin = true
     console.log("session as admin login: " + sessionAsAdmin)
 }
+
 /**
  * sets view for user
  */
@@ -402,6 +400,7 @@ function loginAsUser() {
     displayToggle(["login-area", "header-options", "main-area"])
 
 }
+
 /**
  *
  * @returns UserObject data
@@ -432,6 +431,7 @@ function getUsersAsObj() {
     // return data as JS-Object:
     return usersList
 }
+
 /**
  * syncronize locationList with location Data
  */
@@ -457,6 +457,7 @@ function getLocationsAsObj() {
 
     request.send();
 }
+
 /**
  * updates Json file
  * @returns
@@ -474,6 +475,7 @@ function updateJsonFileLocations() {
     // return true if update success or false:
     return true
 }
+
 /**
  * initialsiert map, erst nach ausblenden benutzen!!
  */
@@ -547,8 +549,6 @@ function toggleUpdateTable() {
     scrollToTop()
 }
 
-
-
 /**
  * takes the locations const and generates the table body for the 
  * "overview-table"
@@ -595,9 +595,10 @@ function generateUpdateTableBody() {
 
     })
 }
+
 /**
  * erstellt auf Basis einer Location eine Tabellein reihe
- * @param {} location 
+ * @param location
  * @returns tabellen reihe
  */
 function generateUpdateTableBodyRow(location) {
@@ -642,9 +643,6 @@ function generateUpdateTableBodyRow(location) {
 
     return row
 }
-
-
-const locationList = document.getElementById("locations-list");
 
 /**
  * takes the locations const and for each Element
@@ -698,9 +696,6 @@ function generateLocationList() {
         locationList.appendChild(row)
     }
 }
-
-//------------------cleanup--------------
-const locationInfoContainer = document.getElementById("location-info-container")
 
 /**
  *  sets data displayed in the location Container
@@ -762,7 +757,6 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
     // send request:
     xhr.send();
 }
-
 
 function backToHomepageFromUpdatePage() {
     displayToggle(["overview-area","main-area","header-options"])
