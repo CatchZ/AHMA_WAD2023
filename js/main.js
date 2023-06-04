@@ -377,6 +377,8 @@ function displayToggle(elementIds) {
         // Toggle the class "none-display" for the current element:
         document.getElementById(elementId).classList.toggle("none-display")
     }
+
+    scrollToTop()
 }
 
 /**
@@ -542,6 +544,7 @@ function toggleUpdateTable() {
     generateUpdateTableBody()
     displayToggle(["overview-area","update-form","main-area","update-form","header-options"])
 
+    scrollToTop()
 }
 
 
@@ -767,4 +770,11 @@ function backToHomepageFromUpdatePage() {
 
 function toggleToUpdateList() {
     displayToggle(["update-form","overview-area"])
+
+    scrollToTop()
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }

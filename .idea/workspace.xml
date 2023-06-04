@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="code optimization">
-      <change afterPath="$PROJECT_DIR$/img/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/bg1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/bg2.png" afterDir="false" />
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="CSS Updaet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,14 +109,7 @@
       <workItem from="1685225190138" duration="588000" />
       <workItem from="1685879217831" duration="121000" />
       <workItem from="1685879376273" duration="5801000" />
-      <workItem from="1685896794036" duration="2512000" />
-    </task>
-    <task id="LOCAL-00011" summary="Header and Login-Site CSS-Update">
-      <created>1682936651504</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1682936651504</updated>
+      <workItem from="1685896794036" duration="2821000" />
     </task>
     <task id="LOCAL-00012" summary="Main-Site HTML and CSS Update">
       <created>1682938363229</created>
@@ -458,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685884015510</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="CSS Updaet">
+      <created>1685899486857</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1685899486858</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ja update" />
     <MESSAGE value="HTML Update" />
     <MESSAGE value="JS and HTML: Map added" />
     <MESSAGE value="JS: Map Impl. Update" />
@@ -513,6 +508,7 @@
     <MESSAGE value="CSS Update" />
     <MESSAGE value="cleanup update" />
     <MESSAGE value="code optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="code optimization" />
+    <MESSAGE value="CSS Updaet" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS Updaet" />
   </component>
 </project>
