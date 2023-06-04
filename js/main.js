@@ -35,7 +35,9 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
-cancelLocationUpdateBtn.addEventListener("click",function (){displayToggle(["update-container","main-area"])})
+cancelLocationUpdateBtn.addEventListener("click",toggleToUpdateList)
+backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpdatePage)
+backToUpdateList.addEventListener("click", toggleToUpdateList)
 
 // Events-Handling Functions:
 function login(loginEvent) {
@@ -196,7 +198,6 @@ function addLocation(addEvent) {
  */
 function formCheckandCleanup() {
 
-
     // update JSON file:
     let updateResult = updateJsonFileLocations()
 
@@ -232,9 +233,12 @@ function formCheckandCleanup() {
  * @param {*} key name der Location die Manipuliert werden soll  
  */
 function updateLocation(key) {
-    console.log("uclicked:" + key.locationName)
+
+    displayToggle(["update-form","overview-area"])
+    console.log("clicked:" + key.locationName)
     generateUpdateForm(key)
 }
+
 /**
  * gets values for the update process calls 
  * @param {*} elem element that shall be updatet 
@@ -257,7 +261,7 @@ function generateUpdateForm(elem) {
         'updFile'];
 
     const inputElements = {};
-        // get inputfields 
+    // get inputfields
     inputIds.forEach(function (id) {
         inputElements[id] = document.getElementById(id);
     });
@@ -276,11 +280,14 @@ function generateUpdateForm(elem) {
     inputElements.updFile.value = elem.photo
 
     const safebtn = document.getElementById("save-location-update-btn")
-    safebtn.addEventListener("click", function () { updateFormSafe(elem, inputElements),displayToggle(["update-container","main-area"]) })
-
+    safebtn.addEventListener("click", function (saveEvent) {
+        //saveEvent.preventDefault()
         updateFormSafe(elem, inputElements)
     })
+
+    //updateFormSafe(elem, inputElements)
 }
+
 /** 
  * takes form inputs and updates datastruktur 
 */
@@ -533,8 +540,7 @@ function clearAllMarkers() {
 function toggleUpdateTable() {
 
     generateUpdateTableBody()
-    displayToggle(["update-container","main-area","update-form"])
-    
+    displayToggle(["overview-area","update-form","main-area","update-form","header-options"])
 
 }
 
@@ -707,6 +713,7 @@ function setLocationInfoContainer(location) {
     locationInfoDes.textContent = "- " + location.description
     locationInfoCo2.textContent = "CO2 in T : " + location.c02InTons
 }
+
 /**
  * gets lat and long for given addres
  * @param {*} streetname
@@ -751,4 +758,13 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
 
     // send request:
     xhr.send();
+}
+
+
+function backToHomepageFromUpdatePage() {
+    displayToggle(["overview-area","main-area","header-options"])
+}
+
+function toggleToUpdateList() {
+    displayToggle(["update-form","overview-area"])
 }

@@ -31,7 +31,7 @@
             src="js/main.js" defer>
     </script>
 </head>
-<body onload="onloadWrapper()">
+<body>
 
     <header class="header-main-container"> <!-- Header Area -->
         <div class="header-content-container">
@@ -123,17 +123,16 @@
         </div>
     </div> <!-- End Add Area -->
 
-    <div class="update-container none-display" id="update-container"> <!-- Update Area -->
-        <!-- Overview Area-->
-        <button id="homepage-btn-update-page" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>home</p></button>
-        <h2>LISTE DER DRECKSSPATZEN</h2>
+    <div class="update-container" id="update-container"> <!-- Update Area -->
+        <div id="overview-area" class="none-display"> <!-- Overview Area-->
+            <button id="homepage-btn-update-page" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>home</p></button>
+            <h2>LISTE DER DRECKSSPATZEN</h2>
             <div class="location-overview-container">
-            <table class="overview-table" id="updateTable">
+                <table class="overview-table" id="updateTable"></table>
+            </div>
+        </div> <!-- End Overview Area-->
 
-            </table>
-            </div> <!-- End Overview Area-->
-
-        <div class="update-screen-contant-conatainer"> <!--Update Formular-->
+        <div id="update-form" class="update-screen-contant-conatainer none-display"> <!--Update Formular-->
             <button id="back-to-update-list" class="home-page-btn" ><img src="img/back-icon.png" alt="back to homepage"><p>update list</p></button>
             <h2>Update Location info </h2>
             <p id="update-message" class="add-message"></p>
@@ -160,11 +159,11 @@
                 <input type="number" id="updLongitude" placeholder="longitude">
                 <input type="file" id="updFile" placeholder="file">
               </div>
-              <div class="add-form-btns-container">
-                <button id="save-location-update-btn" class="form-button" type="submit" class="update-submit-btn">save</button>
-                <button id="cancel-location-update-btn" class="form-button" class="update-submit-btn">cancel</button>
-              </div>
             </form>
+            <div class="add-form-btns-container">
+                <button id="save-location-update-btn" class="form-button" class="update-submit-btn">save</button>
+                <button id="cancel-location-update-btn" class="form-button" class="update-submit-btn">cancel</button>
+            </div>
         </div> <!---Update Formular Ende-->
     </div> <!-- End Update Area -->
 

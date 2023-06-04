@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="CSS Update" />
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="cleanup update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="MaxUpdateForm" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "F:/Websites Workspace/AHMA_WAD2023_V2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -105,14 +109,7 @@
       <workItem from="1685223432994" duration="542000" />
       <workItem from="1685225190138" duration="588000" />
       <workItem from="1685879217831" duration="121000" />
-      <workItem from="1685879376273" duration="897000" />
-    </task>
-    <task id="LOCAL-00009" summary="icons changed">
-      <created>1682882269015</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1682882269015</updated>
+      <workItem from="1685879376273" duration="4519000" />
     </task>
     <task id="LOCAL-00010" summary="Sections title update">
       <created>1682882789031</created>
@@ -450,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685064472078</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="cleanup update">
+      <created>1685880339988</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1685880339988</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,7 +471,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -480,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge Fix" />
     <MESSAGE value="fix" />
     <MESSAGE value="ja update" />
     <MESSAGE value="HTML Update" />
@@ -505,6 +508,7 @@
     <MESSAGE value="Add Back Btns &amp; show message on update" />
     <MESSAGE value="HTML &amp; CSS Update" />
     <MESSAGE value="CSS Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS Update" />
+    <MESSAGE value="cleanup update" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup update" />
   </component>
 </project>
