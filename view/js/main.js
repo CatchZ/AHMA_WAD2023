@@ -43,6 +43,69 @@ function login(loginEvent) {
     // deactivate default submit:
     loginEvent.preventDefault()
 
+    // send AJAX-Request to Server:
+    let request = new XMLHttpRequest();
+    // Die URL bleibt immer gleich (solnage die IP gleich ist), unabhängig davon, wo sich die Serverdateien auf dem Dateisystem befinden
+    // man kommuniziert durch das BS mit der IP (localhost) mit dem Prozess auf Port 3000, egal wo sich der Order "Server" befindet
+    request.open("POST", "http://localhost:3000/login", true)
+    request.setRequestHeader('Content-Type', 'application/json')
+
+    console.log("Client sending HTTP-Request ..")
+
+        request.onload = function () {
+
+            let responseObj = JSON.parse(request.responseText);
+            console.log("Client waiting for response ..")
+            // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
+            if (request.readyState === 4 && request.status === 200) {
+
+                console.log("Client response from Server: " + responseObj.data.userName + " as: " + responseObj.data.admin)
+
+                // Reset the inputs values:
+                document.getElementById("login-form").reset()
+                // set welcome message:
+                document.getElementById("welcome-user").textContent = responseObj.data.userName
+                // prepare the display for user:
+                switch (responseObj.data.admin) {
+                    case true: {
+                        loginAsAdmin();
+                        // get locations:
+                        getLocationsAsObj()
+                        // Display the Locations:
+                        generateLocationList()
+                        // Display the Map
+                        initMap()
+                        return
+                    }
+                    case false: {
+                        loginAsUser();
+                        // get locations:
+                        getLocationsAsObj()
+                        // Display the Locations:
+                        generateLocationList()
+                        // Display the Map
+                        initMap()
+                        return
+                    }
+                }
+            } else {
+                console.log("Client error on login")
+                console.log(responseObj.message)
+                console.log("request status: " + request.status)
+
+                alert(responseObj.message + " try again !")
+            }
+    };
+
+    let user = {
+        "userName": usernameInput.value,
+        "password": passwordInput.value
+    };
+
+    request.send(JSON.stringify(user));
+
+    /*
+
     // Iteration the users-list:
     for (const user of getUsersAsObj()) {
         if (usernameInput.value === user.userName) {
@@ -82,7 +145,10 @@ function login(loginEvent) {
     }
     // if there is no match to the username:
     alert(usernameInput.value + " is not registered !")
+
+     */
 }
+
 /**
  * log out current user 
  */

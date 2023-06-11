@@ -35,7 +35,6 @@ h2 {
 }
 
 .header-content-container {
-    background: no-repeat url("../img/bg1.png") left;
     padding: 1% 1% 0 0;
     text-align: center;
     margin: 0 auto;
@@ -194,7 +193,6 @@ Main Site
     width: 100%;
     display: block;
     text-decoration: none;
-    background: no-repeat url("../img/bg2.png") right;
     color: var(--gray-color);
     font-size: var(--body-text);
     vertical-align: middle;
