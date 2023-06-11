@@ -102,6 +102,7 @@ function login(loginEvent) {
         "password": passwordInput.value
     };
 
+    // send request:
     request.send(JSON.stringify(user));
 
     /*
