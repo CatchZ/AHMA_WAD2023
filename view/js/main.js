@@ -418,15 +418,46 @@ function updateFormSafe(oldData, inputElements) {
  * @param {*} key Element to delete  
  */
 function deleteLocation(key) {
-    console.log("dclicked:" + key.locationName)
+
+    console.log("clicked:" + key.locationName)
+
     let deleteConfirm = confirm("Do you really want to remove " + key.locationName)
     if (deleteConfirm) {
-        const index = locationsList.findIndex(elem => key.locationName === elem.locationName)
-        locationsList.splice(index, 1)
-        document.getElementById(key.locationName).remove()
-        generateLocationList()
-        refreshLocationsMarkers()
-        generateUpdateTableBody()
+
+        // the location Name is the key:
+        let locationToDelete = key.locationName
+        let request = new XMLHttpRequest()
+        let url = "http://localhost:3000/locations?key="
+
+        // create the request and send location-name as parameter:
+        request.open("DELETE", url + encodeURIComponent(locationToDelete), true)
+
+        // response received:
+        request.onload = function () {
+            if (request.readyState === 4 && request.status === 200) {
+
+                console.log("client got response from server ..")
+                console.log("client update the website ..")
+
+                document.getElementById(key.locationName).remove()
+                generateLocationList()
+                refreshLocationsMarkers()
+                generateUpdateTableBody()
+            } else {
+                console.log("client error on delete !")
+                console.log(JSON.parse(request.responseText))
+
+                alert(JSON.parse(request.responseText)+ " try again !")
+            }
+        }
+
+        // send request:
+        console.log("client send HTTP-Delete-Request ..")
+        console.log("Client url to delete: " + url + encodeURIComponent(locationToDelete) + " ..")
+        request.send()
+
+        //const index = locationsList.findIndex(elem => key.locationName === elem.locationName)
+        //locationsList.splice(index, 1)
     }
 }
 

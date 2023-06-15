@@ -18,7 +18,15 @@ server.post('/login', (request, response) => {
     console.log("HTTP-Request login from Client .. ")
     console.log("HTTP-Request login forward to controller .. ")
     controller.login(request, response)
-});
+})
+
+server.delete('/locations', (request, response) => {
+    console.log("HTTP-Delete-Request from Client .. ")
+    console.log("server found the parameter: " + request.query.key)
+    console.log("HTTP-Delete-Request forward to controller .. ")
+
+    controller.deleteLocation(request.query.key, response)
+})
 
 // Starten des Servers:
 server.listen(port, () => {
