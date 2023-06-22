@@ -1,3 +1,17 @@
+let MongoClient = require('mongodb').MongoClient;
+
+const url = "mongodb://ahmadb_ahma:XU5N7NXCL@mongodb1.f4.htw-berlin.de:27017/ahmadb?authMechanism=DEFAULT"
+
+
+MongoClient.connect (url, function (err, client) {
+    if(err) throw err;
+    let db = client.db("testDB");
+    //Write code to create a collection
+    //Write code to query database
+    //Write code to insert, update, delete documents
+    client.close();
+    });
+
 let users = [{
     "userName": "admina",
     "password": "admina",
