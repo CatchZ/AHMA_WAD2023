@@ -98,7 +98,7 @@ exports.deleteLocation = function (locationNameToDelete, response) {
 exports.updateLocation = async function (locationNameToUpdate, data ,response) {
     console.log("controller got update request .. ")
     const db = await getDB()
-    const query = {_id:data._id}
+   // const query = {_id:data._id}
 }
 
 exports.getLocations = async function (response){
