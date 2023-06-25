@@ -391,6 +391,7 @@ function updateFormSafe(oldData, inputElements) {
             console.log("index"+index);
             locationsList[index]= newLocationToAdd;
             console.log(locationsList);
+            sendUpdateDataToServer( newLocationToAdd);
 
             // show success message:
             let img = new Image()
@@ -411,6 +412,32 @@ function updateFormSafe(oldData, inputElements) {
     })
    
 }
+/**
+ * 
+ */
+function sendUpdateDataToServer(userId, UpdateData){
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', "http://localhost:3000/location/${userId}",true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    const jsonData = JSON.stringify(UpdateData);
+    xhr.send(jsonData);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+          const updatedUser = JSON.parse(xhr.responseText);
+          console.log('User updated:', updatedUser);
+          // Perform any additional actions with the updated user data
+        } else {
+          console.error('Error updating user:', xhr.statusText);
+          // Handle the error
+        }
+      };
+    
+      xhr.onerror = function() {
+        console.error('Request failed');
+        // Handle the error
+      };
+} 
 
 /**
  * deltes given Element 

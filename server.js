@@ -28,6 +28,14 @@ server.delete('/locations', (request, response) => {
     controller.deleteLocation(request.query.key, response)
 })
 
+server.put('/location/:userName', (req, res) => {
+    console.log("HTTP-Delete-Request from Client .. ")
+    const userName = req.params.userName;
+    const updateData = req.body;
+}  )
+
+
+
 // Starten des Servers:
 server.listen(port, () => {
     console.log('Server is listing on port: ' + port + " ..");

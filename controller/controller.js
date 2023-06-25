@@ -124,3 +124,8 @@ exports.deleteLocation = function (locationNameToDelete, response) {
         response.status(200).json("location has been deleted")
     }
 }
+
+exports.updateLocation = function (locationNameToUpdate, response) {
+    console.log("controller got update request .. ")
+}
+
