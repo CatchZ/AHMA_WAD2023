@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Login-Request from client to Server">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="delete location in Backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,14 +133,8 @@
       <workItem from="1686241522806" duration="659000" />
       <workItem from="1686309503981" duration="12061000" />
       <workItem from="1686485077672" duration="4777000" />
-      <workItem from="1686826182394" duration="5115000" />
-    </task>
-    <task id="LOCAL-00016" summary="JS Methods Declaration">
-      <created>1684096412932</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1684096412933</updated>
+      <workItem from="1686826182394" duration="8180000" />
+      <workItem from="1687691170407" duration="9490000" />
     </task>
     <task id="LOCAL-00017" summary="JS Events Handling Declaration">
       <created>1684155250783</created>
@@ -479,13 +472,35 @@
       <option name="project" value="LOCAL" />
       <updated>1686489076187</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="delete location in Backend">
+      <created>1686832815056</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1686832815057</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -496,7 +511,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Ahmed_Backend_2" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -509,7 +524,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS: Map Markers" />
     <MESSAGE value="JS Impl. : set info container function" />
     <MESSAGE value="JS Impl. : Locations List and Location Info Container" />
     <MESSAGE value="JS Impl. : marker callback functions" />
@@ -534,6 +548,7 @@
     <MESSAGE value="clean up" />
     <MESSAGE value="Backend Structure" />
     <MESSAGE value="Login-Request from client to Server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login-Request from client to Server" />
+    <MESSAGE value="delete location in Backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete location in Backend" />
   </component>
 </project>

@@ -3,5 +3,26 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongodb": "^5.6.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "ahma_wad2023_v2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CatchZ/AHMA_WAD2023.git"
+  },
+  "author": "Ahmed&Max",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CatchZ/AHMA_WAD2023/issues"
+  },
+  "homepage": "https://github.com/CatchZ/AHMA_WAD2023#readme",
+  "description": ""
 }
