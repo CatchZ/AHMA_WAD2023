@@ -99,3 +99,7 @@ exports.updateLocation = function (locationNameToUpdate, response) {
     console.log("controller got update request .. ")
 }
 
+exports.getLocations = function (response){
+    return locationsList
+} 
+

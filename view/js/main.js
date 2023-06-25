@@ -38,6 +38,7 @@ cancelLocationUpdateBtn.addEventListener("click",toggleToUpdateList)
 backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpdatePage)
 backToUpdateList.addEventListener("click", toggleToUpdateList)
 
+
 function login(loginEvent) {
 
     // deactivate default submit:
@@ -71,7 +72,7 @@ function login(loginEvent) {
                         console.log("login as admin ..")
                         loginAsAdmin();
                         // get locations:
-                        getLocationsAsObj()
+                        getLocationList()
                         // Display the Locations:
                         generateLocationList()
                         // Display the Map
@@ -82,7 +83,7 @@ function login(loginEvent) {
                         console.log("login as user ..")
                         loginAsUser();
                         // get locations:
-                        getLocationsAsObj()
+                        getLocationList()
                         // Display the Locations:
                         generateLocationList()
                         // Display the Map
@@ -420,7 +421,7 @@ function updateFormSafe(oldData, inputElements) {
 function sendUpdateDataToServer(userId, UpdateData){
     console.log("sendUpdateDataToServer Called")
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT',`http://localhost:3000/location/${userId}`,true);
+    xhr.open('PUT',`http://localhost:3000/locations/${userId}`,true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     const jsonData = JSON.stringify(UpdateData);
     xhr.send(jsonData);
@@ -563,11 +564,11 @@ function getUsersAsObj() {
 /**
  * syncronize locationList with location Data
  */
-function getLocationsAsObj() {
-
+async function getLocationList() {
+    
     // get Data from JSON:
     let request = new XMLHttpRequest();
-    request.open("GET", "./json/location.json", false);
+    request.open("GET", "http://localhost:3000/locations", false);
 
     request.onreadystatechange = function () {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
@@ -584,6 +585,8 @@ function getLocationsAsObj() {
     };
 
     request.send();
+
+    
 }
 
 /**
