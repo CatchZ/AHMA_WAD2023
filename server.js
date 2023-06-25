@@ -36,9 +36,9 @@ server.put('/locations/:userName', (req, res) => {
     controller.updateLocation() 
 })
 
-server.get('/locations', (request, response) => {   
+server.get('/locations', async (request, response) => {   
     console.log("HTTP-Get-Request from Client .. ")
- response.json(controller.getLocations())
+  response.json( await controller.getLocations())
 })
 
 

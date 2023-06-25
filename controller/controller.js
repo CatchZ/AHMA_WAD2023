@@ -99,7 +99,10 @@ exports.updateLocation = function (locationNameToUpdate, response) {
     console.log("controller got update request .. ")
 }
 
-exports.getLocations = function (response){
-    return locationsList
+exports.getLocations = async function (response){
+    const db = await getDB()
+    let result = await db.collection("locations").find({}).toArray()
+    console.log(JSON.stringify(result))
+    return result
 } 
 
