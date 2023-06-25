@@ -393,7 +393,7 @@ function updateFormSafe(oldData, inputElements) {
             console.log("index"+index);
             locationsList[index]= newLocationToAdd;
             console.log(locationsList);
-            sendUpdateDataToServer( newLocationToAdd);
+            sendUpdateDataToServer( oldData.locationName, newLocationToAdd);
 
             // show success message:
             let img = new Image()
@@ -418,8 +418,9 @@ function updateFormSafe(oldData, inputElements) {
  * 
  */
 function sendUpdateDataToServer(userId, UpdateData){
+    console.log("sendUpdateDataToServer Called")
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT', "http://localhost:3000/location/${userId}",true);
+    xhr.open('PUT',`http://localhost:3000/location/${userId}`,true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     const jsonData = JSON.stringify(UpdateData);
     xhr.send(jsonData);
