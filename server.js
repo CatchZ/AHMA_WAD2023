@@ -31,8 +31,8 @@ server.delete('/locations', (request, response) => {
 server.put('/location/:userName', (req, res) => {
     console.log("HTTP-put-Request from Client .. ")
     const userName = req.params.userName;
-    const updateData = req.body;
-    console.log(userName + req.body)
+    const updateData = JSON.stringify(req.body);
+    console.log(userName + updateData)
 })
 
 
