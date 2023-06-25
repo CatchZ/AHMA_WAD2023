@@ -66,8 +66,9 @@ function login(loginEvent) {
                 // set welcome message:
                 document.getElementById("welcome-user").textContent = responseObj.data.userName
                 // prepare the display for user:
-                switch (responseObj.data.admin) {
+                switch (responseObj.data.admin==="admin") {
                     case true: {
+                        console.log("login as admin ..")
                         loginAsAdmin();
                         // get locations:
                         getLocationsAsObj()
@@ -78,6 +79,7 @@ function login(loginEvent) {
                         return
                     }
                     case false: {
+                        console.log("login as user ..")
                         loginAsUser();
                         // get locations:
                         getLocationsAsObj()
