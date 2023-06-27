@@ -270,6 +270,7 @@ function formCheckandCleanup() {
 
     // update JSON file:
     let updateResult = updateJsonFileLocations()
+    getLocationList();
 
     if (updateResult) {
         // show success message:
@@ -308,10 +309,13 @@ function updateLocation(key) {
     generateUpdateForm(key)
 }
 
+
 /**
  * gets values for the update process calls 
  * @param {*} elem element that shall be updatet 
  */
+
+
 function generateUpdateForm(elem) {
     // initialize conts for imput field 
 
@@ -348,10 +352,12 @@ function generateUpdateForm(elem) {
     inputElements.updFile.value = elem.photo
 
     const safebtn = document.getElementById("save-location-update-btn")
-    safebtn.addEventListener("click", function () {
+    const newSafebtn = safebtn.cloneNode(true);
+    safebtn.parentNode.replaceChild(newSafebtn,safebtn)
+    const safebtnE = document.getElementById("save-location-update-btn")
+    safebtnE.addEventListener("click", function () {
         updateFormSafe(elem, inputElements)
     })
-
     //updateFormSafe(elem, inputElements)
 }
 

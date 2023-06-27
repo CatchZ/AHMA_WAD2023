@@ -118,7 +118,15 @@ exports.updateLocation = async function (objectId, data, res) {
 exports.getLocations = async function (response){
     const db = await getDB()
     let result = await db.collection("locations").find({}).toArray()
-    console.log(JSON.stringify(result))
+    //console.log(JSON.stringify(result))
     return result
 } 
+
+exports.addLocation = async function (data){
+    const db = await getDB()
+    const result = await db.collection("locations").insertOne(data)
+    return result
+
+    
+}
 
