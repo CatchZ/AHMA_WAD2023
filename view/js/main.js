@@ -394,7 +394,7 @@ function updateFormSafe(oldData, inputElements) {
             console.log("index"+index);
             locationsList[index]= newLocationToAdd;
            //console.log(locationsList);
-           //
+           
             console.log("id:"+oldData._id)
             sendUpdateDataToServer( oldData._id , newLocationToAdd);
 
@@ -725,7 +725,7 @@ function generateUpdateTableBody() {
         const updBtn = document.getElementById("upd" + location.locationName)
         updBtn.addEventListener("click", function () { updateLocation(location) })
         delBtn.addEventListener("click", function () { deleteLocation(location) })
-
+    
     })
 }
 
@@ -739,7 +739,7 @@ function generateUpdateTableBodyRow(location) {
     const row = document.createElement("tr")
     row.setAttribute("id", location.locationName)
     for (const key in location) {
-        if ((key !== "latitude") && (key !== "longitude") && (key !== "photo")) {
+        if ((key !== "_id") && (key !== "latitude") && (key !== "longitude") && (key !== "photo")) {
             const cell = document.createElement("td");
             cell.textContent = location[key];
             row.appendChild(cell);
