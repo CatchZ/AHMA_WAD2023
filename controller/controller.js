@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const {getDB} = require("../modell/dbConnection");
 let usersFromDB
 
@@ -95,10 +96,23 @@ exports.deleteLocation = function (locationNameToDelete, response) {
     }
 }
 
-exports.updateLocation = async function (locationNameToUpdate, data ,response) {
+exports.updateLocation = async function (objectId, data, res) {
     console.log("controller got update request .. ")
     const db = await getDB()
-   // const query = {_id:data._id}
+    await db.collection("locations").updateOne(
+        {_id: new ObjectId(objectId)},
+        { $set: data },
+        (err, result) => {
+            if (err) {
+                console.error("Error updating object:",err)
+                res.status(500).json({error: 'Internal server Error'})
+            } else {
+                res.status(200).json({message:'Object updated succesfully'})
+                
+            }
+        }
+    )
+   //// const query = {_id:data._id}
 }
 
 exports.getLocations = async function (response){

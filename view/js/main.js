@@ -393,8 +393,10 @@ function updateFormSafe(oldData, inputElements) {
             const index = locationsList.findIndex(e =>e.locationName===oldData.locationName);
             console.log("index"+index);
             locationsList[index]= newLocationToAdd;
-            console.log(locationsList);
-            sendUpdateDataToServer( oldData.locationName, newLocationToAdd);
+           //console.log(locationsList);
+           //
+            console.log("id:"+oldData._id)
+            sendUpdateDataToServer( oldData._id , newLocationToAdd);
 
             // show success message:
             let img = new Image()

@@ -30,10 +30,10 @@ server.delete('/locations', (request, response) => {
 
 server.put('/locations/:userName', (req, res) => {
     console.log("HTTP-put-Request from Client .. ")
-    const userName = req.params.userName;
-    const updateData = JSON.stringify(req.body);
-    console.log(userName + updateData)
-    controller.updateLocation() 
+    const objectID = req.params.userName;
+    const updateData = req.body;
+    console.log(JSON.stringify(objectID)+ JSON.stringify(updateData))
+    controller.updateLocation(objectID, updateData, res) 
 })
 
 server.get('/locations', async (request, response) => {   
