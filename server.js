@@ -19,8 +19,13 @@ server.post('/login', (request, response) => {
     console.log("HTTP-Request login forward to controller .. ")
     controller.login(request, response)
 })
+server.post('/locations', (request, response) => {
+    console.log("HTTP-Request add from Client .. ")
+    console.log("HTTP-Request add forward to controller .. ")
+    controller.addLocation(request, response)
+})
 
-server.delete('/locations', (request, response) => {
+server.delete('/locations/:locationId', (request, response) => {
     console.log("HTTP-Delete-Request from Client .. ")
     console.log("server found the parameter: " + request.query.key)
     console.log("HTTP-Delete-Request forward to controller .. ")
@@ -37,7 +42,7 @@ server.put('/locations/:userName', (req, res) => {
 })
 
 server.get('/locations', async (request, response) => {   
-    console.log("HTTP-Get-Request from Client .. ")
+console.log("HTTP-Get-Request from Client .. ")
   response.json( await controller.getLocations())
 })
 

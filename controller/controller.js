@@ -1,7 +1,7 @@
 const { ObjectId } = require("mongodb");
 const {getDB} = require("../modell/dbConnection");
 let usersFromDB
-
+/*
 let locationsList = [{
     "locationName": "Bayerische Motoren Werke AG",
     "streetName": "Am Juliusturm",
@@ -37,7 +37,7 @@ let locationsList = [{
     }
 ]
 
-
+*/
 exports.login = async function (request, response) {
 
     console.log("controller got login request ..")
@@ -79,7 +79,7 @@ exports.login = async function (request, response) {
 exports.deleteLocation = function (locationNameToDelete, response) {
 
     console.log("controller got delete request .. ")
-    console.log("Locations list size: " + locationsList.length)
+    //console.log("Locations list size: " + locationsList.length)
 
     const index = locationsList.findIndex(elem => locationNameToDelete === elem.locationName)
 
@@ -112,7 +112,6 @@ exports.updateLocation = async function (objectId, data, res) {
             }
         }
     )
-   //// const query = {_id:data._id}
 }
 
 exports.getLocations = async function (response){
@@ -122,10 +121,11 @@ exports.getLocations = async function (response){
     return result
 } 
 
-exports.addLocation = async function (data){
+exports.addLocation = async function (data, response){
     const db = await getDB()
-    const result = await db.collection("locations").insertOne(data)
-    return result
+    console.log("data:"+data.body)
+    const result = await db.collection("locations").insertOne(data.body)
+    return result 
 
     
 }

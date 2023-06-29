@@ -34,7 +34,7 @@ backToHomepageBtn.addEventListener("click", backToHomePage)
 cancelAddLocationBtn.addEventListener("click", backToHomePage)
 addForm.addEventListener("submit", addLocation)
 listUpdateBtn.addEventListener("click", toggleUpdateTable)
-cancelLocationUpdateBtn.addEventListener("click",toggleToUpdateList)
+cancelLocationUpdateBtn.addEventListener("click", toggleToUpdateList)
 backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpdatePage)
 backToUpdateList.addEventListener("click", toggleToUpdateList)
 
@@ -53,51 +53,51 @@ function login(loginEvent) {
 
     console.log("Client sending HTTP-Request ..")
 
-        request.onload = function () {
+    request.onload = function () {
 
-            let responseObj = JSON.parse(request.responseText);
-            console.log("Client waiting for response ..")
-            // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
-            if (request.readyState === 4 && request.status === 200) {
+        let responseObj = JSON.parse(request.responseText);
+        console.log("Client waiting for response ..")
+        // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
+        if (request.readyState === 4 && request.status === 200) {
 
-                console.log("Client response from Server: " + responseObj.data.userName + " as: " + responseObj.data.admin)
+            console.log("Client response from Server: " + responseObj.data.userName + " as: " + responseObj.data.admin)
 
-                // Reset the inputs values:
-                document.getElementById("login-form").reset()
-                // set welcome message:
-                document.getElementById("welcome-user").textContent = responseObj.data.userName
-                // prepare the display for user:
-                switch (responseObj.data.admin==="admin") {
-                    case true: {
-                        console.log("login as admin ..")
-                        loginAsAdmin();
-                        // get locations:
-                        getLocationList()
-                        // Display the Locations:
-                        generateLocationList()
-                        // Display the Map
-                        initMap()
-                        return
-                    }
-                    case false: {
-                        console.log("login as user ..")
-                        loginAsUser();
-                        // get locations:
-                        getLocationList()
-                        // Display the Locations:
-                        generateLocationList()
-                        // Display the Map
-                        initMap()
-                        return
-                    }
+            // Reset the inputs values:
+            document.getElementById("login-form").reset()
+            // set welcome message:
+            document.getElementById("welcome-user").textContent = responseObj.data.userName
+            // prepare the display for user:
+            switch (responseObj.data.admin === "admin") {
+                case true: {
+                    console.log("login as admin ..")
+                    loginAsAdmin();
+                    // get locations:
+                    getLocationList()
+                    // Display the Locations:
+                    generateLocationList()
+                    // Display the Map
+                    initMap()
+                    return
                 }
-            } else {
-                console.log("Client error on login")
-                console.log(responseObj.message)
-                console.log("request status: " + request.status)
-
-                alert(responseObj.message + " try again !")
+                case false: {
+                    console.log("login as user ..")
+                    loginAsUser();
+                    // get locations:
+                    getLocationList()
+                    // Display the Locations:
+                    generateLocationList()
+                    // Display the Map
+                    initMap()
+                    return
+                }
             }
+        } else {
+            console.log("Client error on login")
+            console.log(responseObj.message)
+            console.log("request status: " + request.status)
+
+            alert(responseObj.message + " try again !")
+        }
     };
 
     let user = {
@@ -247,6 +247,9 @@ function addLocation(addEvent) {
             }
             // save the new location in list variable:
             locationsList.push(newLocationToAdd)
+            // server call
+            sendLocationDatatoServer(newLocationToAdd)
+
 
             formCheckandCleanup()// code from before moved to this method to be reusable 
 
@@ -258,6 +261,28 @@ function addLocation(addEvent) {
             addMessageDisplayText.append(" The address could not be resolved, try again")
         }
     })
+}
+
+function sendLocationDatatoServer(data) {
+    console.log("sendPostDataToServer Called");
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/locations', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    const jsonData = JSON.stringify(data);
+    xhr.send(jsonData);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const createdData = JSON.parse(xhr.responseText);
+            console.log('Data created:', createdData);
+        } else {
+            console.error('Error creating data:', xhr.statusText);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error('Request failed');
+    };
 }
 
 /**
@@ -282,6 +307,8 @@ function formCheckandCleanup() {
         // reset form inputs values:
         document.getElementById("add-form").reset()
 
+        // get new database data
+        getLocationList()
         // update locations list:
         generateLocationList()
 
@@ -304,7 +331,7 @@ function formCheckandCleanup() {
  */
 function updateLocation(key) {
 
-    displayToggle(["update-form","overview-area"])
+    displayToggle(["update-form", "overview-area"])
     console.log("clicked:" + key.locationName)
     generateUpdateForm(key)
 }
@@ -353,7 +380,7 @@ function generateUpdateForm(elem) {
 
     const safebtn = document.getElementById("save-location-update-btn")
     const newSafebtn = safebtn.cloneNode(true);
-    safebtn.parentNode.replaceChild(newSafebtn,safebtn)
+    safebtn.parentNode.replaceChild(newSafebtn, safebtn)
     const safebtnE = document.getElementById("save-location-update-btn")
     safebtnE.addEventListener("click", function () {
         updateFormSafe(elem, inputElements)
@@ -377,7 +404,7 @@ function updateFormSafe(oldData, inputElements) {
     let co2InT = inputElements.updC02InT.value
     let description = inputElements.updDescription.value
     let photos = inputElements.updFile.value
-   
+
     getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
         // if we got a geocoding:
         if (response != null) {
@@ -396,13 +423,13 @@ function updateFormSafe(oldData, inputElements) {
                 "photo": photos
             }
             // save the new location in list variable:
-            const index = locationsList.findIndex(e =>e.locationName===oldData.locationName);
-            console.log("index"+index);
-            locationsList[index]= newLocationToAdd;
-           //console.log(locationsList);
-           
-            console.log("id:"+oldData._id)
-            sendUpdateDataToServer( oldData._id , newLocationToAdd);
+            const index = locationsList.findIndex(e => e.locationName === oldData.locationName);
+            console.log("index" + index);
+            locationsList[index] = newLocationToAdd;
+            //console.log(locationsList);
+
+            console.log("id:" + oldData._id)
+            sendUpdateDataToServer(oldData._id, newLocationToAdd);
 
             // show success message:
             let img = new Image()
@@ -421,35 +448,32 @@ function updateFormSafe(oldData, inputElements) {
             updateMessageDisplayText.append(" The address could not be resolved, try again")
         }
     })
-   
+
 }
 /**
  * 
  */
-function sendUpdateDataToServer(userId, UpdateData){
+function sendUpdateDataToServer(userId, UpdateData) {
     console.log("sendUpdateDataToServer Called")
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT',`http://localhost:3000/locations/${userId}`,true);
+    xhr.open('PUT', `http://localhost:3000/locations/${userId}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     const jsonData = JSON.stringify(UpdateData);
     xhr.send(jsonData);
 
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status === 200) {
-          const updatedUser = JSON.parse(xhr.responseText);
-          console.log('User updated:', updatedUser);
-          // Perform any additional actions with the updated user data
+            const updatedUser = JSON.parse(xhr.responseText);
+            console.log('User updated:', updatedUser);
         } else {
-          console.error('Error updating user:', xhr.statusText);
-          // Handle the error
+            console.error('Error updating user:', xhr.statusText);
         }
-      };
-    
-      xhr.onerror = function() {
+    };
+
+    xhr.onerror = function () {
         console.error('Request failed');
-        // Handle the error
-      };
-} 
+    };
+}
 
 /**
  * deltes given Element 
@@ -486,7 +510,7 @@ function deleteLocation(key) {
                 console.log("client error on delete !")
                 console.log(JSON.parse(request.responseText))
 
-                alert(JSON.parse(request.responseText)+ " try again !")
+                alert(JSON.parse(request.responseText) + " try again !")
             }
         }
 
@@ -522,7 +546,7 @@ function displayToggle(elementIds) {
 function loginAsAdmin() {
 
     // Change Display:
-    displayToggle(["login-area","header-options","main-area", "locations-options-btns"])
+    displayToggle(["login-area", "header-options", "main-area", "locations-options-btns"])
 
     sessionAsAdmin = true
     console.log("session as admin login: " + sessionAsAdmin)
@@ -573,7 +597,7 @@ function getUsersAsObj() {
  * syncronize locationList with location Data
  */
 async function getLocationList() {
-    
+
     // get Data from JSON:
     let request = new XMLHttpRequest();
     request.open("GET", "http://localhost:3000/locations", false);
@@ -585,6 +609,7 @@ async function getLocationList() {
             console.log("json date are ready, there are " + data.length + " locations");
             // save in variable as JS-Object:
             locationsList = data;
+            console.log("LocationList Updated"+locationList.length)
         } else {
             console.log("error on loading jason file")
             console.log("request Status: " + request.status)
@@ -594,7 +619,7 @@ async function getLocationList() {
 
     request.send();
 
-    
+
 }
 
 /**
@@ -671,7 +696,7 @@ function refreshLocationsMarkers() {
 }
 
 function clearAllMarkers() {
-    mapMarkersList.forEach( marker => {
+    mapMarkersList.forEach(marker => {
         map.removeLayer(marker)
     })
     mapMarkersList = []
@@ -683,7 +708,7 @@ function clearAllMarkers() {
 function toggleUpdateTable() {
 
     generateUpdateTableBody()
-    displayToggle(["overview-area","update-form","main-area","update-form","header-options"])
+    displayToggle(["overview-area", "update-form", "main-area", "update-form", "header-options"])
 
     scrollToTop()
 }
@@ -695,7 +720,7 @@ function toggleUpdateTable() {
 function generateUpdateTableBody() {
     const updateTable = document.getElementById("updateTable");
 
-     while (updateTable.lastElementChild) {
+    while (updateTable.lastElementChild) {
         updateTable.removeChild(updateTable.lastElementChild);
     }
 
@@ -725,13 +750,13 @@ function generateUpdateTableBody() {
     updateTable.appendChild(tableHead)
 
     // Table rows:
-    locationsList.forEach( location => {
+    locationsList.forEach(location => {
         updateTable.appendChild(generateUpdateTableBodyRow(location));
         const delBtn = document.getElementById("del" + location.locationName)
         const updBtn = document.getElementById("upd" + location.locationName)
         updBtn.addEventListener("click", function () { updateLocation(location) })
         delBtn.addEventListener("click", function () { deleteLocation(location) })
-    
+
     })
 }
 
@@ -898,11 +923,11 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
 }
 
 function backToHomepageFromUpdatePage() {
-    displayToggle(["overview-area","main-area","header-options"])
+    displayToggle(["overview-area", "main-area", "header-options"])
 }
 
 function toggleToUpdateList() {
-    displayToggle(["update-form","overview-area"])
+    displayToggle(["update-form", "overview-area"])
 
     scrollToTop()
 }
