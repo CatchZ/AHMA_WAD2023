@@ -250,7 +250,7 @@ function addLocation(addEvent) {
             // server call
             sendLocationDatatoServer(newLocationToAdd)
 
-
+            getLocationList()
             formCheckandCleanup()// code from before moved to this method to be reusable 
 
         } else {
@@ -308,7 +308,7 @@ function formCheckandCleanup() {
         document.getElementById("add-form").reset()
 
         // get new database data
-        getLocationList()
+         getLocationList()
         // update locations list:
         generateLocationList()
 
@@ -437,6 +437,7 @@ function updateFormSafe(oldData, inputElements) {
             updateMessageDisplayText.appendChild(img)
             updateMessageDisplayText.append(" Address has been changed successfully")
 
+           getLocationList()
             formCheckandCleanup()
             generateUpdateTableBody()
 
@@ -490,7 +491,7 @@ function deleteLocation(key) {
         // the location Name is the key:
         let locationToDelete = key.locationName
         let request = new XMLHttpRequest()
-        let url = "http://localhost:3000/locations"+key._id
+        let url = "http://localhost:3000/locations" + key._id
 
         // create the request and send location-name as parameter:
         request.open("DELETE", `http://localhost:3000/locations/${key._id}` /*+ encodeURIComponent(locationToDelete)*/, true)
@@ -503,6 +504,7 @@ function deleteLocation(key) {
                 console.log("client update the website ..")
 
                 document.getElementById(key.locationName).remove()
+                getLocationList()
                 generateLocationList()
                 refreshLocationsMarkers()
                 generateUpdateTableBody()
@@ -519,9 +521,20 @@ function deleteLocation(key) {
         console.log("Client url to delete: " + url + encodeURIComponent(locationToDelete) + " ..")
         request.send()
 
+
         //const index = locationsList.findIndex(elem => key.locationName === elem.locationName)
         //locationsList.splice(index, 1)
     }
+
+    //TODO 
+    // proper error and response Text handling
+    console.log("cleanup called")
+    getLocationList()
+    generateLocationList()
+    refreshLocationsMarkers()
+    generateUpdateTableBody()
+
+
 }
 
 /**
@@ -609,7 +622,7 @@ async function getLocationList() {
             console.log("json date are ready, there are " + data.length + " locations");
             // save in variable as JS-Object:
             locationsList = data;
-            console.log("LocationList Updated"+locationList.length)
+            console.log("LocationList Updated" + locationList.length)
         } else {
             console.log("error on loading jason file")
             console.log("request Status: " + request.status)
@@ -618,6 +631,7 @@ async function getLocationList() {
     };
 
     request.send();
+    console.log("data refreshed")
 
 
 }

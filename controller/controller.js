@@ -101,10 +101,11 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
             console.error("Error updating object:",err)
             res.status(500).json({error: 'Internal server Error'})
         } else {
-            res.status(200).json({message:'Object updated succesfully'})
+            res.status(200).json({message:'Object deleten succesfully'})
             
         }
     })
+    
     return response
 }
 
