@@ -76,12 +76,12 @@ exports.login = async function (request, response) {
 
 }
 
-exports.deleteLocation = function (locationNameToDelete, response) {
+exports.deleteLocation = async function (locationIdToDelete, response) {
 
     console.log("controller got delete request .. ")
     //console.log("Locations list size: " + locationsList.length)
 
-    const index = locationsList.findIndex(elem => locationNameToDelete === elem.locationName)
+   /* const index = locationsList.findIndex(elem => locationNameToDelete === elem.locationName)
 
     if (index === -1) {
         console.log("controller cannot find the location !")
@@ -93,7 +93,19 @@ exports.deleteLocation = function (locationNameToDelete, response) {
         console.log("location has been deleted")
         console.log("Locations list size: " + locationsList.length)
         response.status(200).json("location has been deleted")
-    }
+    }*/
+    
+    const db = await getDB();
+    response = await db.collection("locations").deleteOne( { _id: new ObjectId(locationIdToDelete)},  (err, result) => {
+        if (err) {
+            console.error("Error updating object:",err)
+            res.status(500).json({error: 'Internal server Error'})
+        } else {
+            res.status(200).json({message:'Object updated succesfully'})
+            
+        }
+    })
+    return response
 }
 
 exports.updateLocation = async function (objectId, data, res) {

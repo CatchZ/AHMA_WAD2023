@@ -27,10 +27,10 @@ server.post('/locations', (request, response) => {
 
 server.delete('/locations/:locationId', (request, response) => {
     console.log("HTTP-Delete-Request from Client .. ")
-    console.log("server found the parameter: " + request.query.key)
+    console.log("server found the parameter: " + request.params.locationId)
     console.log("HTTP-Delete-Request forward to controller .. ")
 
-    controller.deleteLocation(request.query.key, response)
+    controller.deleteLocation(request.params.locationId, response)
 })
 
 server.put('/locations/:userName', (req, res) => {

@@ -482,7 +482,7 @@ function sendUpdateDataToServer(userId, UpdateData) {
  */
 function deleteLocation(key) {
 
-    console.log("clicked:" + key.locationName)
+    console.log("clicked:" + key._id)
 
     let deleteConfirm = confirm("Do you really want to remove " + key.locationName)
     if (deleteConfirm) {
@@ -490,10 +490,10 @@ function deleteLocation(key) {
         // the location Name is the key:
         let locationToDelete = key.locationName
         let request = new XMLHttpRequest()
-        let url = "http://localhost:3000/locations?key="
+        let url = "http://localhost:3000/locations"+key._id
 
         // create the request and send location-name as parameter:
-        request.open("DELETE", url + encodeURIComponent(locationToDelete), true)
+        request.open("DELETE", `http://localhost:3000/locations/${key._id}` /*+ encodeURIComponent(locationToDelete)*/, true)
 
         // response received:
         request.onload = function () {
