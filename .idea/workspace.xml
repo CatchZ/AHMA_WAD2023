@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="MonogDB URL corrected">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Bugs Fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
@@ -137,14 +137,7 @@
       <workItem from="1687691170407" duration="9490000" />
       <workItem from="1688057247279" duration="10328000" />
       <workItem from="1688395275352" duration="384000" />
-      <workItem from="1688395677659" duration="2654000" />
-    </task>
-    <task id="LOCAL-00019" summary="CSS Update">
-      <created>1684155720127</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1684155720127</updated>
+      <workItem from="1688395677659" duration="4868000" />
     </task>
     <task id="LOCAL-00020" summary="JS Impl. : login and logout functions">
       <created>1684349882482</created>
@@ -482,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688396790776</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Bugs Fixed">
+      <created>1688398503556</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1688398503556</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +527,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS Impl. : marker callback functions" />
     <MESSAGE value="JS Impl. : add function bugs fixed" />
     <MESSAGE value="JS Impl. : pan the map on click" />
     <MESSAGE value="JS Impl. : disabled login button until fill the user and password" />
@@ -552,6 +551,7 @@
     <MESSAGE value="delete location in Backend" />
     <MESSAGE value="merging ...." />
     <MESSAGE value="MonogDB URL corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="MonogDB URL corrected" />
+    <MESSAGE value="Bugs Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
   </component>
 </project>

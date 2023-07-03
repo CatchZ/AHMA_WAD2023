@@ -14,6 +14,7 @@ controller.use(() => {
 })
  */
 
+/*
 let locationsList = [{
     "locationName": "Bayerische Motoren Werke AG",
     "streetName": "Am Juliusturm",
@@ -50,6 +51,7 @@ let locationsList = [{
 ]
 
 
+ */
 exports.login = async function (request, response) {
 
     /*

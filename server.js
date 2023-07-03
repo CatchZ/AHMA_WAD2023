@@ -46,7 +46,6 @@ console.log("HTTP-Get-locations-Request from Client .. ")
   response.json( await controller.getLocations())
 })
 
-
 // Starten des Servers:
 server.listen(port, () => {
     console.log('Server is listing on port: ' + port + " ..");
