@@ -42,7 +42,7 @@ server.put('/locations/:userName', (req, res) => {
 })
 
 server.get('/locations', async (request, response) => {   
-console.log("HTTP-Get-Request from Client .. ")
+console.log("HTTP-Get-locations-Request from Client .. ")
   response.json( await controller.getLocations())
 })
 

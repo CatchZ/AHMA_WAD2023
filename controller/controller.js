@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const modell = require('../modell/dbConnection');
 const express = require("express");
 let db
@@ -111,9 +112,10 @@ if (db === false) {
 
 }
 
-exports.deleteLocation = function (locationNameToDelete, response) {
+exports.deleteLocation = async function (locationIdToDelete, response) {
 
     console.log("controller got delete request .. ")
+    /*
     console.log("Locations list size: " + locationsList.length)
 
     const index = locationsList.findIndex(elem => locationNameToDelete === elem.locationName)
@@ -129,24 +131,26 @@ exports.deleteLocation = function (locationNameToDelete, response) {
         console.log("Locations list size: " + locationsList.length)
         response.status(200).json("location has been deleted")
     }
-    /*
-    const db = await getDB();
-    response = await db.collection("locations").deleteOne( { _id: new ObjectId(locationIdToDelete)},  (err, result) => {
+
+     */
+
+    await connectToDB()
+
+    response = await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)}, (err, result) => {
         if (err) {
-            console.error("Error updating object:",err)
-            res.status(500).json({error: 'Internal server Error'})
+            console.error("Error updating object:", err)
+            response.status(500).json({error: 'Internal server Error'})
         } else {
-            res.status(200).json({message:'Object deleten succesfully'})
+            response.status(200).json({message: 'Object deleten succesfully'})
 
         }
     })
-     */
-    //return response
+    return response
 }
 
 exports.updateLocation = async function (objectId, data, res) {
     console.log("controller got update request .. ")
-    const db = await getDB()
+    await connectToDB()
     await db.collection("locations").updateOne(
         {_id: new ObjectId(objectId)},
         { $set: data },
