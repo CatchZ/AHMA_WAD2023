@@ -25,12 +25,12 @@ server.post('/locations', (request, response) => {
     controller.addLocation(request, response)
 })
 
-server.delete('/locations', (request, response) => {
+server.delete('/locations/:locationId', (request, response) => {
     console.log("HTTP-Delete-Request from Client .. ")
-    console.log("server found the parameter: " + request.query.key)
+    console.log("server found the parameter: " + request.params.locationId)
     console.log("HTTP-Delete-Request forward to controller .. ")
 
-    controller.deleteLocation(request.query.key, response)
+    controller.deleteLocation(request.params.locationId, response)
 })
 
 server.put('/locations/:userName', (req, res) => {
@@ -41,9 +41,16 @@ server.put('/locations/:userName', (req, res) => {
     controller.updateLocation(objectID, updateData, res)
 })
 
-server.get('/locations', async (request, response) => {   
-console.log("HTTP-Get-locations-Request from Client .. ")
-  response.json( await controller.getLocations())
+/*
+server.get('/locations', async (request, response) => {
+    console.log("HTTP-Get-locations-Request from Client .. ")
+    response.json( await controller.getLocations())
+})
+ */
+
+server.get('/locations',(request, response) => {
+    console.log("HTTP-Get-locations-Request from Client .. ")
+    controller.getLocations(response)
 })
 
 // Starten des Servers:

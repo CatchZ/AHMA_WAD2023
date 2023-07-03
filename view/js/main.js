@@ -293,35 +293,24 @@ function sendLocationDatatoServer(data) {
  */
 function formCheckandCleanup() {
 
-    // update JSON file:
-    let updateResult = updateJsonFileLocations()
-    getLocationList();
+    //getLocationList();
 
-    if (updateResult) {
-        // show success message:
-        let img = new Image()
-        img.src = "./img/ok-icon.png"
-        addMessageDisplayText.appendChild(img)
-        addMessageDisplayText.append(" has been added successfully ")
+    // show success message:
+    let img = new Image()
+    img.src = "./img/ok-icon.png"
+    addMessageDisplayText.appendChild(img)
+    addMessageDisplayText.append(" has been added successfully ")
 
-        // reset form inputs values:
-        document.getElementById("add-form").reset()
+    // reset form inputs values:
+    document.getElementById("add-form").reset()
 
-        // get new database data
-         getLocationList()
-        // update locations list:
-        generateLocationList()
+    // get new database data
+    getLocationList()
+    // update locations list:
+    generateLocationList()
 
-        // update map:
-        refreshLocationsMarkers()
-    } else {
-        // show failed message:
-        let img = new Image()
-        img.src = "./img/failed-icon.png"
-        addMessageDisplayText.appendChild(img)
-        addMessageDisplayText.append(" add failed, try again")
-    }
-
+    // update map:
+    refreshLocationsMarkers()
 }
 
 /**
@@ -437,7 +426,7 @@ function updateFormSafe(oldData, inputElements) {
             updateMessageDisplayText.appendChild(img)
             updateMessageDisplayText.append(" Address has been changed successfully")
 
-           getLocationList()
+            getLocationList()
             formCheckandCleanup()
             generateUpdateTableBody()
 
@@ -451,9 +440,7 @@ function updateFormSafe(oldData, inputElements) {
     })
 
 }
-/**
- * 
- */
+
 function sendUpdateDataToServer(userId, UpdateData) {
     console.log("sendUpdateDataToServer Called")
     const xhr = new XMLHttpRequest();
@@ -494,7 +481,7 @@ function deleteLocation(key) {
         let url = "http://localhost:3000/locations" + key._id
 
         // create the request and send location-name as parameter:
-        request.open("DELETE", `http://localhost:3000/locations/${key._id}` /*+ encodeURIComponent(locationToDelete)*/, true)
+        request.open("DELETE", `http://localhost:3000/locations/${key._id}`, true)
 
         // response received:
         request.onload = function () {
@@ -520,12 +507,9 @@ function deleteLocation(key) {
         console.log("client send HTTP-Delete-Request ..")
         console.log("Client url to delete: " + url + encodeURIComponent(locationToDelete) + " ..")
         request.send()
-
-
-        //const index = locationsList.findIndex(elem => key.locationName === elem.locationName)
-        //locationsList.splice(index, 1)
     }
 
+    /*
     //TODO 
     // proper error and response Text handling
     console.log("cleanup called")
@@ -534,7 +518,7 @@ function deleteLocation(key) {
     refreshLocationsMarkers()
     generateUpdateTableBody()
 
-
+     */
 }
 
 /**
@@ -575,10 +559,7 @@ function loginAsUser() {
 
 }
 
-/**
- *
- * @returns UserObject data
- */
+/*
 function getUsersAsObj() {
 
     let request = new XMLHttpRequest();
@@ -605,11 +586,13 @@ function getUsersAsObj() {
     // return data as JS-Object:
     return usersList
 }
+ */
+
 
 /**
  * syncronize locationList with location Data
  */
-async function getLocationList() {
+function getLocationList() {
 
     // get Data from JSON:
     let request = new XMLHttpRequest();
@@ -619,39 +602,23 @@ async function getLocationList() {
         // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
         if (request.readyState === 4 && request.status === 200) {
             let data = JSON.parse(request.responseText);
-            console.log("json date are ready, there are " + data.length + " locations");
+            console.log("we got " + data.length + " locations");
             // save in variable as JS-Object:
             locationsList = data;
             console.log("LocationList Updated" + locationList.length)
+
+            return true
         } else {
-            console.log("error on loading jason file")
+            console.log("error on loading locations from DB")
             console.log("request Status: " + request.status)
             console.log("requestReady status: " + request.readyState)
+
+            return false
         }
     };
 
     request.send();
     console.log("data refreshed")
-
-
-}
-
-/**
- * updates Json file
- * @returns
- */
-function updateJsonFileLocations() {
-    // get the variable list as JS-Object:
-    // TODO
-
-    // convert to JSON:
-    // TODO
-
-    // update JSON file:
-    // TODO
-
-    // return true if update success or false:
-    return true
 }
 
 /**
@@ -684,9 +651,6 @@ function refreshLocationsMarkers() {
 
     // clear old markers:
     clearAllMarkers()
-
-    // should be already called
-    // getLocationsAsObj()
 
     // to test:
     console.log("locationsList length: " + locationsList.length)
@@ -770,7 +734,6 @@ function generateUpdateTableBody() {
         const updBtn = document.getElementById("upd" + location.locationName)
         updBtn.addEventListener("click", function () { updateLocation(location) })
         delBtn.addEventListener("click", function () { deleteLocation(location) })
-
     })
 }
 
@@ -834,9 +797,6 @@ function generateLocationList() {
         locationList.removeChild(locationList.lastElementChild);
     }
 
-    // get the locations:
-    //getLocationsAsObj()
-
     // just to test
     console.log("locationsList length: " + locationsList.length)
 
@@ -852,9 +812,6 @@ function generateLocationList() {
                 // pan the map to the location:
                 map.flyTo([location.latitude, location.longitude], 15)
             })
-
-            //const methodCall = "setLocationInputContainer"+"(\""+location.locationName+"\")"
-            //row.setAttribute("onClick",methodCall);
 
             let img = new Image()
             img.src = "./img/location-icon.png"

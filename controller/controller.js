@@ -14,55 +14,7 @@ controller.use(() => {
 })
  */
 
-/*
-let locationsList = [{
-    "locationName": "Bayerische Motoren Werke AG",
-    "streetName": "Am Juliusturm",
-    "streetNumber": 14,
-    "postcode": 13599,
-    "c02InTons": 12900,
-    "description": "Bayerische Motoren",
-    "latitude": "52.538329",
-    "longitude": "13.228278",
-    "photo": ""
-},
-    {
-        "locationName": "Bayer AG",
-        "streetName": "Müllerstr.",
-        "streetNumber": 178,
-        "postcode": 13353,
-        "c02InTons": 39648,
-        "description": "HKW Bayer",
-        "latitude": "52.540803",
-        "longitude": "13.368838",
-        "photo": ""
-    },
-    {
-        "locationName": "Blockheizkraftwerksträger- und Betreiber.",
-        "streetName": "Albert-Einstein-Str.",
-        "streetNumber": 22,
-        "postcode": 12489,
-        "c02InTons": 44997,
-        "description": "HKW Adlershof",
-        "latitude": "52.42700181421365 ",
-        "longitude": "13.5278661539540",
-        "photo": ""
-    }
-]
-
-
- */
 exports.login = async function (request, response) {
-
-    /*
-if (db === false) {
-    console.log("connect to DB failed !")
-    // send error response:
-    response.status(500).json({message: "connect to DB failed !"})
-    return
-}
-
- */
 
     try {
         await connectToDB()
@@ -111,43 +63,78 @@ if (db === false) {
         // send error response:
         response.status(500).json({message: "connect to DB failed !"})
     }
-
 }
 
 exports.deleteLocation = async function (locationIdToDelete, response) {
 
     console.log("controller got delete request .. ")
-    /*
-    console.log("Locations list size: " + locationsList.length)
 
-    const index = locationsList.findIndex(elem => locationNameToDelete === elem.locationName)
-
-    if (index === -1) {
-        console.log("controller cannot find the location !")
-        response.status(500).json("location not found")
-    } else {
-        console.log("controller found the location index ..")
-        locationsList.splice(index, 1)
-
-        console.log("location has been deleted")
-        console.log("Locations list size: " + locationsList.length)
-        response.status(200).json("location has been deleted")
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
     }
 
-     */
+    console.log("Controller forwarding the delete request to DB ..")
 
-    await connectToDB()
+    try {
+        console.log("controller sending delete request tp DB .. ")
+        await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)})
+        console.error("Object deleted successfully")
+        response.status(200).json({message: 'Object deleted successfully'})
 
-    response = await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)}, (err, result) => {
+    } catch (err) {
+        console.error("Error deleting object: ", err)
+        response.status(500).json({error: 'Internal server Error'})
+    }
+
+    /*
+    await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)}, (err, result) => {
         if (err) {
             console.error("Error updating object:", err)
             response.status(500).json({error: 'Internal server Error'})
         } else {
-            response.status(200).json({message: 'Object deleten succesfully'})
+            console.error("Object deleted successfully")
+            response.status(200).json({message: 'Object deleted successfully'})
 
         }
     })
-    return response
+
+     */
+}
+
+/*
+exports.getLocations = async function (response){
+    await connectToDB()
+
+    console.log("Contoller forwarding the get location request to DB ..")
+    let result = await db.collection("locations").find({}).toArray()
+    //console.log(JSON.stringify(result))
+    return result
+}
+
+ */
+
+exports.getLocations = async function (response){
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
+    }
+
+    console.log("Controller forwarding the get location request to DB ..")
+
+    try {
+        let result  = await db.collection("locations").find({}).toArray()
+        response.status(200).json(result)
+    } catch (err) {
+        console.log("error on loading the locations from db: " , err.message)
+        response.status(500).json({message: "no locations found"})
+    }
 }
 
 exports.updateLocation = async function (objectId, data, res) {
@@ -166,14 +153,6 @@ exports.updateLocation = async function (objectId, data, res) {
             }
         }
     )
-}
-
-exports.getLocations = async function (response){
-    await connectToDB()
-
-    let result = await db.collection("locations").find({}).toArray()
-    //console.log(JSON.stringify(result))
-    return result
 }
 
 exports.addLocation = async function (data, response){
