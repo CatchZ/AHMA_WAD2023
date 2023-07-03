@@ -130,8 +130,17 @@ exports.deleteLocation = function (locationNameToDelete, response) {
     }
 }
 
-exports.updateLocation = function (locationNameToUpdate, response) {
+exports.updateLocation = async function (locationNameToUpdate, data ,response) {
     console.log("controller got update request .. ")
+    const db = await getDB()
+   // const query = {_id:data._id}
+}
+
+exports.getLocations = async function (response){
+    const db = await getDB()
+    let result = await db.collection("locations").find({}).toArray()
+    console.log(JSON.stringify(result))
+    return result
 }
 
 async function connectToDB() {

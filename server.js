@@ -28,11 +28,21 @@ server.delete('/locations', (request, response) => {
     controller.deleteLocation(request.query.key, response)
 })
 
-server.put('/location/:userName', (req, res) => {
-    console.log("HTTP-Delete-Request from Client .. ")
+server.put('/locations/:userName', (req, res) => {
+    console.log("HTTP-put-Request from Client .. ")
     const userName = req.params.userName;
     const updateData = req.body;
 })
+    const updateData = JSON.stringify(req.body);
+    console.log(userName + updateData)
+    controller.updateLocation()
+})
+
+server.get('/locations', async (request, response) => {
+    console.log("HTTP-Get-Request from Client .. ")
+  response.json( await controller.getLocations())
+})
+
 
 // Starten des Servers:
 server.listen(port, () => {
