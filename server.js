@@ -9,6 +9,7 @@ const controller = require('./controller/controller.js');
 server.use(express.json());
 server.use(cors())
 
+
 // Endpunkt für AJAX-Anfragen, der Client schickt eine Anfrage nicht nur generell an den Server,
 // sondern an einen Endpunkt, den wird empfangt und weiter verarbeitet ja nach der Implemtierung
 // sobald eine POST-HTTP-REQUEST eingeht, wird diese an den Controller weitergegeben
