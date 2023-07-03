@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const url = 'mongodb://ahmadb_ahma:XU5N7NXC@mongodb1.f4.htw-berlin.de:27017/ahmadb'
+const url = 'mongodb://ahmadb_ahma:XU5N7NXCL@mongodb1.f4.htw-berlin.de:27017/ahmadb'
 const dbName = 'ahmadb'
 let db
 
@@ -27,6 +27,7 @@ async function connectToDatabase() {
     }
 }
 
+// Singleton:
 exports.getDB = async function () {
     if (!db) {
         await connectToDatabase()

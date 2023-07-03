@@ -140,8 +140,6 @@ exports.deleteLocation = function (locationNameToDelete, response) {
 
         }
     })
-
-
      */
     //return response
 }
@@ -165,19 +163,19 @@ exports.updateLocation = async function (objectId, data, res) {
 }
 
 exports.getLocations = async function (response){
-    const db = await getDB()
+    await connectToDB()
+
     let result = await db.collection("locations").find({}).toArray()
     //console.log(JSON.stringify(result))
     return result
 }
 
 exports.addLocation = async function (data, response){
-    const db = await getDB()
+    await connectToDB()
+    //const db = await getDB()
     console.log("data:"+data.body)
     const result = await db.collection("locations").insertOne(data.body)
     return result
-
-
 }
 
 async function connectToDB() {
