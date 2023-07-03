@@ -48,6 +48,7 @@ let locationsList = [{
     }
 ]
 
+
 exports.login = async function (request, response) {
 
     /*
@@ -128,19 +129,55 @@ exports.deleteLocation = function (locationNameToDelete, response) {
         console.log("Locations list size: " + locationsList.length)
         response.status(200).json("location has been deleted")
     }
+    /*
+    const db = await getDB();
+    response = await db.collection("locations").deleteOne( { _id: new ObjectId(locationIdToDelete)},  (err, result) => {
+        if (err) {
+            console.error("Error updating object:",err)
+            res.status(500).json({error: 'Internal server Error'})
+        } else {
+            res.status(200).json({message:'Object deleten succesfully'})
+
+        }
+    })
+
+
+     */
+    //return response
 }
 
-exports.updateLocation = async function (locationNameToUpdate, data ,response) {
+exports.updateLocation = async function (objectId, data, res) {
     console.log("controller got update request .. ")
     const db = await getDB()
-   // const query = {_id:data._id}
+    await db.collection("locations").updateOne(
+        {_id: new ObjectId(objectId)},
+        { $set: data },
+        (err, result) => {
+            if (err) {
+                console.error("Error updating object:",err)
+                res.status(500).json({error: 'Internal server Error'})
+            } else {
+                res.status(200).json({message:'Object updated succesfully'})
+
+            }
+        }
+    )
 }
 
 exports.getLocations = async function (response){
     const db = await getDB()
     let result = await db.collection("locations").find({}).toArray()
-    console.log(JSON.stringify(result))
+    //console.log(JSON.stringify(result))
     return result
+}
+
+exports.addLocation = async function (data, response){
+    const db = await getDB()
+    console.log("data:"+data.body)
+    const result = await db.collection("locations").insertOne(data.body)
+    return result
+
+
 }
 
 async function connectToDB() {

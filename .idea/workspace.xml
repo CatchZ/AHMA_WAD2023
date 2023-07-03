@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="login throw db">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Error Handling LoginFunction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modell/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/modell/dbConnection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/json/location.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +60,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
     &quot;last_opened_file_path&quot;: &quot;F:/Websites Workspace/AHMA_WAD2023_V2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -137,6 +138,7 @@
       <workItem from="1686826182394" duration="8180000" />
       <workItem from="1687691170407" duration="9490000" />
       <workItem from="1688057247279" duration="10328000" />
+      <workItem from="1688395275352" duration="384000" />
     </task>
     <task id="LOCAL-00017" summary="JS Events Handling Declaration">
       <created>1684155250783</created>

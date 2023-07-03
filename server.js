@@ -9,7 +9,6 @@ const controller = require('./controller/controller.js');
 server.use(express.json());
 server.use(cors())
 
-
 // Endpunkt für AJAX-Anfragen, der Client schickt eine Anfrage nicht nur generell an den Server,
 // sondern an einen Endpunkt, den wird empfangt und weiter verarbeitet ja nach der Implemtierung
 // sobald eine POST-HTTP-REQUEST eingeht, wird diese an den Controller weitergegeben
@@ -19,6 +18,11 @@ server.post('/login', (request, response) => {
     console.log("HTTP-Request login from Client .. ")
     console.log("HTTP-Request login forward to controller .. ")
     controller.login(request, response)
+})
+server.post('/locations', (request, response) => {
+    console.log("HTTP-Request add from Client .. ")
+    console.log("HTTP-Request add forward to controller .. ")
+    controller.addLocation(request, response)
 })
 
 server.delete('/locations', (request, response) => {
@@ -31,16 +35,14 @@ server.delete('/locations', (request, response) => {
 
 server.put('/locations/:userName', (req, res) => {
     console.log("HTTP-put-Request from Client .. ")
-    const userName = req.params.userName;
+    const objectID = req.params.userName;
     const updateData = req.body;
-})
-    const updateData = JSON.stringify(req.body);
-    console.log(userName + updateData)
-    controller.updateLocation()
+    console.log(JSON.stringify(objectID)+ JSON.stringify(updateData))
+    controller.updateLocation(objectID, updateData, res)
 })
 
-server.get('/locations', async (request, response) => {
-    console.log("HTTP-Get-Request from Client .. ")
+server.get('/locations', async (request, response) => {   
+console.log("HTTP-Get-Request from Client .. ")
   response.json( await controller.getLocations())
 })
 
