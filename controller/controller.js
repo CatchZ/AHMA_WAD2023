@@ -163,6 +163,7 @@ exports.updateLocation = async function (objectId, data, res) {
 }
 
 exports.addLocation = async function (data, response){
+
     try {
         await connectToDB()
     } catch (error) {
@@ -170,6 +171,7 @@ exports.addLocation = async function (data, response){
         // send error response:
         response.status(500).json({message: "connect to DB failed !"})
     }
+
     //const db = await getDB()
    // console.log("data:"+data.body)
     //const result = await db.collection("locations").insertOne(data.body)

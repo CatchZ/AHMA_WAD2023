@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="Bugs Fixed">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="DeleteLocation and GetLocation Functions optimized&amp;Error Handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,23 +52,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "F:/Websites Workspace/AHMA_WAD2023_V2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Websites Workspace/AHMA_WAD2023_V2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Websites Workspace\AHMA_WAD2023_V2\view" />
@@ -138,14 +137,8 @@
       <workItem from="1687691170407" duration="9490000" />
       <workItem from="1688057247279" duration="10328000" />
       <workItem from="1688395275352" duration="384000" />
-      <workItem from="1688395677659" duration="10393000" />
-    </task>
-    <task id="LOCAL-00021" summary="JS Impl. : login and logout functions">
-      <created>1684350003606</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1684350003606</updated>
+      <workItem from="1688395677659" duration="10774000" />
+      <workItem from="1688462239242" duration="3926000" />
     </task>
     <task id="LOCAL-00022" summary="CSS update">
       <created>1684351062563</created>
@@ -483,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688400611870</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="DeleteLocation and GetLocation Functions optimized&amp;Error Handling">
+      <created>1688406459518</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1688406459518</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,7 +515,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/MaxCrude" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -528,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS Impl. : add function bugs fixed" />
     <MESSAGE value="JS Impl. : pan the map on click" />
     <MESSAGE value="JS Impl. : disabled login button until fill the user and password" />
     <MESSAGE value="JS Impl. : Geocoding API" />
@@ -553,6 +552,7 @@
     <MESSAGE value="merging ...." />
     <MESSAGE value="MonogDB URL corrected" />
     <MESSAGE value="Bugs Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
+    <MESSAGE value="DeleteLocation and GetLocation Functions optimized&amp;Error Handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="DeleteLocation and GetLocation Functions optimized&amp;Error Handling" />
   </component>
 </project>

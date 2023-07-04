@@ -224,6 +224,8 @@ function addLocation(addEvent) {
     let description = document.getElementById("new-location-description").value
     let photos = document.getElementById("new-location-img").value
 
+    // if Abfrage: koor. oder Address ?
+
     // get geocoding:
     getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
         // if we got a geocoding:
@@ -878,6 +880,44 @@ function getGeocoding(streetname, streetnr, city, postcode, callbackResult) {
             } else {
                 // just to test:
                 console.log("The address could not be resolved!");
+                // callback the parameter function to return the results:
+                callbackResult(null)
+            }
+        } else {
+            // just to test:
+            console.log("Error: " + xhr.status + " , Obj-state: " + response.status);
+            // callback the parameter function to return the results:
+            callbackResult(null)
+        }
+    };
+
+    // send request:
+    xhr.send();
+}
+
+function getAddress(latitude, longitude, callbackResult) {
+
+    // Geocoding API:
+    let xhr = new XMLHttpRequest()
+    const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}"
+
+    xhr.open('GET', url + '&key=' + googleAPIKey, true);
+
+    // Callback-Function:
+    xhr.onload = function () {
+
+        console.log("trying to get the address of >> Long: " + latitude + " , Lat: " + longitude)
+
+        let response = JSON.parse(xhr.responseText);
+
+        if (xhr.status === 200) {
+            if (response.status !== "ZERO_RESULTS") {
+                console.log("result-state : " + response.status)
+                // callback the parameter function to return the results:
+                callbackResult(response)
+            } else {
+                // just to test:
+                console.log("The coordinate could not be resolved!");
                 // callback the parameter function to return the results:
                 callbackResult(null)
             }
