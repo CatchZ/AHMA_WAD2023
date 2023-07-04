@@ -8,6 +8,7 @@ let mapMarkersList = []
 let sessionAsAdmin
 const googleAPIKey = "AIzaSyC7aFw_UR1mQnDP7KdDVyk8_Nivu2Mz0cM"
 const geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
+let coordinateFlag = false
 
 // Events-Targets:
 const loginForm = document.getElementById("login-form")
@@ -45,7 +46,6 @@ backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpda
 backToUpdateList.addEventListener("click", toggleToUpdateList)
 addressOptionBtn.addEventListener("click", toggleAddressOption)
 coordinateOptionBtn.addEventListener("click", toggleAddressOption)
-
 
 function login(loginEvent) {
 
@@ -183,52 +183,108 @@ function addLocation(addEvent) {
 
     // get inputs values:
     let locationName = document.getElementById("new-location-name").value
-    let streetName = document.getElementById("new-location-str-name").value
-    let streetNr = document.getElementById("new-location-str-nr").value
-    let postCode = document.getElementById("new-location-postcode").value
     let co2InT = document.getElementById("new-location-co2").value
     let description = document.getElementById("new-location-description").value
     let photos = document.getElementById("new-location-img").value
 
     // if Abfrage: koor. oder Address ?
 
-    // get geocoding:
-    getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
-        // if we got a geocoding:
-        if (response != null) {
+    if(coordinateFlag === false) {
 
-            console.log("lat: " + response.results[0].geometry.location.lat)
-            console.log("lng: " + response.results[0].geometry.location.lng)
+        let streetName = document.getElementById("new-location-str-name").value
+        let streetNr = document.getElementById("new-location-str-nr").value
+        let postCode = document.getElementById("new-location-postcode").value
 
-            // Get inputs values:
-            let newLocationToAdd = {
-                "locationName": locationName,
-                "streetName": streetName,
-                "streetNumber": streetNr,
-                "postcode": postCode,
-                "c02InTons": co2InT,
-                "description": description,
-                // get lat and lang from the object:
-                "latitude": response.results[0].geometry.location.lat,
-                "longitude": response.results[0].geometry.location.lng,
-                "photo": photos
+        // get geocoding:
+        getGeocoding(streetName, streetNr, "Berlin", postCode, function (response) {
+            // if we got a geocoding:
+            if (response != null) {
+
+                console.log("lat: " + response.results[0].geometry.location.lat)
+                console.log("lng: " + response.results[0].geometry.location.lng)
+
+                // Get inputs values:
+                let newLocationToAdd = {
+                    "locationName": locationName,
+                    "streetName": streetName,
+                    "streetNumber": streetNr,
+                    "postcode": postCode,
+                    "c02InTons": co2InT,
+                    "description": description,
+                    // get lat and lang from the object:
+                    "latitude": response.results[0].geometry.location.lat,
+                    "longitude": response.results[0].geometry.location.lng,
+                    "photo": photos
+                }
+                // save the new location in list variable:
+                locationsList.push(newLocationToAdd)
+                // server call
+                sendLocationDatatoServer(newLocationToAdd)
+
+                getLocationList()
+                formCheckandCleanup()// code from before moved to this method to be reusable
+
+            } else {
+                // show failed message:
+                let img = new Image()
+                img.src = "./img/failed-icon.png"
+                addMessageDisplayText.appendChild(img)
+                addMessageDisplayText.append(" The address could not be resolved, try again")
             }
-            // save the new location in list variable:
-            locationsList.push(newLocationToAdd)
-            // server call
-            sendLocationDatatoServer(newLocationToAdd)
+        })
+    } else {
 
-            getLocationList()
-            formCheckandCleanup()// code from before moved to this method to be reusable 
+        let lat = document.getElementById("new-location-latitude").value
+        let long = document.getElementById("new-location-longitude").value
+
+        // ckeck the coordinate:
+        if (checklatlong(lat, long)) {
+
+            // get geocoding:
+            getAddress(lat, long, function (response) {
+
+                // if we got address:
+                if (response != null) {
+
+                    console.log(response.results[0].address_components[0].toString)
+
+                    // Get inputs values:
+                    let newLocationToAdd = {
+                        "locationName": locationName,
+                        "streetName": response.results[0].address_components[1].long_name,
+                        "streetNumber": response.results[0].address_components[0].long_name,
+                        "postcode": response.results[0].address_components[6].long_name,
+                        "c02InTons": co2InT,
+                        "description": description,
+                        "latitude": lat,
+                        "longitude": long,
+                        "photo": photos
+                    }
+                    // save the new location in list variable:
+                    locationsList.push(newLocationToAdd)
+                    // server call
+                    sendLocationDatatoServer(newLocationToAdd)
+
+                    getLocationList()
+                    formCheckandCleanup()// code from before moved to this method to be reusable
+
+                } else {
+                    // show failed message:
+                    let img = new Image()
+                    img.src = "./img/failed-icon.png"
+                    addMessageDisplayText.appendChild(img)
+                    addMessageDisplayText.append(" The address could not be resolved, try again")
+                }
+            })
 
         } else {
             // show failed message:
             let img = new Image()
             img.src = "./img/failed-icon.png"
             addMessageDisplayText.appendChild(img)
-            addMessageDisplayText.append(" The address could not be resolved, try again")
+            addMessageDisplayText.append(" The coordinate could not be resolved for berlin, try again")
         }
-    })
+    }
 }
 
 function sendLocationDatatoServer(data) {
@@ -887,9 +943,9 @@ function checklatlong(latitude,longitude) {
  }
 }
 
-function toggleAddressOption(add) {
+function toggleAddressOption(toggleAdressOption) {
 
-    add.preventDefault()
+    toggleAdressOption.preventDefault()
 
     // toggle the inputs containers:
     //displayToggle(["add-form-address-input-container","add-form-coordinate-input-container"])
@@ -899,4 +955,7 @@ function toggleAddressOption(add) {
     // toggle aktive-class of the buttons:
     addressOptionBtn.classList.toggle("address-option-aktiv")
     coordinateOptionBtn.classList.toggle("address-option-aktiv")
+
+    // set flag:
+    coordinateFlag = !coordinateFlag;
 }

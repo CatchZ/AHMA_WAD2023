@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="getAddress from Geocoding Impl.">
+    <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="changed addForm JS/CSS/HTML Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/js/main.js" afterDir="false" />
     </list>
@@ -140,21 +138,7 @@
       <workItem from="1688057247279" duration="10328000" />
       <workItem from="1688395275352" duration="384000" />
       <workItem from="1688395677659" duration="10774000" />
-      <workItem from="1688462239242" duration="9395000" />
-    </task>
-    <task id="LOCAL-00023" summary="JS Impl. : add new location function">
-      <created>1684353526268</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1684353526268</updated>
-    </task>
-    <task id="LOCAL-00024" summary="CSS Update">
-      <created>1684355239080</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1684355239080</updated>
+      <workItem from="1688462239242" duration="12654000" />
     </task>
     <task id="LOCAL-00025" summary="JS Update">
       <created>1684358662062</created>
@@ -485,7 +469,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688466264048</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="changed addForm JS/CSS/HTML Update">
+      <created>1688471842513</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1688471842513</updated>
+    </task>
+    <task id="LOCAL-00073" summary="changed addForm JS/CSS/HTML Update">
+      <created>1688472010195</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1688472010195</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS Impl. : disabled login button until fill the user and password" />
     <MESSAGE value="JS Impl. : Geocoding API" />
     <MESSAGE value="JS Impl. : Update function Geocoding API" />
     <MESSAGE value="JS Impl. : get data from JSON file using httpRequest" />
@@ -555,6 +552,7 @@
     <MESSAGE value="Bugs Fixed" />
     <MESSAGE value="DeleteLocation and GetLocation Functions optimized&amp;Error Handling" />
     <MESSAGE value="getAddress from Geocoding Impl." />
-    <option name="LAST_COMMIT_MESSAGE" value="getAddress from Geocoding Impl." />
+    <MESSAGE value="changed addForm JS/CSS/HTML Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed addForm JS/CSS/HTML Update" />
   </component>
 </project>
