@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04418499-4c10-4fc5-b9e2-8a99c280c9b4" name="Changes" comment="changed addForm JS/CSS/HTML Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "04.07.23",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "F:/Websites Workspace/AHMA_WAD2023_V2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -528,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JS Impl. : Geocoding API" />
     <MESSAGE value="JS Impl. : Update function Geocoding API" />
     <MESSAGE value="JS Impl. : get data from JSON file using httpRequest" />
     <MESSAGE value="JS Impl. : get users from JSON using httpRequest" />
@@ -553,6 +550,7 @@
     <MESSAGE value="DeleteLocation and GetLocation Functions optimized&amp;Error Handling" />
     <MESSAGE value="getAddress from Geocoding Impl." />
     <MESSAGE value="changed addForm JS/CSS/HTML Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed addForm JS/CSS/HTML Update" />
+    <MESSAGE value="new update" />
+    <option name="LAST_COMMIT_MESSAGE" value="new update" />
   </component>
 </project>
