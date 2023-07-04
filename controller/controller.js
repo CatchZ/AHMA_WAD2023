@@ -139,7 +139,14 @@ exports.getLocations = async function (response){
 
 exports.updateLocation = async function (objectId, data, res) {
     console.log("controller got update request .. ")
-    await connectToDB()
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
+    }
+
     await db.collection("locations").updateOne(
         {_id: new ObjectId(objectId)},
         { $set: data },
@@ -156,11 +163,24 @@ exports.updateLocation = async function (objectId, data, res) {
 }
 
 exports.addLocation = async function (data, response){
-    await connectToDB()
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
+    }
     //const db = await getDB()
-    console.log("data:"+data.body)
-    const result = await db.collection("locations").insertOne(data.body)
-    return result
+   // console.log("data:"+data.body)
+    //const result = await db.collection("locations").insertOne(data.body)
+   // return result
+    try {
+        let result  = result = await db.collection("locations").insertOne(data.body)
+        response.status(200).json(result)
+    } catch (err) {
+        console.log("error on adding to Database: " , err.message)
+        response.status(500).json({message: "no locations found"})
+    }
 }
 
 async function connectToDB() {
