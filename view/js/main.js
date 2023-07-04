@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Variables:
 let locationsList = []
 let map
