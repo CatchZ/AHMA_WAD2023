@@ -41,19 +41,19 @@ server.put('/locations/:userName', (req, res) => {
     controller.updateLocation(objectID, updateData, res)
 })
 
-/*
-server.get('/locations', async (request, response) => {
-    console.log("HTTP-Get-locations-Request from Client .. ")
-    response.json( await controller.getLocations())
-})
- */
 
 server.get('/locations',(request, response) => {
     console.log("HTTP-Get-locations-Request from Client .. ")
     controller.getLocations(response)
 })
 
+server.get('/locations/:_id',(request, response) => {
+    console.log("HTTP-GetOne-locations-Request from Client .. ")
+    controller.getOneLocations(request.params._id,response)
+})
+
 // Starten des Servers:
 server.listen(port, () => {
     console.log('Server is listing on port: ' + port + " ..");
 });
+

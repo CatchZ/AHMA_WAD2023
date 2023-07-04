@@ -83,39 +83,33 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
         console.log("controller sending delete request tp DB .. ")
         await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)})
         console.error("Object deleted successfully")
-        response.status(200).json({message: 'Object deleted successfully'})
+        response.status(204).json({message: 'Object deleted successfully'})
 
     } catch (err) {
         console.error("Error deleting object: ", err)
         response.status(500).json({error: 'Internal server Error'})
     }
 
-    /*
-    await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)}, (err, result) => {
-        if (err) {
-            console.error("Error updating object:", err)
-            response.status(500).json({error: 'Internal server Error'})
-        } else {
-            console.error("Object deleted successfully")
-            response.status(200).json({message: 'Object deleted successfully'})
-
-        }
-    })
-
-     */
 }
+exports.getOneLocations = async function (objectId,response){
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
+    }
 
-/*
-exports.getLocations = async function (response){
-    await connectToDB()
+    console.log("Controller forwarding the get location request to DB ..")
 
-    console.log("Contoller forwarding the get location request to DB ..")
-    let result = await db.collection("locations").find({}).toArray()
-    //console.log(JSON.stringify(result))
-    return result
+    try {
+        let result  = await  db.collection("locations").findOne({ _id: ObjectId(objectId) });
+        response.status(200).json(result)
+    } catch (err) {
+        console.log("error on loading the locations from db: " , err.message)
+        response.status(500).json({message: "no locations found"})
+    }
 }
-
- */
 
 exports.getLocations = async function (response){
     try {
@@ -155,7 +149,7 @@ exports.updateLocation = async function (objectId, data, res) {
                 console.error("Error updating object:",err)
                 res.status(500).json({error: 'Internal server Error'})
             } else {
-                res.status(200).json({message:'Object updated succesfully'})
+                res.status(204).json({message:'Object updated succesfully'})
 
             }
         }
@@ -178,7 +172,7 @@ exports.addLocation = async function (data, response){
    // return result
     try {
         let result  = await db.collection("locations").insertOne(data.body)
-        response.status(200).json(result)
+        response.status(201).json(result)
     } catch (err) {
         console.log("error on adding to Database: " , err.message)
         response.status(500).json({message: "no locations found"})
