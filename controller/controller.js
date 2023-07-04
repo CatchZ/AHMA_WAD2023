@@ -167,7 +167,7 @@ exports.addLocation = async function (data, response){
     //const result = await db.collection("locations").insertOne(data.body)
    // return result
     try {
-        let result  = result = await db.collection("locations").insertOne(data.body)
+        let result  = await db.collection("locations").insertOne(data.body)
         response.status(201).json(result)
     } catch (err) {
         console.log("error on adding to Database: " , err.message)
