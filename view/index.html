@@ -92,28 +92,29 @@
             <h2>ADD NEW LOCATION</h2>
             <p id="add-message" class="add-message"></p>
             <form id="add-form" class="add-form-container">
-                <div class="add-form-label-container ">
-                    <label>Location Name</label>
-                    <label>Streetname</label>
-                    <label>Streetnumber</label>
-                    <label>Postcode</label>
-                    <label>C02 int T</label>
-                    <label>Description</label>
-                    <label>Latitude</label>
-                    <label>Longitude</label>
-                    <label>Photo</label>
-                </div>
                 <div class="add-form-input-container login-form-input-container input" >
                     <input id="new-location-name" type="text" placeholder="location name" required>
-                    <input id="new-location-str-name" type="text" placeholder="streetname name" required>
-                    <input id="new-location-str-nr" type="number" placeholder="streetnumber" required>
-                    <input id="new-location-postcode" type="number" placeholder="Postcode" required>
                     <input id="new-location-co2" type="number" placeholder="C02 in T" required>
                     <input id="new-location-description" type="text" placeholder="Description" required>
-                    <input id="new-location-latitude" type="number" placeholder="latitude">
-                    <input id="new-location-longitude" type="number" placeholder="longitude">
                     <input id="new-location-img" type="file" placeholder="longitude">
+
+                    <div class="add-form-address-option-container">
+                        <button id="address-option-btn" class="address-option-button address-option-aktiv">Address</button>
+                        <button id="coordinate-option-btn" class="address-option-button">Coordinate</button>
+                    </div>
+
+                    <div id="add-form-address-input-container" class="add-form-address-input-container">
+                        <input id="new-location-str-name" type="text" placeholder="streetname name">
+                        <input id="new-location-str-nr" type="number" placeholder="streetnumber">
+                        <input id="new-location-postcode" type="number" placeholder="Postcode">
+                    </div>
+
+                    <div id="add-form-coordinate-input-container" class="add-form-coordinate-input-container none-display">
+                        <input id="new-location-latitude" type="number" placeholder="latitude">
+                        <input id="new-location-longitude" type="number" placeholder="longitude">
+                    </div>
                 </div>
+
                 <div class="add-form-btns-container">
                     <button type="submit" id="save-new-location-btn" class="save-btn form-button" >Save</button>
                     <button id="cancel-location-add-btn" class="cancel-btn form-button" >Cancel</button>

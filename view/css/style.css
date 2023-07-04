@@ -334,12 +334,22 @@ Footer
 
 .update-form-label-container,
 .update-form-input-container,
-.add-form-label-container,
-.add-form-input-container {
+.add-form-label-container {
     display: inline-block;
     vertical-align: middle;
     
 }
+
+.add-form-input-container {
+    vertical-align: middle;
+    font-size: var(--body-text);
+    color: var(--green-color);
+    width: 100%;
+    border-style: none;
+    border-bottom: var(--gray-color) solid 1px;
+    display: inline-block;
+}
+
 .update-form-label-container,
 .add-form-label-container{
     text-align: left;
@@ -362,6 +372,41 @@ Footer
     width: 100%;
     padding: 5px 0;
 }
+
+.add-form-address-option-container {
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+}
+
+.address-option-button {
+    margin: 20px 40px 10px 0;
+    font-size: var(--heading);
+    text-transform: uppercase;
+    color: var(--gray-color);
+    border: none;
+    transition: all .5s ease ;
+    background: var(--bg-color);
+    font-weight: 200;
+    line-height: 2.5rem;
+}
+
+.address-option-button:hover {
+    cursor: pointer;
+}
+
+.address-option-aktiv {
+    transition: all .5s ease ;
+    border-bottom: #40a149 3px solid;
+    border-radius: 3px;
+}
+
+.add-form-address-input-container,
+.add-form-coordinate-input-container {
+    transition: all .5s ease ;
+    width: 100%;
+}
+
 
 table, td {
     border-bottom: 1px solid var(--green-color);
@@ -475,7 +520,6 @@ th {
     width: 80%;
 }
 
-.add-form-input-container,
 .update-form-input-container {
     width: 80%;
 }

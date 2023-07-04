@@ -24,6 +24,11 @@ const passwordInput = document.getElementById("password-input")
 const addMessageDisplayText = document.getElementById("add-message");
 const updateMessageDisplayText = document.getElementById("update-message");
 const locationList = document.getElementById("locations-list");
+const addressOptionBtn = document.getElementById("address-option-btn");
+const coordinateOptionBtn = document.getElementById("coordinate-option-btn");
+const addressInputsContainer = document.getElementById("add-form-address-input-container");
+const coordinateInputsContainer = document.getElementById("add-form-coordinate-input-container");
+
 let updateButtonList = [];
 
 // Events-Handlers:
@@ -37,6 +42,8 @@ listUpdateBtn.addEventListener("click", toggleUpdateTable)
 cancelLocationUpdateBtn.addEventListener("click", toggleToUpdateList)
 backToHomepageBtnFromUpdatePage.addEventListener("click", backToHomepageFromUpdatePage)
 backToUpdateList.addEventListener("click", toggleToUpdateList)
+addressOptionBtn.addEventListener("click", toggleAddressOption)
+coordinateOptionBtn.addEventListener("click", toggleAddressOption)
 
 
 function login(loginEvent) {
@@ -958,4 +965,18 @@ function checklatlong(latitude,longitude) {
  } else {
     return false
  }
+}
+
+function toggleAddressOption(add) {
+
+    add.preventDefault()
+
+    // toggle the inputs containers:
+    //displayToggle(["add-form-address-input-container","add-form-coordinate-input-container"])
+    addressInputsContainer.classList.toggle("none-display")
+    coordinateInputsContainer.classList.toggle("none-display")
+
+    // toggle aktive-class of the buttons:
+    addressOptionBtn.classList.toggle("address-option-aktiv")
+    coordinateOptionBtn.classList.toggle("address-option-aktiv")
 }
