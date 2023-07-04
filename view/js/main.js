@@ -907,3 +907,15 @@ function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+function checklatlong(latitude,longitude) {
+ if(
+    (latitude<52.678417)&&
+    (latitude>52.371048)&&
+    (longitude>13.078881)&&
+    (longitude<13.760580)) { return true
+    
+ } else {
+    return false
+ }
+}
