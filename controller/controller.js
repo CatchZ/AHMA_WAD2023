@@ -8,11 +8,7 @@ const controller = express()
 // die Middleware wird normalerweise im Request-Response-Lebenszyklus von Express eingesetzt,
 // das heißt, wenn die Methoden von außen aufgerufen werden (weil sie exportiert sind)
 // wird diese Middleware nicht ausgeführt
-/*
-controller.use(() => {
-    db = modell.getDB()
-})
- */
+
 
 exports.login = async function (request, response) {
 
@@ -90,32 +86,7 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
         response.status(500).json({error: 'Internal server Error'})
     }
 
-    /*
-    await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)}, (err, result) => {
-        if (err) {
-            console.error("Error updating object:", err)
-            response.status(500).json({error: 'Internal server Error'})
-        } else {
-            console.error("Object deleted successfully")
-            response.status(200).json({message: 'Object deleted successfully'})
-
-        }
-    })
-
-     */
 }
-
-/*
-exports.getLocations = async function (response){
-    await connectToDB()
-
-    console.log("Contoller forwarding the get location request to DB ..")
-    let result = await db.collection("locations").find({}).toArray()
-    //console.log(JSON.stringify(result))
-    return result
-}
-
- */
 
 exports.getLocations = async function (response){
     try {

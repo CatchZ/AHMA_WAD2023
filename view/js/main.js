@@ -108,49 +108,7 @@ function login(loginEvent) {
     // send request:
     request.send(JSON.stringify(user));
 
-    /*
-
-    // Iteration the users-list:
-    for (const user of getUsersAsObj()) {
-        if (usernameInput.value === user.userName) {
-            if (passwordInput.value === user.password) {
-                // Reset the inputs values:
-                document.getElementById("login-form").reset()
-                // set welcome message:
-                document.getElementById("welcome-user").textContent = user.userName
-                // prepare the display for user:
-                switch (user.admin) {
-                    case true: {
-                        loginAsAdmin();
-                        // get locations:
-                        getLocationsAsObj()
-                        // Display the Locations:
-                        generateLocationList()
-                        // Display the Map
-                        initMap()
-                        return;
-                    }
-                    case false: {
-                        loginAsUser();
-                        // get locations:
-                        getLocationsAsObj()
-                        // Display the Locations:
-                        generateLocationList()
-                        // Display the Map
-                        initMap()
-                        return;
-                    }
-                }
-            } else {
-                alert("Wrong password !")
-                return;
-            }
-        }
-    }
-    // if there is no match to the username:
-    alert(usernameInput.value + " is not registered !")
-
-     */
+   
 }
 
 /**
@@ -511,16 +469,7 @@ function deleteLocation(key) {
         request.send()
     }
 
-    /*
-    //TODO 
-    // proper error and response Text handling
-    console.log("cleanup called")
-    getLocationList()
-    generateLocationList()
-    refreshLocationsMarkers()
-    generateUpdateTableBody()
 
-     */
 }
 
 /**
@@ -560,36 +509,6 @@ function loginAsUser() {
     displayToggle(["login-area", "header-options", "main-area"])
 
 }
-
-/*
-function getUsersAsObj() {
-
-    let request = new XMLHttpRequest();
-    let usersList = []
-
-    request.open("GET", "./json/user.json", false)  // false because we need the data bevor we check
-
-    request.onreadystatechange = function () {
-        // state of the XMLHttpRequest-Object (4 = done, date are ready to parse):
-        if (request.readyState === 4 && request.status === 200) {
-            let data = JSON.parse(request.responseText);
-            console.log("json date are ready, there are " + data.length + " users");
-            // save in variable as JS-Object:
-            usersList = data;
-        } else {
-            console.log("error on loading jason file")
-            console.log("request Status: " + request.status)
-            console.log("requestReady status: " + request.readyState)
-        }
-    };
-
-    request.send();
-
-    // return data as JS-Object:
-    return usersList
-}
- */
-
 
 /**
  * syncronize locationList with location Data
