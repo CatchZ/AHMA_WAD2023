@@ -218,11 +218,12 @@ function addLocation(addEvent) {
                 }
                 // save the new location in list variable:
                 locationsList.push(newLocationToAdd)
+
                 // server call
                 sendLocationDatatoServer(newLocationToAdd)
 
-                getLocationList()
-                formCheckandCleanup()// code from before moved to this method to be reusable
+                //getLocationList()
+                //formCheckandCleanup()// code from before moved to this method to be reusable
 
             } else {
                 // show failed message:
@@ -288,17 +289,22 @@ function addLocation(addEvent) {
 }
 
 function sendLocationDatatoServer(data) {
+
     console.log("sendPostDataToServer Called");
     const xhr = new XMLHttpRequest();
+
     xhr.open('POST', 'http://localhost:3000/locations', true);
+
     xhr.setRequestHeader('Content-Type', 'application/json');
     const jsonData = JSON.stringify(data);
+
     xhr.send(jsonData);
 
     xhr.onload = function () {
-        if (xhr.status === 201) {
+        if (xhr.status === 200) {
             const createdData = JSON.parse(xhr.responseText);
             console.log('Data created:', createdData);
+            formCheckandCleanup()
         } else {
             console.error('Error creating data:', xhr.statusText);
         }
@@ -319,6 +325,8 @@ function formCheckandCleanup() {
 
     //getLocationList();
 
+    console.log("cleanUp function called")
+
     // show success message:
     let img = new Image()
     img.src = "./img/ok-icon.png"
@@ -332,7 +340,6 @@ function formCheckandCleanup() {
     getLocationList()
     // update locations list:
     generateLocationList()
-
     // update map:
     refreshLocationsMarkers()
 }
@@ -578,6 +585,8 @@ function loginAsUser() {
  * syncronize locationList with location Data
  */
 function getLocationList() {
+
+    console.log("trying to get locations from DB .. ")
 
     // get Data from JSON:
     let request = new XMLHttpRequest();
@@ -882,13 +891,14 @@ function getAddress(latitude, longitude, callbackResult) {
 
     // Geocoding API:
     let xhr = new XMLHttpRequest()
-    const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}"
+    const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&key=' + googleAPIKey
 
-    xhr.open('GET', url + '&key=' + googleAPIKey, true);
+    xhr.open('GET', url , true);
 
     // Callback-Function:
     xhr.onload = function () {
 
+        console.log("trying to get the address , url >> " + url)
         console.log("trying to get the address of >> Long: " + latitude + " , Lat: " + longitude)
 
         let response = JSON.parse(xhr.responseText);
@@ -936,7 +946,9 @@ function checklatlong(latitude,longitude) {
     (latitude<52.678417)&&
     (latitude>52.371048)&&
     (longitude>13.078881)&&
-    (longitude<13.760580)) { return true
+    (longitude<13.760580)) {
+     console.log("coordinate are validated")
+     return true
     
  } else {
     return false

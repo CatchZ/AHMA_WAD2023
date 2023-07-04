@@ -91,6 +91,7 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
     }
 
 }
+
 exports.getOneLocations = async function (objectId,response){
     try {
         await connectToDB()
@@ -158,6 +159,7 @@ exports.updateLocation = async function (objectId, data, res) {
 
 exports.addLocation = async function (data, response){
 
+    console.log("controller trying to add new Location .. ")
     try {
         await connectToDB()
     } catch (error) {
@@ -166,13 +168,12 @@ exports.addLocation = async function (data, response){
         response.status(500).json({message: "connect to DB failed !"})
     }
 
-    //const db = await getDB()
-   // console.log("data:"+data.body)
-    //const result = await db.collection("locations").insertOne(data.body)
-   // return result
+    console.log("controller sending the new Location to db.. ")
+
     try {
         let result  = await db.collection("locations").insertOne(data.body)
-        response.status(201).json(result)
+        console.log("controller send the response from DB to client ..  ")
+        response.status(200).json(result)
     } catch (err) {
         console.log("error on adding to Database: " , err.message)
         response.status(500).json({message: "no locations found"})
