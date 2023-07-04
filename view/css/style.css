@@ -83,6 +83,17 @@ Login Site
     padding: 5px 0;
 }
 
+.add-form-input-container p {
+    margin: 20px 40px 10px 0;
+    font-size: var(--heading);
+    text-transform: uppercase;
+    color: var(--green-color);
+    border: none;
+    font-weight: 300;
+    line-height: 2.5rem;
+
+}
+
 .login-form-input-container input {
     vertical-align: middle;
     font-size: var(--body-text);
@@ -346,7 +357,7 @@ Footer
     color: var(--green-color);
     width: 100%;
     border-style: none;
-    border-bottom: var(--gray-color) solid 1px;
+    border-bottom: none;
     display: inline-block;
 }
 
@@ -383,9 +394,9 @@ Footer
     margin: 20px 40px 10px 0;
     font-size: var(--heading);
     text-transform: uppercase;
-    color: var(--gray-color);
+    color: #adadad;
     border: none;
-    transition: all .5s ease ;
+    transition: all .2s ease ;
     background: var(--bg-color);
     font-weight: 200;
     line-height: 2.5rem;
@@ -396,8 +407,9 @@ Footer
 }
 
 .address-option-aktiv {
-    transition: all .5s ease ;
-    border-bottom: #40a149 3px solid;
+    transition: all .2s ease ;
+    font-weight: 300;
+    color: var(--green-color);
     border-radius: 3px;
 }
 
@@ -405,6 +417,7 @@ Footer
 .add-form-coordinate-input-container {
     transition: all .5s ease ;
     width: 100%;
+    border: none;
 }
 
 

@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Variables:
 let locationsList = []
 let map
@@ -942,17 +941,17 @@ function scrollToTop() {
 }
 
 function checklatlong(latitude,longitude) {
- if(
-    (latitude<52.678417)&&
-    (latitude>52.371048)&&
-    (longitude>13.078881)&&
-    (longitude<13.760580)) {
-     console.log("coordinate are validated")
-     return true
-    
- } else {
-    return false
- }
+     if(
+        (latitude<52.678417)&&
+        (latitude>52.371048)&&
+        (longitude>13.078881)&&
+        (longitude<13.760580)) {
+         console.log("coordinate are validated")
+         return true
+
+     } else {
+        return false
+     }
 }
 
 function toggleAddressOption(toggleAdressOption) {
