@@ -87,7 +87,25 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
     }
 
 }
+exports.getOneLocations = async function (objectId,response){
+    try {
+        await connectToDB()
+    } catch (error) {
+        console.log("connect to DB failed !")
+        // send error response:
+        response.status(500).json({message: "connect to DB failed !"})
+    }
 
+    console.log("Controller forwarding the get location request to DB ..")
+
+    try {
+        let result  = await  db.collection("locations").findOne({ _id: ObjectId(objectId) });
+        response.status(200).json(result)
+    } catch (err) {
+        console.log("error on loading the locations from db: " , err.message)
+        response.status(500).json({message: "no locations found"})
+    }
+}
 
 exports.getLocations = async function (response){
     try {

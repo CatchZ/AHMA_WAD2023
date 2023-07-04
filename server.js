@@ -47,7 +47,13 @@ server.get('/locations',(request, response) => {
     controller.getLocations(response)
 })
 
+server.get('/locations/:_id',(request, response) => {
+    console.log("HTTP-GetOne-locations-Request from Client .. ")
+    controller.getOneLocations(request.params._id,response)
+})
+
 // Starten des Servers:
 server.listen(port, () => {
     console.log('Server is listing on port: ' + port + " ..");
 });
+
