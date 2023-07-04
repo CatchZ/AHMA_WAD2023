@@ -79,7 +79,7 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
         console.log("controller sending delete request tp DB .. ")
         await db.collection("locations").deleteOne({_id: new ObjectId(locationIdToDelete)})
         console.error("Object deleted successfully")
-        response.status(200).json({message: 'Object deleted successfully'})
+        response.status(204).json({message: 'Object deleted successfully'})
 
     } catch (err) {
         console.error("Error deleting object: ", err)
@@ -87,6 +87,7 @@ exports.deleteLocation = async function (locationIdToDelete, response) {
     }
 
 }
+
 
 exports.getLocations = async function (response){
     try {
@@ -126,7 +127,7 @@ exports.updateLocation = async function (objectId, data, res) {
                 console.error("Error updating object:",err)
                 res.status(500).json({error: 'Internal server Error'})
             } else {
-                res.status(200).json({message:'Object updated succesfully'})
+                res.status(204).json({message:'Object updated succesfully'})
 
             }
         }
@@ -149,7 +150,7 @@ exports.addLocation = async function (data, response){
    // return result
     try {
         let result  = result = await db.collection("locations").insertOne(data.body)
-        response.status(200).json(result)
+        response.status(201).json(result)
     } catch (err) {
         console.log("error on adding to Database: " , err.message)
         response.status(500).json({message: "no locations found"})

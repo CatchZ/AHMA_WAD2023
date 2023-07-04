@@ -232,7 +232,7 @@ function sendLocationDatatoServer(data) {
     xhr.send(jsonData);
 
     xhr.onload = function () {
-        if (xhr.status === 200) {
+        if (xhr.status === 201) {
             const createdData = JSON.parse(xhr.responseText);
             console.log('Data created:', createdData);
         } else {
@@ -410,7 +410,7 @@ function sendUpdateDataToServer(userId, UpdateData) {
     xhr.send(jsonData);
 
     xhr.onload = function () {
-        if (xhr.status === 200) {
+        if (xhr.status === 204) {
             const updatedUser = JSON.parse(xhr.responseText);
             console.log('User updated:', updatedUser);
         } else {
@@ -445,7 +445,7 @@ function deleteLocation(key) {
 
         // response received:
         request.onload = function () {
-            if (request.readyState === 4 && request.status === 200) {
+            if (request.readyState === 4 && request.status === 204) {
 
                 console.log("client got response from server ..")
                 console.log("client update the website ..")
